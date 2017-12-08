@@ -51,6 +51,9 @@ object AppBar {
     p.classes = classes
     p.component = component
     p.elevation = elevation
+    p.square = square
+    p.color = color
+    p.position = position
     this.component(p)(children: _*)
   }
 }

@@ -11,8 +11,9 @@ lazy val commonSettings = Seq(
     .setPreference(DoubleIndentMethodDeclaration, true)
     .setPreference(NewlineAtEndOfFile, true),
   skip in packageJSDependencies := false,
-  webpackBundlingMode := BundlingMode.Application,
+  webpackBundlingMode := BundlingMode.LibraryOnly(),
   useYarn := true,
+  emitSourceMaps := false
 )
 
 lazy val root = (project in file("."))
@@ -38,5 +39,5 @@ lazy val example = (project in file("example"))
   .settings(
     commonSettings,
     scalaJSUseMainModuleInitializer := true,
-    scalaJSUseMainModuleInitializer in Test := false,
+    scalaJSUseMainModuleInitializer in Test := false
   ).enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)

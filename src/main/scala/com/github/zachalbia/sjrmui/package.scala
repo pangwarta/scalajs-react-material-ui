@@ -13,4 +13,7 @@ package object sjrmui {
 
   private[sjrmui] implicit def toUndefOr[A](option: Option[A]): js.UndefOr[A] =
     option.orUndefined
+
+  private[sjrmui] implicit def fromOptStringTypeToUndefOr[A <: StringType](option: Option[A]): js.UndefOr[String] =
+    option.orUndefined.map(_.get)
 }

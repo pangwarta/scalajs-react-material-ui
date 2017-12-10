@@ -11,7 +11,7 @@ object Main {
   def main(args: Array[String]): Unit = {
     val elem =
       <.div(
-        AppBar(color    = AppBar.primary, position = AppBar.fixed)(
+        AppBar(color    = AppBar.primary, position = AppBar.fixed, square = true)(
           Typography(color     = Typography.Color.secondary, `type` = Type.headline, component = "p")("Foo")),
         <.div(^.cls := "example-upperMargin", Grid(lg = Some(2))(
           Avatar(classes = Map(Avatar.root -> "example-avatar"), src = Some("https://i.redd.it/pjnmzubsrt201.jpg"))(),

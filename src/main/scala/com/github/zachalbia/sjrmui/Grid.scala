@@ -6,6 +6,7 @@ import japgolly.scalajs.react.vdom.VdomNode
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
+import scala.scalajs.js.JSConverters._
 
 object Grid {
 
@@ -58,20 +59,20 @@ object Grid {
 
   @js.native
   private[sjrmui] trait Props extends js.Object {
-    var alignContent: String = js.native
-    var alignItems: String = js.native
+    var alignContent: js.UndefOr[String] = js.native
+    var alignItems: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
     var component: String = js.native
     var container: Boolean = js.native
-    var direction: String = js.native
+    var direction: js.UndefOr[String] = js.native
     var hidden: js.UndefOr[Hidden.Props] = js.native
     var item: Boolean = js.native
-    var justify: String = js.native
+    var justify: js.UndefOr[String] = js.native
     var lg: js.UndefOr[Boolean | Int] = js.native
     var md: js.UndefOr[Boolean | Int] = js.native
     var sm: js.UndefOr[Boolean | Int] = js.native
-    var spacing: Int = js.native
-    var wrap: String = js.native
+    var spacing: js.UndefOr[Int] = js.native
+    var wrap: js.UndefOr[String] = js.native
     var xl: js.UndefOr[Boolean | Int] = js.native
     var xs: js.UndefOr[Boolean | Int] = js.native
   }
@@ -118,20 +119,20 @@ object Grid {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      alignContent: AlignContent          = AlignContent.stretch,
-      alignItems:   AlignItems            = AlignItems.stretch,
+      alignContent: Option[AlignContent]  = None,
+      alignItems:   Option[AlignItems]    = None,
       classes:      Map[ClassKey, String] = Map.empty,
       component:    String                = "div",
       container:    Boolean               = false,
-      direction:    Direction             = Direction.row,
+      direction:    Option[Direction]     = None,
       hidden:       Option[Hidden.Props]  = None,
       item:         Boolean               = false,
-      justify:      Justify               = Justify.flexStart,
+      justify:      Option[Justify]       = None,
       lg:           Option[Boolean | Int] = None,
       md:           Option[Boolean | Int] = None,
       sm:           Option[Boolean | Int] = None,
-      spacing:      Int                   = 16,
-      wrap:         Wrap                  = Wrap.wrap,
+      spacing:      Option[Int]           = None,
+      wrap:         Option[Wrap]          = None,
       xl:           Option[Boolean | Int] = None,
       xs:           Option[Boolean | Int] = None)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]

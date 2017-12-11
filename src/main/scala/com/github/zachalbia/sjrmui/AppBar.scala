@@ -1,10 +1,12 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 object AppBar {
 
@@ -42,7 +44,7 @@ object AppBar {
 
   def apply(
       classes:   Map[ClassKey, String] = Map.empty,
-      component: String                = "div",
+      component: String | ReactElement = "div",
       elevation: Int                   = 2,
       square:    Boolean               = false,
       color:     Color                 = primary,

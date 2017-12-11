@@ -1,10 +1,12 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 object Avatar {
 
@@ -16,7 +18,7 @@ object Avatar {
   private[sjrmui] trait Props extends js.Object {
     var alt: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
-    var component: String = js.native
+    var component: String | ReactElement = js.native
     var imgProps: js.UndefOr[js.Object] = js.native
     var sizes: js.UndefOr[String] = js.native
     var src: js.UndefOr[String] = js.native
@@ -33,7 +35,7 @@ object Avatar {
   def apply(
       alt:       Option[String]        = None,
       classes:   Map[ClassKey, String] = Map.empty,
-      component: String                = "div",
+      component: String | ReactElement = "div",
       imgProps:  Option[js.Object]     = None,
       sizes:     Option[String]        = None,
       src:       Option[String]        = None,

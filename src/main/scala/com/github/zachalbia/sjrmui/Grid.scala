@@ -1,6 +1,7 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
@@ -62,7 +63,7 @@ object Grid {
     var alignContent: js.UndefOr[String] = js.native
     var alignItems: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
-    var component: String = js.native
+    var component: String | ReactElement = js.native
     var container: Boolean = js.native
     var direction: js.UndefOr[String] = js.native
     var hidden: js.UndefOr[Hidden.Props] = js.native
@@ -122,7 +123,7 @@ object Grid {
       alignContent: Option[AlignContent]  = None,
       alignItems:   Option[AlignItems]    = None,
       classes:      Map[ClassKey, String] = Map.empty,
-      component:    String                = "div",
+      component:    String | ReactElement = "div",
       container:    Boolean               = false,
       direction:    Option[Direction]     = None,
       hidden:       Option[Hidden.Props]  = None,

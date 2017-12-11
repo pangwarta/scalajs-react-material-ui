@@ -1,10 +1,12 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 object Paper {
 
@@ -15,7 +17,7 @@ object Paper {
   @js.native
   private[sjrmui] trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
-    var component: String = js.native
+    var component: String | ReactElement = js.native
     var elevation: Int = js.native
     var square: Boolean = js.native
   }
@@ -53,7 +55,7 @@ object Paper {
 
   def apply(
       classes:   Map[ClassKey, String] = Map.empty,
-      component: String                = "div",
+      component: String | ReactElement = "div",
       elevation: Int                   = 2,
       square:    Boolean               = false)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]

@@ -3,6 +3,7 @@ package com.github.zachalbia
 import scala.language.implicitConversions
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
+import scala.scalajs.js.|
 
 package object sjrmui {
   private[sjrmui] implicit def keyToString(classKey: StringType): String =

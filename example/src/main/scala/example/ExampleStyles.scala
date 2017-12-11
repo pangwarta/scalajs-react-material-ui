@@ -9,6 +9,10 @@ object ExampleStyles extends StyleSheet.Inline {
     width(128.px),
     height(128.px))
 
+  val badge = style(
+    width(48.px),
+    height(48.px))
+
   val margin = style(
     marginTop(80.px),
     marginLeft(16.px),

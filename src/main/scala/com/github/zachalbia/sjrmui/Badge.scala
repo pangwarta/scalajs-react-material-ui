@@ -1,11 +1,12 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
-import org.scalajs.dom.Element
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 object Badge {
 
@@ -22,7 +23,7 @@ object Badge {
 
   @js.native
   private[sjrmui] trait Props extends js.Object {
-    var badgeContent: js.UndefOr[String] = js.native
+    var badgeContent: js.UndefOr[String | ReactElement] = js.native
     var classes: js.Dictionary[String] = js.native
     var color: String = js.native
   }
@@ -36,9 +37,9 @@ object Badge {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      badgeContent: Option[String]        = None,
-      classes:      Map[ClassKey, String] = Map.empty,
-      color:        Color                 = Color.default)(children: VdomNode*) = {
+      badgeContent: Option[String | ReactElement] = None,
+      classes:      Map[ClassKey, String]         = Map.empty,
+      color:        Color                         = Color.default)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.badgeContent = badgeContent
     p.classes = classes

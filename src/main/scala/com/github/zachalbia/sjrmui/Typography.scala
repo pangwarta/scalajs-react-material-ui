@@ -1,10 +1,12 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 object Typography {
 
@@ -51,7 +53,7 @@ object Typography {
     var align: String = js.native
     var classes: js.Dictionary[String] = js.native
     var color: String = js.native
-    var component: String = js.native
+    var component: String | ReactElement = js.native
     var gutterBottom: Boolean = js.native
     var noWrap: Boolean = js.native
     var paragraph: Boolean = js.native
@@ -92,7 +94,7 @@ object Typography {
       align:        Alignment             = Alignment.inherit,
       classes:      Map[ClassKey, String] = Map.empty,
       color:        Color                 = Color.default,
-      component:    String                = "div",
+      component:    String | ReactElement = "div",
       gutterBottom: Boolean               = false,
       noWrap:       Boolean               = false,
       paragraph:    Boolean               = false,

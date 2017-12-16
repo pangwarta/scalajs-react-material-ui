@@ -25,6 +25,7 @@ object Badge {
   private[sjrmui] trait Props extends js.Object {
     var badgeContent: js.UndefOr[String | ReactElement] = js.native
     var classes: js.Dictionary[String] = js.native
+    var className: js.UndefOr[String] = js.native
     var color: String = js.native
   }
 
@@ -37,12 +38,14 @@ object Badge {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      badgeContent: Option[String | ReactElement] = None,
-      classes:      Map[ClassKey, String]         = Map.empty,
-      color:        Color                         = Color.default)(children: VdomNode*) = {
+      badgeContent: js.UndefOr[String | ReactElement] = js.undefined,
+      classes:      Map[ClassKey, String]             = Map.empty,
+      className:    js.UndefOr[String]                = js.undefined,
+      color:        Color                             = Color.default)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.badgeContent = badgeContent
     p.classes = classes
+    p.className = className
     p.color = color
     this.component(p)(children: _*)
   }

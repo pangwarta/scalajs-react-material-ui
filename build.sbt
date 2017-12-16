@@ -24,11 +24,12 @@ lazy val root = (project in file("."))
       "react-dom"   -> "16.1.1" ::
       Nil,
     libraryDependencies ++=
-      "com.github.japgolly.scalacss"      %%% "core"        % "0.5.3" ::
-      "com.github.japgolly.scalacss"      %%% "ext-react"   % "0.5.3" ::
-      "com.github.japgolly.scalajs-react" %%% "core"        % "1.1.1" ::
-      "com.github.japgolly.scalajs-react" %%% "extra"       % "1.1.1" ::
-      "org.scala-js"                      %%% "scalajs-dom" % "0.9.2" ::
+      "com.github.japgolly.scalacss"      %%% "core"        % "0.5.3"     ::
+      "com.github.japgolly.scalacss"      %%% "ext-react"   % "0.5.3"     ::
+      "com.github.japgolly.scalajs-react" %%% "core"        % "1.1.1"     ::
+      "com.github.japgolly.scalajs-react" %%% "extra"       % "1.1.1"     ::
+      "org.scala-js"                      %%% "scalajs-dom" % "0.9.2"     ::
+      "org.typelevel"                     %%  "cats-core"   % "1.0.0-RC1" ::
       Nil,
     name := "scalajs-react-material-ui",
     commonSettings
@@ -39,5 +40,6 @@ lazy val example = (project in file("example"))
   .settings(
     commonSettings,
     scalaJSUseMainModuleInitializer := true,
-    scalaJSUseMainModuleInitializer in Test := false
+    scalaJSUseMainModuleInitializer in Test := false,
+    scalacOptions += "-Ypartial-unification"
   ).enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)

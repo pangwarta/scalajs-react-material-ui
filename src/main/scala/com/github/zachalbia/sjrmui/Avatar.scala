@@ -17,9 +17,11 @@ object Avatar {
   @js.native
   private[sjrmui] trait Props extends js.Object {
     var alt: js.UndefOr[String] = js.native
+    var childrenClassName: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
+    var className: js.UndefOr[String] = js.native
     var component: String | ReactElement = js.native
-    var imgProps: js.UndefOr[js.Object] = js.native
+    var imgProps: js.Dictionary[String] = js.native
     var sizes: js.UndefOr[String] = js.native
     var src: js.UndefOr[String] = js.native
     var srcSet: js.UndefOr[String] = js.native
@@ -33,16 +35,18 @@ object Avatar {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      alt:       Option[String]        = None,
+      alt:       js.UndefOr[String]    = js.undefined,
       classes:   Map[ClassKey, String] = Map.empty,
+      className: js.UndefOr[String]    = js.undefined,
       component: String | ReactElement = "div",
-      imgProps:  Option[js.Object]     = None,
-      sizes:     Option[String]        = None,
-      src:       Option[String]        = None,
-      srcSet:    Option[String]        = None)(children: VdomNode*) = {
+      imgProps:  Map[String, String]   = Map.empty,
+      sizes:     js.UndefOr[String]    = js.undefined,
+      src:       js.UndefOr[String]    = js.undefined,
+      srcSet:    js.UndefOr[String]    = js.undefined)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.alt = alt
     p.classes = classes
+    p.className = className
     p.component = component
     p.imgProps = imgProps
     p.sizes = sizes

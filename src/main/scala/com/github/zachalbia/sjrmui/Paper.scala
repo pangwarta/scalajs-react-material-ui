@@ -6,7 +6,7 @@ import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
+import scala.scalajs.js.{ UndefOr, | }
 
 object Paper {
 
@@ -17,6 +17,7 @@ object Paper {
   @js.native
   private[sjrmui] trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
+    var className: js.UndefOr[String] = js.native
     var component: String | ReactElement = js.native
     var elevation: Int = js.native
     var square: Boolean = js.native

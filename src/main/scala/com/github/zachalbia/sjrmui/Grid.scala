@@ -7,7 +7,6 @@ import japgolly.scalajs.react.vdom.VdomNode
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
-import scala.scalajs.js.JSConverters._
 
 object Grid {
 
@@ -120,22 +119,22 @@ object Grid {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      alignContent: Option[AlignContent]  = None,
-      alignItems:   Option[AlignItems]    = None,
-      classes:      Map[ClassKey, String] = Map.empty,
-      component:    String | ReactElement = "div",
-      container:    Boolean               = false,
-      direction:    Option[Direction]     = None,
-      hidden:       Option[Hidden.Props]  = None,
-      item:         Boolean               = false,
-      justify:      Option[Justify]       = None,
-      lg:           Option[Boolean | Int] = None,
-      md:           Option[Boolean | Int] = None,
-      sm:           Option[Boolean | Int] = None,
-      spacing:      Option[Int]           = None,
-      wrap:         Option[Wrap]          = None,
-      xl:           Option[Boolean | Int] = None,
-      xs:           Option[Boolean | Int] = None)(children: VdomNode*) = {
+      alignContent: js.UndefOr[AlignContent]  = js.undefined,
+      alignItems:   js.UndefOr[AlignItems]    = js.undefined,
+      classes:      Map[ClassKey, String]     = Map.empty,
+      component:    String | ReactElement     = "div",
+      container:    Boolean                   = false,
+      direction:    js.UndefOr[Direction]     = js.undefined,
+      hidden:       js.UndefOr[Hidden.Props]  = js.undefined,
+      item:         Boolean                   = false,
+      justify:      js.UndefOr[Justify]       = js.undefined,
+      lg:           js.UndefOr[Boolean | Int] = js.undefined,
+      md:           js.UndefOr[Boolean | Int] = js.undefined,
+      sm:           js.UndefOr[Boolean | Int] = js.undefined,
+      spacing:      js.UndefOr[Int]           = js.undefined,
+      wrap:         js.UndefOr[Wrap]          = js.undefined,
+      xl:           js.UndefOr[Boolean | Int] = js.undefined,
+      xs:           js.UndefOr[Boolean | Int] = js.undefined)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.alignContent = alignContent
     p.alignItems = alignItems

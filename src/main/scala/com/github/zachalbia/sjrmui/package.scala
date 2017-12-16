@@ -29,8 +29,8 @@ package object sjrmui {
     a.map(conv)
 
   private[sjrmui] implicit def toOn1[E <: SyntheticEvent[_]](on: js.UndefOr[E => Callback]): OnJS1[E] =
-    js.UndefOr.any2undefOrA((e: E) => on.map(_(e).runNow()).get)
+    js.UndefOr.any2undefOrA((e: E) => on.map(_(e).runNow()).getOrElse(()))
 
   private[sjrmui] implicit def toOn2[E <: SyntheticEvent[_], A](on: js.UndefOr[(E, A) => Callback]): OnJS2[E, A] =
-    js.UndefOr.any2undefOrA((e: E, a: A) => on.map(_(e, a).runNow()).get)
+    js.UndefOr.any2undefOrA((e: E, a: A) => on.map(_(e, a).runNow()).getOrElse(()))
 }

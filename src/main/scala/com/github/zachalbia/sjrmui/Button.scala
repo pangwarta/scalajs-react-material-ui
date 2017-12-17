@@ -9,51 +9,62 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
-object ButtonBase {
+object Button {
 
-  @JSImport("material-ui", "ButtonBase")
+  @JSImport("material-ui", "Button")
   @js.native
   private object RawComponent extends js.Object
 
+  abstract case class Color(get: String) extends StringType
+  object default extends Color("default")
+  object inherit extends Color("inherit")
+  object primary extends Color("primary")
+  object accent extends Color("accent")
+  object contrast extends Color("contrast")
+
   @js.native
-  private[sjrmui] trait Props extends js.Object {
-    var centerRipple: Boolean = js.native
-    var classes: js.Dictionary[String] = js.native
-    var className: js.UndefOr[String] = js.native
-    var component: String | ReactElement = js.native
-    var disableRipple: Boolean = js.native
-    var disabled: Boolean = js.native
-    var focusRipple: Boolean = js.native
-    var keyboardFocusedClassName: js.UndefOr[String] = js.native
-    var onBlur: OnJS1[ReactEvent] = js.native
-    var onClick: OnJS1[ReactMouseEvent] = js.native
-    var onFocus: OnJS1[ReactFocusEvent] = js.native
-    var onKeyboardFocus: OnJS1[ReactFocusEvent] = js.native
-    var onKeyDown: OnJS1[ReactKeyboardEvent] = js.native
-    var onKeyUp: OnJS1[ReactKeyboardEvent] = js.native
-    var onMouseDown: OnJS1[ReactMouseEvent] = js.native
-    var onMouseLeave: OnJS1[ReactMouseEvent] = js.native
-    var onMouseUp: OnJS1[ReactMouseEvent] = js.native
-    var onTouchEnd: OnJS1[ReactTouchEvent] = js.native
-    var onTouchMove: OnJS1[ReactTouchEvent] = js.native
-    var onTouchStart: OnJS1[ReactTouchEvent] = js.native
-    var role: js.UndefOr[String] = js.native
-    var tabIndex: js.UndefOr[Int | String] = js.native
+  private[sjrmui] trait Props extends ButtonBase.Props {
+    var color: String = js.native
+    var dense: Boolean = js.native
+    var disableFocusRipple: Boolean = js.native
+    var fab: Boolean = js.native
+    var href: js.UndefOr[String] = js.native
+    var mini: Boolean = js.native
+    var raised: Boolean = js.native
   }
 
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
+  object dense extends ClassKey("dense")
+  object label extends ClassKey("label")
+  object flatPrimary extends ClassKey("flatPrimary")
+  object flatAccent extends ClassKey("flatAccent")
+  object flatContrast extends ClassKey("flatContrast")
+  object colorInherit extends ClassKey("colorInherit")
+  object raised extends ClassKey("raised")
+  object keyboardFocused extends ClassKey("keyboardFocused")
+  object raisedPrimary extends ClassKey("raisedPrimary")
+  object raisedAccent extends ClassKey("raisedAccent")
+  object raisedContrast extends ClassKey("raisedContrast")
   object disabled extends ClassKey("disabled")
+  object fab extends ClassKey("fab")
+  object mini extends ClassKey("mini")
 
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
+      color:                    Color                        = default,
+      dense:                    Boolean                      = false,
+      disableFocusRipple:       Boolean                      = false,
+      fab:                      Boolean                      = false,
+      href:                     js.UndefOr[String]           = js.undefined,
+      mini:                     Boolean                      = false,
+      raised:                   Boolean                      = false,
       centerRipple:             Boolean                      = false,
-      classes:                  Map[ClassKey, String]        = Map.empty,
       className:                js.UndefOr[String]           = js.undefined,
-      component:                String | ReactElement,
+      component:                String | ReactElement        = "button",
       disableRipple:            Boolean                      = false,
-      disabled:                 Boolean,
+      disabled:                 Boolean                      = false,
       focusRipple:              Boolean                      = false,
       keyboardFocusedClassName: js.UndefOr[String]           = js.undefined,
       onBlur:                   Handler1[ReactEvent]         = js.undefined,
@@ -71,8 +82,14 @@ object ButtonBase {
       role:                     js.UndefOr[String]           = js.undefined,
       tabIndex:                 js.UndefOr[Int | String]     = js.undefined)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
+    p.color = color
+    p.dense = dense
+    p.disableFocusRipple = disableFocusRipple
+    p.fab = fab
+    p.href = href
+    p.mini = mini
+    p.raised = raised
     p.centerRipple = centerRipple
-    p.classes = classes
     p.className = className
     p.component = component
     p.disableRipple = disableRipple

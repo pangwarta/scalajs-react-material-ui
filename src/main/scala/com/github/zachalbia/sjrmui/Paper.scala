@@ -56,11 +56,13 @@ object Paper {
 
   def apply(
       classes:   Map[ClassKey, String] = Map.empty,
+      className: js.UndefOr[String]    = js.undefined,
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
       square:    Boolean               = false)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.classes = classes
+    p.className = className
     p.component = component
     p.elevation = elevation
     p.square = square

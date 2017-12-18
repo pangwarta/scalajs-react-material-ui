@@ -20,7 +20,9 @@ object ExampleStyles extends StyleSheet.Inline {
 
   val paper = style(
     marginTop(16.px),
-    marginBottom(16.px),
+    marginBottom(16.px))
+
+  val paperExample = style(
     padding(8.px))
 
   val paperShadow2 = style(

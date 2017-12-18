@@ -11,10 +11,12 @@ import scala.language.implicitConversions
 object Main {
   val avatarCls = "ExampleStyles-avatar"
   val badgeCls = "ExampleStyles-badge"
+  val card = "ExampleStyles-card"
   val marginCls = "ExampleStyles-margin"
   val paper = "ExampleStyles-paper"
   val paperExample = "ExampleStyles-paperExample"
   val paperShadow2 = "ExampleStyles-paperShadow2"
+
   val catPicUrl = "https://i.redd.it/pjnmzubsrt201.jpg"
 
   def main(args: Array[String]): Unit = {
@@ -48,8 +50,9 @@ object Main {
                   Typography(component = "p", `type` = Type.body1)(
                     "The quick brown fox jumps over the lazy dog."),
                   Button(color  = Button.primary, raised = true)("Do it")),
-              Card(className = paper)(
-                CardHeader()(),
+              Card(className = Seq(paper, card).mkString(" "))(
+                CardHeader(
+                  avatar = Avatar()("R").rawElement)(),
                 CardActions()())))),
         SimpleBottomNav())
     app.renderIntoDOM(dom.document.getElementById("root"))

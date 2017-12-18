@@ -13,6 +13,9 @@ object ExampleStyles extends StyleSheet.Inline {
     width(48.px),
     height(48.px))
 
+  val card = style(
+    maxWidth(400.px))
+
   val margin = style(
     marginTop(80.px),
     marginLeft(16.px),

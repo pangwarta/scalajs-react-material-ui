@@ -6,7 +6,7 @@ import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.{ UndefOr, | }
+import scala.scalajs.js.|
 
 object Paper {
 

@@ -42,7 +42,8 @@ object Main {
               Paper(classes = Map(Paper.root -> paper, Paper.shadow2 -> paperShadow2))(
                 Typography(component = "p", `type` = Type.body1)(
                   "The quick brown fox jumps over the lazy dog."),
-                Button(color  = Button.primary, raised = true)("Do it"))))),
+                Button(color  = Button.primary, raised = true)("Do it")),
+              Card()()))),
         SimpleBottomNav())
     app.renderIntoDOM(dom.document.getElementById("root"))
     ExampleStyles.addToDocument()

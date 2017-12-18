@@ -17,6 +17,7 @@ object CardHeader {
   private[sjrmui] trait Props extends CardContent.Props {
     var action: js.UndefOr[ReactElement] = js.native
     var avatar: js.UndefOr[ReactElement] = js.native
+    var classes: js.Dictionary[String] = js.native
     var subheader: js.UndefOr[ReactElement] = js.native
     var title: js.UndefOr[ReactElement] = js.native
   }
@@ -34,11 +35,13 @@ object CardHeader {
   def apply(
       action:    js.UndefOr[ReactElement] = js.undefined,
       avatar:    js.UndefOr[ReactElement] = js.undefined,
+      classes:   Map[ClassKey, String]    = Map.empty,
       subheader: js.UndefOr[ReactElement] = js.undefined,
       title:     js.UndefOr[ReactElement] = js.undefined)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.action = action
     p.avatar = avatar
+    p.classes = classes
     p.subheader = subheader
     p.title = title
     component(p)(children: _*)

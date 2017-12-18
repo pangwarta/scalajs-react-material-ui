@@ -3,9 +3,10 @@ package example
 import com.github.zachalbia.sjrmui.Typography.Type
 import com.github.zachalbia.sjrmui._
 import example.CssSettings._
-import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom
+
+import scala.language.implicitConversions
 
 object Main {
   val avatarCls = "ExampleStyles-avatar"
@@ -48,6 +49,7 @@ object Main {
                     "The quick brown fox jumps over the lazy dog."),
                   Button(color  = Button.primary, raised = true)("Do it")),
               Card(className = paper)(
+                CardHeader()(),
                 CardActions()())))),
         SimpleBottomNav())
     app.renderIntoDOM(dom.document.getElementById("root"))

@@ -1,5 +1,9 @@
 package example
 
+import com.github.zachalbia.sjrmui.Colors
+
+import scala.language.implicitConversions
+import scala.scalajs.js
 import scalacss.DevDefaults._
 
 object ExampleStyles extends StyleSheet.Inline {
@@ -15,6 +19,9 @@ object ExampleStyles extends StyleSheet.Inline {
 
   val card = style(
     maxWidth(400.px))
+
+  val cardAvatar = style(
+    backgroundColor(Color(Colors(Colors.red, Colors._500))))
 
   val margin = style(
     marginTop(80.px),
@@ -33,4 +40,13 @@ object ExampleStyles extends StyleSheet.Inline {
       "0px 1px 5px 0px rgba(255, 0, 0, 0.2), " +
       "0px 2px 2px 0px rgba(255, 0, 0, 0.14), " +
       "0px 3px 1px -2px rgba(255, 0, 0, 0.12)")
+
+  implicit def styleAToClassName(styleA: StyleA): String =
+    styleA.className.value
+
+  implicit def stylesToClassName(styleAs: Seq[StyleA]): String =
+    styleAs.map(styleAToClassName).mkString(" ")
+
+  implicit def stylesToUndefOrClassName(styleAs: Seq[StyleA]): js.UndefOr[String] =
+    stylesToClassName(styleAs)
 }

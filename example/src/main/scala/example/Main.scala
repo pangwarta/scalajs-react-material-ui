@@ -43,7 +43,8 @@ object Main {
                   Paper.shadow2 -> ExampleStyles.paperShadow2))(
                   Typography(component = "p", `type` = Type.body1)(
                     "The quick brown fox jumps over the lazy dog."),
-                  Button(color  = Button.primary, raised = true)("Do it")),
+                  Button(color  = Button.primary, raised = true)("Do it"),
+                  Checkbox(value = "Check me")),
               Card(className = Seq(ExampleStyles.paper, ExampleStyles.card))(
                 CardHeader(
                   avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)("R").rawElement)(),

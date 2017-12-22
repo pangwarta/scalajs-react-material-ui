@@ -1,13 +1,13 @@
 package com.github.zachalbia.sjrmui
 
-import com.github.zachalbia.sjrmui.Paper.{ ClassKey, Props }
+import com.github.zachalbia.sjrmui.Paper.ClassKey
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.{ UndefOr, | }
+import scala.scalajs.js.|
 
 object Card {
 

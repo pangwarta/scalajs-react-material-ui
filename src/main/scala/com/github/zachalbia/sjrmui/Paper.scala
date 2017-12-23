@@ -23,6 +23,25 @@ object Paper {
     var square: Boolean = js.native
   }
 
+  private object Props {
+    def apply(
+        classes:    js.Dictionary[String],
+        className:  js.UndefOr[String],
+        component:  String | ReactElement,
+        elevation:  Int,
+        square:     Boolean,
+        otherProps: (String, js.Any)*): Props = {
+      val p = js.Dynamic.literal(
+        classes   = classes,
+        className = className,
+        component = component,
+        elevation = elevation,
+        square    = square)
+      addOtherProps(p, otherProps: _*)
+      p.asInstanceOf[Props]
+    }
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object rounded extends ClassKey("rounded")
@@ -59,13 +78,14 @@ object Paper {
       className: js.UndefOr[String]    = js.undefined,
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
-      square:    Boolean               = false)(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.classes = classes
-    p.className = className
-    p.component = component
-    p.elevation = elevation
-    p.square = square
+      square:    Boolean               = false)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = Props(
+      classes,
+      className,
+      component,
+      elevation,
+      square,
+      otherProps: _*)
     this.component(p)(children: _*)
   }
 }

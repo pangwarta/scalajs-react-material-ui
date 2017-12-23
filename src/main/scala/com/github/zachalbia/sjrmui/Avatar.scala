@@ -1,6 +1,7 @@
 package com.github.zachalbia.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.component.Js.{ RawMounted, UnmountedWithRawType }
 import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
 
@@ -9,6 +10,8 @@ import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
 object Avatar {
+
+  type Type = UnmountedWithRawType[Avatar.Props, Null, RawMounted]
 
   @JSImport("material-ui", "Avatar")
   @js.native
@@ -42,7 +45,7 @@ object Avatar {
       imgProps:  Map[String, String]   = Map.empty,
       sizes:     js.UndefOr[String]    = js.undefined,
       src:       js.UndefOr[String]    = js.undefined,
-      srcSet:    js.UndefOr[String]    = js.undefined)(children: VdomNode*) = {
+      srcSet:    js.UndefOr[String]    = js.undefined)(children: VdomNode*): Avatar.Type = {
     val p = (new js.Object).asInstanceOf[Props]
     p.alt = alt
     p.classes = classes

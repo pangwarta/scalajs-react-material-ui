@@ -40,7 +40,7 @@ object Main {
               Paper(
                 classes = Map(
                   Paper.root -> Seq(ExampleStyles.paper, ExampleStyles.paperExample),
-                  Paper.shadow2 -> ExampleStyles.paperShadow2))(
+                  Paper.shadow2 -> ExampleStyles.paperShadow2))("foo" -> "bar")(
                   Typography(component = "p", `type` = Type.body1)(
                     "The quick brown fox jumps over the lazy dog."),
                   Button(color  = Button.primary, raised = true)("Do it"),

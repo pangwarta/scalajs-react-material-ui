@@ -30,6 +30,31 @@ object Avatar {
     var srcSet: js.UndefOr[String] = js.native
   }
 
+  private def props(
+      alt:               js.UndefOr[String],
+      childrenClassName: js.UndefOr[String],
+      classes:           js.Dictionary[String],
+      className:         js.UndefOr[String],
+      component:         String | ReactElement,
+      imgProps:          js.Dictionary[String],
+      sizes:             js.UndefOr[String],
+      src:               js.UndefOr[String],
+      srcSet:            js.UndefOr[String],
+      otherProps:        (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      alt               = alt,
+      childrenClassName = childrenClassName,
+      classes           = classes,
+      className         = className,
+      component         = component,
+      imgProps          = imgProps,
+      sizes             = sizes,
+      src               = src,
+      srcSet            = srcSet)
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object colorDefault extends ClassKey("colorDefault")
@@ -38,23 +63,26 @@ object Avatar {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      alt:       js.UndefOr[String]    = js.undefined,
-      classes:   Map[ClassKey, String] = Map.empty,
-      className: js.UndefOr[String]    = js.undefined,
-      component: String | ReactElement = "div",
-      imgProps:  Map[String, String]   = Map.empty,
-      sizes:     js.UndefOr[String]    = js.undefined,
-      src:       js.UndefOr[String]    = js.undefined,
-      srcSet:    js.UndefOr[String]    = js.undefined)(children: VdomNode*): Avatar.Type = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.alt = alt
-    p.classes = classes
-    p.className = className
-    p.component = component
-    p.imgProps = imgProps
-    p.sizes = sizes
-    p.src = src
-    p.srcSet = srcSet
+      alt:               js.UndefOr[String]    = js.undefined,
+      childrenClassName: js.UndefOr[String]    = js.undefined,
+      classes:           Map[ClassKey, String] = Map.empty,
+      className:         js.UndefOr[String]    = js.undefined,
+      component:         String | ReactElement = "div",
+      imgProps:          Map[String, String]   = Map.empty,
+      sizes:             js.UndefOr[String]    = js.undefined,
+      src:               js.UndefOr[String]    = js.undefined,
+      srcSet:            js.UndefOr[String]    = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*): Avatar.Type = {
+    val p = props(
+      alt,
+      childrenClassName,
+      classes,
+      className,
+      component,
+      imgProps,
+      sizes,
+      src,
+      srcSet,
+      otherProps: _*)
     this.component(p)(children: _*)
   }
 }

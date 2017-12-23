@@ -23,23 +23,21 @@ object Paper {
     var square: Boolean = js.native
   }
 
-  private object Props {
-    def apply(
-        classes:    js.Dictionary[String],
-        className:  js.UndefOr[String],
-        component:  String | ReactElement,
-        elevation:  Int,
-        square:     Boolean,
-        otherProps: (String, js.Any)*): Props = {
-      val p = js.Dynamic.literal(
-        classes   = classes,
-        className = className,
-        component = component,
-        elevation = elevation,
-        square    = square)
-      addOtherProps(p, otherProps: _*)
-      p.asInstanceOf[Props]
-    }
+  private def props(
+      classes:    js.Dictionary[String],
+      className:  js.UndefOr[String],
+      component:  String | ReactElement,
+      elevation:  Int,
+      square:     Boolean,
+      otherProps: (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      classes   = classes,
+      className = className,
+      component = component,
+      elevation = elevation,
+      square    = square)
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
   }
 
   sealed abstract case class ClassKey(get: String) extends StringType
@@ -79,7 +77,7 @@ object Paper {
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
       square:    Boolean               = false)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
-    val p = Props(
+    val p = props(
       classes,
       className,
       component,

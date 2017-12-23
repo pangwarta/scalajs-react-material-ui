@@ -29,7 +29,7 @@ object Main {
             Grid(item = true, md = 6)(
               Avatar(
                 classes = Map(Avatar.root -> ExampleStyles.avatar),
-                src     = catPicUrl)(),
+                src     = catPicUrl)()(),
               Badge(
                 badgeContent = <.span(^.fontStyle.italic, "Meow!").rawElement,
                 color        = Badge.Color.primary,
@@ -47,7 +47,7 @@ object Main {
                   Checkbox(value = "Check me")),
               Card(className = Seq(ExampleStyles.paper, ExampleStyles.card))(
                 CardHeader(
-                  avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)("R").rawElement)(),
+                  avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)()("R").rawElement)(),
                 CardActions()())))),
         SimpleBottomNav())
     app.renderIntoDOM(dom.document.getElementById("root"))

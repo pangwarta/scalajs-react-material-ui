@@ -29,6 +29,21 @@ object Badge {
     var color: String = js.native
   }
 
+  private def props(
+      badgeContent: js.UndefOr[String | ReactElement],
+      classes:      js.Dictionary[String],
+      className:    js.UndefOr[String],
+      color:        String,
+      otherProps:   (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      badgeContent = badgeContent,
+      classes      = classes,
+      className    = className,
+      color        = color)
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object badge extends ClassKey("badge")
@@ -41,12 +56,13 @@ object Badge {
       badgeContent: js.UndefOr[String | ReactElement] = js.undefined,
       classes:      Map[ClassKey, String]             = Map.empty,
       className:    js.UndefOr[String]                = js.undefined,
-      color:        Color                             = Color.default)(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.badgeContent = badgeContent
-    p.classes = classes
-    p.className = className
-    p.color = color
+      color:        Color                             = Color.default)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      badgeContent = badgeContent,
+      classes      = classes,
+      className    = className,
+      color        = color,
+      otherProps: _*)
     this.component(p)(children: _*)
   }
 }

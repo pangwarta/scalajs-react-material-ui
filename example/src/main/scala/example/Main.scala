@@ -33,7 +33,7 @@ object Main {
               Badge(
                 badgeContent = <.span(^.fontStyle.italic, "Meow!").rawElement,
                 color        = Badge.Color.primary,
-                classes      = Map(Badge.root -> ExampleStyles.avatar, Badge.badge -> ExampleStyles.badge))(
+                classes      = Map(Badge.root -> ExampleStyles.avatar, Badge.badge -> ExampleStyles.badge))()(
                   <.img(^.src := catPicUrl, ExampleStyles.avatar)),
               Typography(`type` = Type.body1)(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis quis urna ac lacinia. Curabitur euismod erat eu ligula porttitor vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut sed est sit amet ligula placerat faucibus ac id felis. Aliquam ut condimentum nunc. Nam nec accumsan felis, a dapibus mi. Vestibulum urna felis, commodo nec nunc fermentum, convallis fermentum ex. Quisque lobortis orci id dui posuere vehicula. Vivamus semper ipsum in dictum consectetur."),

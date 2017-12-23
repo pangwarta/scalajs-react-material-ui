@@ -58,10 +58,10 @@ object Badge {
       className:    js.UndefOr[String]                = js.undefined,
       color:        Color                             = Color.default)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
-      badgeContent = badgeContent,
-      classes      = classes,
-      className    = className,
-      color        = color,
+      badgeContent,
+      classes,
+      className,
+      color,
       otherProps: _*)
     this.component(p)(children: _*)
   }

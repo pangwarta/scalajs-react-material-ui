@@ -22,6 +22,59 @@ object BottomNavigationButton {
     var value: js.UndefOr[A] = js.native
   }
 
+  private def props[A](
+      centerRipple:             Boolean,
+      classes:                  js.Dictionary[String],
+      className:                js.UndefOr[String],
+      disableRipple:            Boolean,
+      focusRipple:              Boolean,
+      keyboardFocusedClassName: js.UndefOr[String],
+      onBlur:                   OnJS1[ReactEvent],
+      onClick:                  OnJS1[ReactMouseEvent],
+      onFocus:                  OnJS1[ReactFocusEvent],
+      onKeyboardFocus:          OnJS1[ReactFocusEvent],
+      onKeyDown:                OnJS1[ReactKeyboardEvent],
+      onKeyUp:                  OnJS1[ReactKeyboardEvent],
+      onMouseDown:              OnJS1[ReactMouseEvent],
+      onMouseLeave:             OnJS1[ReactMouseEvent],
+      onMouseUp:                OnJS1[ReactMouseEvent],
+      onTouchEnd:               OnJS1[ReactTouchEvent],
+      onTouchMove:              OnJS1[ReactTouchEvent],
+      onTouchStart:             OnJS1[ReactTouchEvent],
+      role:                     js.UndefOr[String],
+      icon:                     js.UndefOr[String | ReactElement],
+      label:                    js.UndefOr[String | ReactElement],
+      showLabel:                js.UndefOr[Boolean],
+      value:                    js.UndefOr[A],
+      otherProps:               (String, js.Any)*): Props[A] = {
+    val p = js.Dynamic.literal(
+      centerRipple             = centerRipple,
+      classes                  = classes,
+      className                = className,
+      disableRipple            = disableRipple,
+      focusRipple              = focusRipple,
+      keyboardFocusedClassName = keyboardFocusedClassName,
+      onBlur                   = onBlur,
+      onClick                  = onClick,
+      onFocus                  = onFocus,
+      onKeyboardFocus          = onKeyboardFocus,
+      onKeyDown                = onKeyDown,
+      onKeyUp                  = onKeyUp,
+      onMouseDown              = onMouseDown,
+      onMouseLeave             = onMouseLeave,
+      onMouseUp                = onMouseUp,
+      onTouchEnd               = onTouchEnd,
+      onTouchMove              = onTouchMove,
+      onTouchStart             = onTouchStart,
+      role                     = role,
+      icon                     = icon,
+      label                    = label,
+      showLabel                = showLabel,
+      value                    = value.asInstanceOf[js.Any])
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props[A]]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object selected extends ClassKey("selected")
@@ -35,6 +88,7 @@ object BottomNavigationButton {
   private def component[A] = JsComponent[Props[A], Children.Varargs, Null](RawComponent)
 
   def apply[A](
+      centerRipple:             Boolean                           = false,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
       icon:                     js.UndefOr[String | ReactElement] = js.undefined,
@@ -44,7 +98,6 @@ object BottomNavigationButton {
       selected:                 js.UndefOr[Boolean]               = js.undefined,
       showLabel:                js.UndefOr[Boolean]               = js.undefined,
       value:                    js.UndefOr[A]                     = js.undefined,
-      centerRipple:             Boolean                           = false,
       disableRipple:            Boolean                           = false,
       focusRipple:              Boolean                           = false,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
@@ -59,33 +112,32 @@ object BottomNavigationButton {
       onTouchEnd:               Handler1[ReactTouchEvent]         = js.undefined,
       onTouchMove:              Handler1[ReactTouchEvent]         = js.undefined,
       onTouchStart:             Handler1[ReactTouchEvent]         = js.undefined,
-      role:                     js.UndefOr[String]                = js.undefined)(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props[A]]
-    p.icon = icon
-    p.classes = classes
-    p.label = label
-    p.showLabel = showLabel
-    p.onClick = onClick
-    p.value = value
-    p.centerRipple = centerRipple
-    p.classes = classes
-    p.className = className
-    p.disableRipple = disableRipple
-    p.focusRipple = focusRipple
-    p.keyboardFocusedClassName = keyboardFocusedClassName
-    p.onBlur = onBlur
-    p.onClick = onClick
-    p.onFocus = onFocus
-    p.onKeyboardFocus = onKeyboardFocus
-    p.onKeyDown = onKeyDown
-    p.onKeyUp = onKeyUp
-    p.onMouseDown = onMouseDown
-    p.onMouseLeave = onMouseLeave
-    p.onMouseUp = onMouseUp
-    p.onTouchEnd = onTouchEnd
-    p.onTouchMove = onTouchMove
-    p.onTouchStart = onTouchStart
-    p.role = role
+      role:                     js.UndefOr[String]                = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      centerRipple,
+      classes,
+      className,
+      disableRipple,
+      focusRipple,
+      keyboardFocusedClassName,
+      onBlur,
+      onClick,
+      onFocus,
+      onKeyboardFocus,
+      onKeyDown,
+      onKeyUp,
+      onMouseDown,
+      onMouseLeave,
+      onMouseUp,
+      onTouchEnd,
+      onTouchMove,
+      onTouchStart,
+      role,
+      icon,
+      label,
+      showLabel,
+      value,
+      otherProps: _*)
     this.component[A](p)(children: _*)
   }
 }

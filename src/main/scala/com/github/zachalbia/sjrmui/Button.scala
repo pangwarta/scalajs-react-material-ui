@@ -33,6 +33,71 @@ object Button {
     var raised: Boolean = js.native
   }
 
+  private def props(
+      centerRipple:             Boolean,
+      classes:                  js.Dictionary[String],
+      className:                js.UndefOr[String],
+      component:                String | ReactElement,
+      disableRipple:            Boolean,
+      disabled:                 Boolean,
+      focusRipple:              Boolean,
+      keyboardFocusedClassName: js.UndefOr[String],
+      onBlur:                   OnJS1[ReactEvent],
+      onClick:                  OnJS1[ReactMouseEvent],
+      onFocus:                  OnJS1[ReactFocusEvent],
+      onKeyboardFocus:          OnJS1[ReactFocusEvent],
+      onKeyDown:                OnJS1[ReactKeyboardEvent],
+      onKeyUp:                  OnJS1[ReactKeyboardEvent],
+      onMouseDown:              OnJS1[ReactMouseEvent],
+      onMouseLeave:             OnJS1[ReactMouseEvent],
+      onMouseUp:                OnJS1[ReactMouseEvent],
+      onTouchEnd:               OnJS1[ReactTouchEvent],
+      onTouchMove:              OnJS1[ReactTouchEvent],
+      onTouchStart:             OnJS1[ReactTouchEvent],
+      role:                     js.UndefOr[String],
+      tabIndex:                 js.UndefOr[Int | String],
+      color:                    String,
+      dense:                    Boolean,
+      disableFocusRipple:       Boolean,
+      fab:                      Boolean,
+      href:                     js.UndefOr[String],
+      mini:                     Boolean,
+      raised:                   Boolean,
+      otherProps:               (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      centerRipple             = centerRipple,
+      classes                  = classes,
+      className                = className,
+      component                = component,
+      disableRipple            = disableRipple,
+      disabled                 = disabled,
+      focusRipple              = focusRipple,
+      keyboardFocusedClassName = keyboardFocusedClassName,
+      onBlur                   = onBlur,
+      onClick                  = onClick,
+      onFocus                  = onFocus,
+      onKeyboardFocus          = onKeyboardFocus,
+      onKeyDown                = onKeyDown,
+      onKeyUp                  = onKeyUp,
+      onMouseDown              = onMouseDown,
+      onMouseLeave             = onMouseLeave,
+      onMouseUp                = onMouseUp,
+      onTouchEnd               = onTouchEnd,
+      onTouchMove              = onTouchMove,
+      onTouchStart             = onTouchStart,
+      role                     = role,
+      tabIndex                 = tabIndex,
+      color                    = color,
+      dense                    = dense,
+      disableFocusRipple       = disableFocusRipple,
+      fab                      = fab,
+      href                     = href,
+      mini                     = mini,
+      raised                   = raised)
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object dense extends ClassKey("dense")
@@ -61,6 +126,7 @@ object Button {
       mini:                     Boolean                      = false,
       raised:                   Boolean                      = false,
       centerRipple:             Boolean                      = false,
+      classes:                  Map[ClassKey, String]        = Map.empty,
       className:                js.UndefOr[String]           = js.undefined,
       component:                String | ReactElement        = "button",
       disableRipple:            Boolean                      = false,
@@ -80,36 +146,38 @@ object Button {
       onTouchMove:              Handler1[ReactTouchEvent]    = js.undefined,
       onTouchStart:             Handler1[ReactTouchEvent]    = js.undefined,
       role:                     js.UndefOr[String]           = js.undefined,
-      tabIndex:                 js.UndefOr[Int | String]     = js.undefined)(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.color = color
-    p.dense = dense
-    p.disableFocusRipple = disableFocusRipple
-    p.fab = fab
-    p.href = href
-    p.mini = mini
-    p.raised = raised
-    p.centerRipple = centerRipple
-    p.className = className
-    p.component = component
-    p.disableRipple = disableRipple
-    p.disabled = disabled
-    p.focusRipple = focusRipple
-    p.keyboardFocusedClassName = keyboardFocusedClassName
-    p.onBlur = onBlur
-    p.onClick = onClick
-    p.onFocus = onFocus
-    p.onKeyboardFocus = onKeyboardFocus
-    p.onKeyDown = onKeyDown
-    p.onKeyUp = onKeyUp
-    p.onMouseDown = onMouseDown
-    p.onMouseLeave = onMouseLeave
-    p.onMouseUp = onMouseUp
-    p.onTouchEnd = onTouchEnd
-    p.onTouchMove = onTouchMove
-    p.onTouchStart = onTouchStart
-    p.role = role
-    p.tabIndex = tabIndex
+      tabIndex:                 js.UndefOr[Int | String]     = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      centerRipple,
+      classes,
+      className,
+      component,
+      disableRipple,
+      disabled,
+      focusRipple,
+      keyboardFocusedClassName,
+      onBlur,
+      onClick,
+      onFocus,
+      onKeyboardFocus,
+      onKeyDown,
+      onKeyUp,
+      onMouseDown,
+      onMouseLeave,
+      onMouseUp,
+      onTouchEnd,
+      onTouchMove,
+      onTouchStart,
+      role,
+      tabIndex,
+      color,
+      dense,
+      disableFocusRipple,
+      fab,
+      href,
+      mini,
+      raised,
+      otherProps: _*)
     this.component(p)(children: _*)
   }
 }

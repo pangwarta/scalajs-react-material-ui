@@ -33,6 +33,41 @@ object Checkbox {
     var value: js.UndefOr[String] = js.native
   }
 
+  private def props(
+      checked:        js.UndefOr[Boolean | String],
+      checkedIcon:    js.UndefOr[ReactElement],
+      classes:        js.Dictionary[String],
+      className:      js.UndefOr[String],
+      defaultChecked: js.UndefOr[Boolean],
+      disabled:       js.UndefOr[Boolean],
+      disableRipple:  js.UndefOr[Boolean],
+      icon:           js.UndefOr[ReactElement],
+      indeterminate:  Boolean,
+      inputProps:     js.Dictionary[String],
+      name:           js.UndefOr[String],
+      onChange:       OnJS2[ReactEvent, Boolean],
+      tabIndex:       js.UndefOr[Int | String],
+      value:          js.UndefOr[String],
+      otherProps:     (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      checked        = checked,
+      checkedIcon    = checkedIcon,
+      classes        = classes,
+      className      = className,
+      defaultChecked = defaultChecked,
+      disabled       = disabled,
+      disableRipple  = disableRipple,
+      icon           = icon,
+      indeterminate  = indeterminate,
+      inputProps     = inputProps,
+      name           = name,
+      onChange       = onChange,
+      tabIndex       = tabIndex,
+      value          = value)
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object default extends ClassKey("default")
   object checked extends ClassKey("checked")
@@ -54,22 +89,23 @@ object Checkbox {
       name:           js.UndefOr[String]            = js.undefined,
       onChange:       Handler2[ReactEvent, Boolean] = js.undefined,
       tabIndex:       js.UndefOr[Int | String]      = js.undefined,
-      value:          js.UndefOr[String]            = js.undefined) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.checked = checked
-    p.checkedIcon = checkedIcon
-    p.classes = classes
-    p.className = className
-    p.defaultChecked = defaultChecked
-    p.disabled = disabled
-    p.disableRipple = disableRipple
-    p.icon = icon
-    p.indeterminate = indeterminate
-    p.inputProps = inputProps
-    p.name = name
-    p.onChange = onChange
-    p.tabIndex = tabIndex
-    p.value = value
+      value:          js.UndefOr[String]            = js.undefined)(otherProps: (String, js.Any)*) = {
+    val p = props(
+      checked,
+      checkedIcon,
+      classes,
+      className,
+      defaultChecked,
+      disabled,
+      disableRipple,
+      icon,
+      indeterminate,
+      inputProps,
+      name,
+      onChange,
+      tabIndex,
+      value,
+      otherProps: _*)
     component(p)
   }
 }

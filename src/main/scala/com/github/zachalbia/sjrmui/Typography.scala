@@ -60,6 +60,29 @@ object Typography {
     var `type`: String = js.native
   }
 
+  private def props(
+      align:        String,
+      classes:      js.Dictionary[String],
+      color:        String,
+      component:    String | ReactElement,
+      gutterBottom: Boolean,
+      noWrap:       Boolean,
+      paragraph:    Boolean,
+      `type`:       String,
+      otherProps:   (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      align        = align,
+      classes      = classes,
+      color        = color,
+      component    = component,
+      gutterBottom = gutterBottom,
+      noWrap       = noWrap,
+      paragraph    = paragraph,
+      `type`       = `type`)
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object ClassKey {
     object root extends ClassKey("root")
@@ -98,16 +121,17 @@ object Typography {
       gutterBottom: Boolean               = false,
       noWrap:       Boolean               = false,
       paragraph:    Boolean               = false,
-      `type`:       Type                  = Type.body1)(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.align = align
-    p.classes = classes
-    p.color = color
-    p.component = component
-    p.gutterBottom = gutterBottom
-    p.noWrap = noWrap
-    p.paragraph = paragraph
-    p.`type` = `type`
+      `type`:       Type                  = Type.body1)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      align,
+      classes,
+      color,
+      component,
+      gutterBottom,
+      noWrap,
+      paragraph,
+      `type`,
+      otherProps: _*)
     this.component(p)(children: _*)
   }
 }

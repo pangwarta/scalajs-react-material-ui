@@ -47,7 +47,8 @@ object Main {
                   Checkbox(value = "Check me")()),
               Card(className = Seq(ExampleStyles.paper, ExampleStyles.card))(
                 CardHeader(
-                  avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)()("R").rawElement)(),
+                  avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)()("ZA").rawElement,
+                  title  = <.span("Merry Christmas").rawElement)(),
                 CardActions()())))),
         SimpleBottomNav())
     app.renderIntoDOM(dom.document.getElementById("root"))

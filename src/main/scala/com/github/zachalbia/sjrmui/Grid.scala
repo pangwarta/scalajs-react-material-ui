@@ -77,6 +77,46 @@ object Grid {
     var xs: js.UndefOr[Boolean | Int] = js.native
   }
 
+  private def props(
+      alignContent: js.UndefOr[String],
+      alignItems: js.UndefOr[String],
+      classes: js.Dictionary[String],
+      component: String | ReactElement,
+      container: Boolean,
+      direction: js.UndefOr[String],
+      hidden: js.UndefOr[Hidden.Props],
+      item: Boolean,
+      justify: js.UndefOr[String],
+      lg: js.UndefOr[Boolean | Int],
+      md: js.UndefOr[Boolean | Int],
+      sm: js.UndefOr[Boolean | Int],
+      spacing: js.UndefOr[Int],
+      wrap: js.UndefOr[String],
+      xl: js.UndefOr[Boolean | Int],
+      xs: js.UndefOr[Boolean | Int],
+      otherProps: (String, js.Any)*): Props = {
+    val p = js.Dynamic.literal(
+      alignContent = alignContent,
+      alignItems = alignItems,
+      classes = classes,
+      component = component,
+      container = container,
+      direction = direction,
+      hidden = hidden,
+      item = item,
+      justify = justify,
+      lg = lg,
+      md = md,
+      sm = sm,
+      spacing = spacing,
+      wrap = wrap,
+      xl = xl,
+      xs = xs,
+    )
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object typeContainer extends ClassKey("typeContainer")
   object typeItem extends ClassKey("typeItem")
@@ -134,23 +174,26 @@ object Grid {
       spacing:      js.UndefOr[Int]           = js.undefined,
       wrap:         js.UndefOr[Wrap]          = js.undefined,
       xl:           js.UndefOr[Boolean | Int] = js.undefined,
-      xs:           js.UndefOr[Boolean | Int] = js.undefined)(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.alignContent = alignContent
-    p.alignItems = alignItems
-    p.classes = classes
-    p.component = component
-    p.direction = direction
-    p.hidden = hidden
-    p.item = item
-    p.justify = justify
-    p.lg = lg
-    p.md = md
-    p.sm = sm
-    p.spacing = spacing
-    p.wrap = wrap
-    p.xl = xl
-    p.xs = xs
+      xs:           js.UndefOr[Boolean | Int] = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      alignContent,
+      alignItems,
+      classes,
+      component,
+      container,
+      direction,
+      hidden,
+      item,
+      justify,
+      lg,
+      md,
+      sm,
+      spacing,
+      wrap,
+      xl,
+      xs,
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

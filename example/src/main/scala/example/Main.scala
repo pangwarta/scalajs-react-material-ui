@@ -25,8 +25,8 @@ object Main {
             `type` = Type.headline)("Foo")),
         <.div(
           ExampleStyles.margin,
-          Grid(container = true)(
-            Grid(item = true, md = 6)(
+          Grid(container = true)()(
+            Grid(item = true, md = 6)()(
               Avatar(
                 classes = Map(Avatar.root -> ExampleStyles.avatar),
                 src     = catPicUrl)()(),

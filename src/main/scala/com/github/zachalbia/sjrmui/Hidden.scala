@@ -1,5 +1,9 @@
 package com.github.zachalbia.sjrmui
 
+import scala.scalajs.js
+
 object Hidden {
-  trait Props
+
+  @js.native
+  private[sjrmui] trait Props extends js.Object
 }

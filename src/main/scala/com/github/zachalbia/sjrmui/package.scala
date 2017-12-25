@@ -44,4 +44,7 @@ package object sjrmui {
 
   private[sjrmui] implicit def unionToJsAny[A, B](union: A | B): js.Any =
     union.asInstanceOf[js.Any]
+
+  private[sjrmui] implicit def undefToAny[A](undefOrA: js.UndefOr[A]): js.Any =
+    undefOrA.asInstanceOf[js.Any]
 }

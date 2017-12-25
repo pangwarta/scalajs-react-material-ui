@@ -70,7 +70,7 @@ object BottomNavigationButton {
       icon                     = icon,
       label                    = label,
       showLabel                = showLabel,
-      value                    = value.asInstanceOf[js.Any])
+      value                    = value)
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props[A]]
   }

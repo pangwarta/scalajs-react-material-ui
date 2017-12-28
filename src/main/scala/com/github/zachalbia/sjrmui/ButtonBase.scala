@@ -25,18 +25,18 @@ object ButtonBase {
     var disabled: Boolean = js.native
     var focusRipple: Boolean = js.native
     var keyboardFocusedClassName: js.UndefOr[String] = js.native
-    var onBlur: OnJS1[ReactEvent] = js.native
-    var onClick: OnJS1[ReactMouseEvent] = js.native
-    var onFocus: OnJS1[ReactFocusEvent] = js.native
-    var onKeyboardFocus: OnJS1[ReactFocusEvent] = js.native
-    var onKeyDown: OnJS1[ReactKeyboardEvent] = js.native
-    var onKeyUp: OnJS1[ReactKeyboardEvent] = js.native
-    var onMouseDown: OnJS1[ReactMouseEvent] = js.native
-    var onMouseLeave: OnJS1[ReactMouseEvent] = js.native
-    var onMouseUp: OnJS1[ReactMouseEvent] = js.native
-    var onTouchEnd: OnJS1[ReactTouchEvent] = js.native
-    var onTouchMove: OnJS1[ReactTouchEvent] = js.native
-    var onTouchStart: OnJS1[ReactTouchEvent] = js.native
+    var onBlur: OnJSEv1[ReactEvent] = js.native
+    var onClick: OnJSEv1[ReactMouseEvent] = js.native
+    var onFocus: OnJSEv1[ReactFocusEvent] = js.native
+    var onKeyboardFocus: OnJSEv1[ReactFocusEvent] = js.native
+    var onKeyDown: OnJSEv1[ReactKeyboardEvent] = js.native
+    var onKeyUp: OnJSEv1[ReactKeyboardEvent] = js.native
+    var onMouseDown: OnJSEv1[ReactMouseEvent] = js.native
+    var onMouseLeave: OnJSEv1[ReactMouseEvent] = js.native
+    var onMouseUp: OnJSEv1[ReactMouseEvent] = js.native
+    var onTouchEnd: OnJSEv1[ReactTouchEvent] = js.native
+    var onTouchMove: OnJSEv1[ReactTouchEvent] = js.native
+    var onTouchStart: OnJSEv1[ReactTouchEvent] = js.native
     var role: js.UndefOr[String] = js.native
     var tabIndex: js.UndefOr[Int | String] = js.native
   }
@@ -50,18 +50,18 @@ object ButtonBase {
       disabled:                 Boolean,
       focusRipple:              Boolean,
       keyboardFocusedClassName: js.UndefOr[String],
-      onBlur:                   OnJS1[ReactEvent],
-      onClick:                  OnJS1[ReactMouseEvent],
-      onFocus:                  OnJS1[ReactFocusEvent],
-      onKeyboardFocus:          OnJS1[ReactFocusEvent],
-      onKeyDown:                OnJS1[ReactKeyboardEvent],
-      onKeyUp:                  OnJS1[ReactKeyboardEvent],
-      onMouseDown:              OnJS1[ReactMouseEvent],
-      onMouseLeave:             OnJS1[ReactMouseEvent],
-      onMouseUp:                OnJS1[ReactMouseEvent],
-      onTouchEnd:               OnJS1[ReactTouchEvent],
-      onTouchMove:              OnJS1[ReactTouchEvent],
-      onTouchStart:             OnJS1[ReactTouchEvent],
+      onBlur:                   OnJSEv1[ReactEvent],
+      onClick:                  OnJSEv1[ReactMouseEvent],
+      onFocus:                  OnJSEv1[ReactFocusEvent],
+      onKeyboardFocus:          OnJSEv1[ReactFocusEvent],
+      onKeyDown:                OnJSEv1[ReactKeyboardEvent],
+      onKeyUp:                  OnJSEv1[ReactKeyboardEvent],
+      onMouseDown:              OnJSEv1[ReactMouseEvent],
+      onMouseLeave:             OnJSEv1[ReactMouseEvent],
+      onMouseUp:                OnJSEv1[ReactMouseEvent],
+      onTouchEnd:               OnJSEv1[ReactTouchEvent],
+      onTouchMove:              OnJSEv1[ReactTouchEvent],
+      onTouchStart:             OnJSEv1[ReactTouchEvent],
       role:                     js.UndefOr[String],
       tabIndex:                 js.UndefOr[Int | String],
       otherProps:               (String, js.Any)*): Props = {
@@ -99,28 +99,28 @@ object ButtonBase {
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      centerRipple:             Boolean                      = false,
-      classes:                  Map[ClassKey, String]        = Map.empty,
-      className:                js.UndefOr[String]           = js.undefined,
+      centerRipple:             Boolean                        = false,
+      classes:                  Map[ClassKey, String]          = Map.empty,
+      className:                js.UndefOr[String]             = js.undefined,
       component:                String | ReactElement,
-      disableRipple:            Boolean                      = false,
+      disableRipple:            Boolean                        = false,
       disabled:                 Boolean,
-      focusRipple:              Boolean                      = false,
-      keyboardFocusedClassName: js.UndefOr[String]           = js.undefined,
-      onBlur:                   Handler1[ReactEvent]         = js.undefined,
-      onClick:                  Handler1[ReactMouseEvent]    = js.undefined,
-      onFocus:                  Handler1[ReactFocusEvent]    = js.undefined,
-      onKeyboardFocus:          Handler1[ReactFocusEvent]    = js.undefined,
-      onKeyDown:                Handler1[ReactKeyboardEvent] = js.undefined,
-      onKeyUp:                  Handler1[ReactKeyboardEvent] = js.undefined,
-      onMouseDown:              Handler1[ReactMouseEvent]    = js.undefined,
-      onMouseLeave:             Handler1[ReactMouseEvent]    = js.undefined,
-      onMouseUp:                Handler1[ReactMouseEvent]    = js.undefined,
-      onTouchEnd:               Handler1[ReactTouchEvent]    = js.undefined,
-      onTouchMove:              Handler1[ReactTouchEvent]    = js.undefined,
-      onTouchStart:             Handler1[ReactTouchEvent]    = js.undefined,
-      role:                     js.UndefOr[String]           = js.undefined,
-      tabIndex:                 js.UndefOr[Int | String]     = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      focusRipple:              Boolean                        = false,
+      keyboardFocusedClassName: js.UndefOr[String]             = js.undefined,
+      onBlur:                   EvHandler1[ReactEvent]         = js.undefined,
+      onClick:                  EvHandler1[ReactMouseEvent]    = js.undefined,
+      onFocus:                  EvHandler1[ReactFocusEvent]    = js.undefined,
+      onKeyboardFocus:          EvHandler1[ReactFocusEvent]    = js.undefined,
+      onKeyDown:                EvHandler1[ReactKeyboardEvent] = js.undefined,
+      onKeyUp:                  EvHandler1[ReactKeyboardEvent] = js.undefined,
+      onMouseDown:              EvHandler1[ReactMouseEvent]    = js.undefined,
+      onMouseLeave:             EvHandler1[ReactMouseEvent]    = js.undefined,
+      onMouseUp:                EvHandler1[ReactMouseEvent]    = js.undefined,
+      onTouchEnd:               EvHandler1[ReactTouchEvent]    = js.undefined,
+      onTouchMove:              EvHandler1[ReactTouchEvent]    = js.undefined,
+      onTouchStart:             EvHandler1[ReactTouchEvent]    = js.undefined,
+      role:                     js.UndefOr[String]             = js.undefined,
+      tabIndex:                 js.UndefOr[Int | String]       = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,
       classes,

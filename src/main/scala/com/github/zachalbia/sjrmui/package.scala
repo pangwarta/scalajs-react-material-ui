@@ -10,10 +10,14 @@ import scala.scalajs.js
 import scala.scalajs.js.|
 
 package object sjrmui {
-  type OnJS1[E <: SyntheticEvent[_]] = js.UndefOr[js.Function1[E, Unit]]
-  type OnJS2[E <: SyntheticEvent[_], A] = js.UndefOr[js.Function2[E, A, Unit]]
-  type Handler1[E <: SyntheticEvent[_]] = js.UndefOr[E => Callback]
-  type Handler2[E <: SyntheticEvent[_], A] = js.UndefOr[(E, A) => Callback]
+  type OptJsFun1[A] = js.UndefOr[js.Function1[A, Unit]]
+  type OptJsFun2[A, B] = js.UndefOr[js.Function2[A, B, Unit]]
+  type OnJSEv1[E <: SyntheticEvent[_]] = js.UndefOr[js.Function1[E, Unit]]
+  type OnJSEv2[E <: SyntheticEvent[_], A] = js.UndefOr[js.Function2[E, A, Unit]]
+  type Handler1[A] = js.UndefOr[A => Callback]
+  type Handler2[A, B] = js.UndefOr[(A, B) => Callback]
+  type EvHandler1[E <: SyntheticEvent[_]] = Handler1[E]
+  type EvHandler2[E <: SyntheticEvent[_], A] = Handler2[E, A]
 
   private[sjrmui] def addOtherProps(p: js.Dynamic, otherProps: (String, js.Any)*): Unit =
     otherProps.foreach { case (key, value) => p.updateDynamic(key)(value) }
@@ -33,10 +37,10 @@ package object sjrmui {
   private[sjrmui] implicit def undefOrString[A](a: js.UndefOr[A])(implicit conv: A => String): js.UndefOr[String] =
     a.map(conv)
 
-  private[sjrmui] implicit def toOn1[E <: SyntheticEvent[_]](on: js.UndefOr[E => Callback]): OnJS1[E] =
+  private[sjrmui] implicit def toOn1[E](on: js.UndefOr[E => Callback]): OptJsFun1[E] =
     js.UndefOr.any2undefOrA((e: E) => on.map(_(e).runNow()).getOrElse(()))
 
-  private[sjrmui] implicit def toOn2[E <: SyntheticEvent[_], A](on: js.UndefOr[(E, A) => Callback]): OnJS2[E, A] =
+  private[sjrmui] implicit def toOn2[E, A](on: js.UndefOr[(E, A) => Callback]): OptJsFun2[E, A] =
     js.UndefOr.any2undefOrA((e: E, a: A) => on.map(_(e, a).runNow()).getOrElse(()))
 
   private[sjrmui] implicit def unmountedToReactElement(unmounted: js.UndefOr[UnmountedWithRawType[_, _, _]]): js.UndefOr[ReactElement] =

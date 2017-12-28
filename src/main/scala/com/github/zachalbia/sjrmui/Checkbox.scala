@@ -28,7 +28,7 @@ object Checkbox {
     var inputProps: js.Dictionary[String] = js.native
     // TODO: var inputRef: ? = js.native
     var name: js.UndefOr[String] = js.native
-    var onChange: OnJS2[ReactEvent, Boolean] = js.native
+    var onChange: OnJSEv2[ReactEvent, Boolean] = js.native
     var tabIndex: js.UndefOr[Int | String] = js.native
     var value: js.UndefOr[String] = js.native
   }
@@ -45,7 +45,7 @@ object Checkbox {
       indeterminate:  Boolean,
       inputProps:     js.Dictionary[String],
       name:           js.UndefOr[String],
-      onChange:       OnJS2[ReactEvent, Boolean],
+      onChange:       OnJSEv2[ReactEvent, Boolean],
       tabIndex:       js.UndefOr[Int | String],
       value:          js.UndefOr[String],
       otherProps:     (String, js.Any)*): Props = {
@@ -76,20 +76,20 @@ object Checkbox {
   private val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
-      checked:        js.UndefOr[Boolean | String]  = js.undefined,
-      checkedIcon:    js.UndefOr[ReactElement]      = js.undefined,
-      classes:        Map[ClassKey, String]         = Map.empty,
-      className:      js.UndefOr[String]            = js.undefined,
-      defaultChecked: js.UndefOr[Boolean]           = js.undefined,
-      disabled:       js.UndefOr[Boolean]           = js.undefined,
-      disableRipple:  js.UndefOr[Boolean]           = js.undefined,
-      icon:           js.UndefOr[ReactElement]      = js.undefined,
-      indeterminate:  Boolean                       = false,
-      inputProps:     Map[String, String]           = Map.empty,
-      name:           js.UndefOr[String]            = js.undefined,
-      onChange:       Handler2[ReactEvent, Boolean] = js.undefined,
-      tabIndex:       js.UndefOr[Int | String]      = js.undefined,
-      value:          js.UndefOr[String]            = js.undefined)(otherProps: (String, js.Any)*) = {
+      checked:        js.UndefOr[Boolean | String]    = js.undefined,
+      checkedIcon:    js.UndefOr[ReactElement]        = js.undefined,
+      classes:        Map[ClassKey, String]           = Map.empty,
+      className:      js.UndefOr[String]              = js.undefined,
+      defaultChecked: js.UndefOr[Boolean]             = js.undefined,
+      disabled:       js.UndefOr[Boolean]             = js.undefined,
+      disableRipple:  js.UndefOr[Boolean]             = js.undefined,
+      icon:           js.UndefOr[ReactElement]        = js.undefined,
+      indeterminate:  Boolean                         = false,
+      inputProps:     Map[String, String]             = Map.empty,
+      name:           js.UndefOr[String]              = js.undefined,
+      onChange:       EvHandler2[ReactEvent, Boolean] = js.undefined,
+      tabIndex:       js.UndefOr[Int | String]        = js.undefined,
+      value:          js.UndefOr[String]              = js.undefined)(otherProps: (String, js.Any)*) = {
     val p = props(
       checked,
       checkedIcon,

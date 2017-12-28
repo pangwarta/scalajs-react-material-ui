@@ -20,9 +20,9 @@ object Chip {
     var classes: js.Dictionary[String] = js.native
     var deleteIcon: js.UndefOr[ReactElement] = js.native
     var label: js.UndefOr[ReactElement] = js.native
-    var onClick: OnJS1[ReactMouseEvent] = js.native
-    var onKeyDown: OnJS1[ReactKeyboardEvent] = js.native
-    var onRequestDelete: OnJS1[ReactEvent] = js.native
+    var onClick: OnJSEv1[ReactMouseEvent] = js.native
+    var onKeyDown: OnJSEv1[ReactKeyboardEvent] = js.native
+    var onRequestDelete: OnJSEv1[ReactEvent] = js.native
     var tabIndex: js.UndefOr[Int | String] = js.native
   }
 
@@ -32,9 +32,9 @@ object Chip {
       classes: js.Dictionary[String],
       deleteIcon: js.UndefOr[ReactElement],
       label: js.UndefOr[ReactElement],
-      onClick: OnJS1[ReactMouseEvent],
-      onKeyDown: OnJS1[ReactKeyboardEvent],
-      onRequestDelete: OnJS1[ReactEvent],
+      onClick: OnJSEv1[ReactMouseEvent],
+      onKeyDown: OnJSEv1[ReactKeyboardEvent],
+      onRequestDelete: OnJSEv1[ReactEvent],
       tabIndex: js.UndefOr[Int | String],
       otherProps: (String, js.Any)*): Props = {
     val p = js.Dynamic.literal(
@@ -69,9 +69,9 @@ object Chip {
       classes: Map[String, String] = Map.empty,
       deleteIcon: js.UndefOr[ReactElement] = js.undefined,
       label: js.UndefOr[ReactElement] = js.undefined,
-      onClick: Handler1[ReactMouseEvent] = js.undefined,
-      onKeyDown: Handler1[ReactKeyboardEvent] = js.undefined,
-      onRequestDelete: Handler1[ReactEvent] = js.undefined,
+      onClick: EvHandler1[ReactMouseEvent] = js.undefined,
+      onKeyDown: EvHandler1[ReactKeyboardEvent] = js.undefined,
+      onRequestDelete: EvHandler1[ReactEvent] = js.undefined,
       tabIndex: js.UndefOr[Int | String] = js.undefined)(otherProps: (String, js.Any)*) = {
     val p = props(
       avatar,

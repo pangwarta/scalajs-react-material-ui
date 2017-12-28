@@ -16,7 +16,7 @@ object BottomNavigation {
   private[sjrmui] trait Props[A] extends js.Object {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
-    var onChange: OnJS2[ReactEvent, A] = js.native
+    var onChange: OnJSEv2[ReactEvent, A] = js.native
     var showLabels: Boolean = js.native
     var value: A = js.native
   }
@@ -27,11 +27,11 @@ object BottomNavigation {
   private def component[A] = JsComponent[Props[A], Children.Varargs, Null](RawComponent)
 
   def apply[A](
-      classes:    Map[ClassKey, String]   = Map.empty,
-      className:  js.UndefOr[String]      = js.undefined,
-      onChange:   Handler2[ReactEvent, A] = js.undefined,
-      showLabels: Boolean                 = false,
-      value:      A                       = 0)(children: VdomNode*) = {
+      classes:    Map[ClassKey, String]     = Map.empty,
+      className:  js.UndefOr[String]        = js.undefined,
+      onChange:   EvHandler2[ReactEvent, A] = js.undefined,
+      showLabels: Boolean                   = false,
+      value:      A                         = 0)(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props[A]]
     p.classes = classes
     p.className = className

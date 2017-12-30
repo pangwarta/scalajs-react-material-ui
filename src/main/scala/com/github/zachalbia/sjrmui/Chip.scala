@@ -64,15 +64,15 @@ object Chip {
   private val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
-      avatar: js.UndefOr[Avatar.Type] = js.undefined,
-      className: js.UndefOr[String] = js.undefined,
-      classes: Map[String, String] = Map.empty,
-      deleteIcon: js.UndefOr[ReactElement] = js.undefined,
-      label: js.UndefOr[ReactElement] = js.undefined,
-      onClick: EvHandler1[ReactMouseEvent] = js.undefined,
-      onKeyDown: EvHandler1[ReactKeyboardEvent] = js.undefined,
-      onRequestDelete: EvHandler1[ReactEvent] = js.undefined,
-      tabIndex: js.UndefOr[Int | String] = js.undefined)(otherProps: (String, js.Any)*) = {
+             avatar: js.UndefOr[Avatar.Type] = js.undefined,
+             className: js.UndefOr[String] = js.undefined,
+             classes: Map[String, String] = Map.empty,
+             deleteIcon: js.UndefOr[ReactElement] = js.undefined,
+             label: js.UndefOr[ReactElement] = js.undefined,
+             onClick: ReactHandler1[ReactMouseEvent] = js.undefined,
+             onKeyDown: ReactHandler1[ReactKeyboardEvent] = js.undefined,
+             onRequestDelete: ReactHandler1[ReactEvent] = js.undefined,
+             tabIndex: js.UndefOr[Int | String] = js.undefined)(otherProps: (String, js.Any)*) = {
     val p = props(
       avatar,
       className,

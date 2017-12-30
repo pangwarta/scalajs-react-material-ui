@@ -76,20 +76,20 @@ object Checkbox {
   private val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
-      checked:        js.UndefOr[Boolean | String]    = js.undefined,
-      checkedIcon:    js.UndefOr[ReactElement]        = js.undefined,
-      classes:        Map[ClassKey, String]           = Map.empty,
-      className:      js.UndefOr[String]              = js.undefined,
-      defaultChecked: js.UndefOr[Boolean]             = js.undefined,
-      disabled:       js.UndefOr[Boolean]             = js.undefined,
-      disableRipple:  js.UndefOr[Boolean]             = js.undefined,
-      icon:           js.UndefOr[ReactElement]        = js.undefined,
-      indeterminate:  Boolean                         = false,
-      inputProps:     Map[String, String]             = Map.empty,
-      name:           js.UndefOr[String]              = js.undefined,
-      onChange:       EvHandler2[ReactEvent, Boolean] = js.undefined,
-      tabIndex:       js.UndefOr[Int | String]        = js.undefined,
-      value:          js.UndefOr[String]              = js.undefined)(otherProps: (String, js.Any)*) = {
+      checked:        js.UndefOr[Boolean | String]       = js.undefined,
+      checkedIcon:    js.UndefOr[ReactElement]           = js.undefined,
+      classes:        Map[ClassKey, String]              = Map.empty,
+      className:      js.UndefOr[String]                 = js.undefined,
+      defaultChecked: js.UndefOr[Boolean]                = js.undefined,
+      disabled:       js.UndefOr[Boolean]                = js.undefined,
+      disableRipple:  js.UndefOr[Boolean]                = js.undefined,
+      icon:           js.UndefOr[ReactElement]           = js.undefined,
+      indeterminate:  Boolean                            = false,
+      inputProps:     Map[String, String]                = Map.empty,
+      name:           js.UndefOr[String]                 = js.undefined,
+      onChange:       ReactHandler2[ReactEvent, Boolean] = js.undefined,
+      tabIndex:       js.UndefOr[Int | String]           = js.undefined,
+      value:          js.UndefOr[String]                 = js.undefined)(otherProps: (String, js.Any)*) = {
     val p = props(
       checked,
       checkedIcon,

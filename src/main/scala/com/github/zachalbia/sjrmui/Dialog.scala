@@ -2,6 +2,8 @@ package com.github.zachalbia.sjrmui
 
 import com.github.zachalbia.sjrmui.internal.Transition
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.vdom.VdomNode
+import org.scalajs.dom.html
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -30,13 +32,13 @@ object Dialog {
     var maxWidth: MaxWidth = js.native
     var fullWidth: Boolean = js.native
     var onBackdropClick: OnJSEv1[ReactEvent] = js.native
-    var onEnter: js.UndefOr[Transition.Callback] = js.native
-    var onEntering: js.UndefOr[Transition.Callback] = js.native
-    var onEntered: js.UndefOr[Transition.Callback] = js.native
+    var onEnter: OptJsFun1[html.Element] = js.native
+    var onEntering: OptJsFun1[html.Element] = js.native
+    var onEntered: OptJsFun1[html.Element] = js.native
     var onEscapeKeyUp: OnJSEv1[ReactKeyboardEvent] = js.native
-    var onExit: js.UndefOr[Transition.Callback] = js.native
-    var onExiting: js.UndefOr[Transition.Callback] = js.native
-    var onExited: js.UndefOr[Transition.Callback] = js.native
+    var onExit: OptJsFun1[html.Element] = js.native
+    var onExiting: OptJsFun1[html.Element] = js.native
+    var onExited: OptJsFun1[html.Element] = js.native
     var onRequestClose: OnJSEv1[ReactEvent] = js.native
     var open: Boolean = js.native
     // TODO: var transition: ReactComponent[_, _] = js.native
@@ -52,13 +54,13 @@ object Dialog {
       maxWidth:            String,
       fullWidth:           Boolean,
       onBackdropClick:     OnJSEv1[ReactEvent],
-      onEnter:             js.UndefOr[Transition.Callback],
-      onEntering:          js.UndefOr[Transition.Callback],
-      onEntered:           js.UndefOr[Transition.Callback],
+      onEnter:             OptJsFun1[html.Element],
+      onEntering:          OptJsFun1[html.Element],
+      onEntered:           OptJsFun1[html.Element],
       onEscapeKeyUp:       OnJSEv1[ReactKeyboardEvent],
-      onExit:              js.UndefOr[Transition.Callback],
-      onExiting:           js.UndefOr[Transition.Callback],
-      onExited:            js.UndefOr[Transition.Callback],
+      onExit:              OptJsFun1[html.Element],
+      onExiting:           OptJsFun1[html.Element],
+      onExited:            OptJsFun1[html.Element],
       onRequestClose:      OnJSEv1[ReactEvent],
       open:                Boolean,
       otherProps:          (String, js.Any)*): Props = {
@@ -95,15 +97,24 @@ object Dialog {
   }
 
   def apply(
-      classes:             Map[String, String]    = Map.empty,
-      className:           js.UndefOr[String]     = js.undefined,
-      fullScreen:          Boolean                = false,
-      ignoreBackdropClick: Boolean                = false,
-      ignoreEscapeKeyUp:   Boolean                = false,
-      transitionDuration:  Transition.Duration    = defaultTransitionDuration,
-      maxWidth:            MaxWidth               = MaxWidth.sm,
-      fullWidth:           Boolean                = false,
-      onBackdropClick:     EvHandler1[ReactEvent] = js.undefined) = {
+             classes:             Map[String, String]    = Map.empty,
+             className:           js.UndefOr[String]     = js.undefined,
+             fullScreen:          Boolean                = false,
+             ignoreBackdropClick: Boolean                = false,
+             ignoreEscapeKeyUp:   Boolean                = false,
+             transitionDuration:  Transition.Duration    = defaultTransitionDuration,
+             maxWidth:            MaxWidth               = MaxWidth.sm,
+             fullWidth:           Boolean                = false,
+             onBackdropClick:     ReactHandler1[ReactEvent] = js.undefined,
+             onEnter: Handler1[html.Element] = js.undefined,
+             onEntering: Handler1[html.Element] = js.undefined,
+             onEntered: Handler1[html.Element] = js.undefined,
+             onEscapeKeyUp: ReactHandler1[ReactKeyboardEvent] = js.undefined,
+             onExit: Handler1[html.Element] = js.undefined,
+             onExiting: Handler1[html.Element] = js.undefined,
+             onRequestClose: ReactHandler1[ReactEvent] = js.undefined,
+             open: Boolean = false,
+           )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
 
   }
 }

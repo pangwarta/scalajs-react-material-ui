@@ -46,7 +46,8 @@ object BottomNavigationButton {
       label:                    js.UndefOr[String | ReactElement],
       showLabel:                js.UndefOr[Boolean],
       value:                    js.UndefOr[A],
-      otherProps:               (String, js.Any)*): Props[A] = {
+      otherProps:               (String, js.Any)*
+  ): Props[A] = {
     val p = js.Dynamic.literal(
       centerRipple             = centerRipple,
       classes                  = classes,
@@ -70,7 +71,8 @@ object BottomNavigationButton {
       icon                     = icon,
       label                    = label,
       showLabel                = showLabel,
-      value                    = value)
+      value                    = value
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props[A]]
   }
@@ -112,7 +114,8 @@ object BottomNavigationButton {
       onTouchEnd:               ReactHandler1[ReactTouchEvent]    = js.undefined,
       onTouchMove:              ReactHandler1[ReactTouchEvent]    = js.undefined,
       onTouchStart:             ReactHandler1[ReactTouchEvent]    = js.undefined,
-      role:                     js.UndefOr[String]                = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      role:                     js.UndefOr[String]                = js.undefined
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,
       classes,
@@ -137,7 +140,8 @@ object BottomNavigationButton {
       label,
       showLabel,
       value,
-      otherProps: _*)
+      otherProps: _*
+    )
     this.component[A](p)(children: _*)
   }
 }

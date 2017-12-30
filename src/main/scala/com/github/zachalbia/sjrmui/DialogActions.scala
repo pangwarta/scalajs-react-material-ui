@@ -27,7 +27,8 @@ object DialogActions {
 
   def apply(
       classes:   Map[String, String] = Map.empty,
-      className: js.UndefOr[String]  = js.undefined)(children: VdomNode*) = {
+      className: js.UndefOr[String]  = js.undefined
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.classes = classes
     p.className = className

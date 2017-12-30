@@ -31,7 +31,8 @@ object BottomNavigation {
       className:  js.UndefOr[String]           = js.undefined,
       onChange:   ReactHandler2[ReactEvent, A] = js.undefined,
       showLabels: Boolean                      = false,
-      value:      A                            = 0)(children: VdomNode*) = {
+      value:      A                            = 0
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props[A]]
     p.classes = classes
     p.className = className

@@ -12,8 +12,8 @@ import scala.scalajs.js.|
 package object sjrmui {
   type OptJsFun1[A] = js.UndefOr[js.Function1[A, Unit]]
   type OptJsFun2[A, B] = js.UndefOr[js.Function2[A, B, Unit]]
-  type OnJSEv1[E <: SyntheticEvent[_]] = js.UndefOr[js.Function1[E, Unit]]
-  type OnJSEv2[E <: SyntheticEvent[_], A] = js.UndefOr[js.Function2[E, A, Unit]]
+  type OnJSEv1[E <: SyntheticEvent[_]] = OptJsFun1[E]
+  type OnJSEv2[E <: SyntheticEvent[_], A] = OptJsFun2[E, A]
   type Handler1[A] = js.UndefOr[A => Callback]
   type Handler2[A, B] = js.UndefOr[(A, B) => Callback]
   type ReactHandler1[E <: SyntheticEvent[_]] = Handler1[E]

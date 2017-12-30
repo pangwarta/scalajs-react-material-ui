@@ -48,7 +48,8 @@ object Checkbox {
       onChange:       OnJSEv2[ReactEvent, Boolean],
       tabIndex:       js.UndefOr[Int | String],
       value:          js.UndefOr[String],
-      otherProps:     (String, js.Any)*): Props = {
+      otherProps:     (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       checked        = checked,
       checkedIcon    = checkedIcon,
@@ -63,7 +64,8 @@ object Checkbox {
       name           = name,
       onChange       = onChange,
       tabIndex       = tabIndex,
-      value          = value)
+      value          = value
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -89,7 +91,8 @@ object Checkbox {
       name:           js.UndefOr[String]                 = js.undefined,
       onChange:       ReactHandler2[ReactEvent, Boolean] = js.undefined,
       tabIndex:       js.UndefOr[Int | String]           = js.undefined,
-      value:          js.UndefOr[String]                 = js.undefined)(otherProps: (String, js.Any)*) = {
+      value:          js.UndefOr[String]                 = js.undefined
+  )(otherProps: (String, js.Any)*) = {
     val p = props(
       checked,
       checkedIcon,
@@ -105,7 +108,8 @@ object Checkbox {
       onChange,
       tabIndex,
       value,
-      otherProps: _*)
+      otherProps: _*
+    )
     component(p)
   }
 }

@@ -61,9 +61,10 @@ object Dialog {
       onExit:              OptJsFun1[html.Element],
       onExiting:           OptJsFun1[html.Element],
       onExited:            OptJsFun1[html.Element],
-      onRequestClose:      OnJSEv1[ReactEvent],
+      onClose:             OnJSEv1[ReactEvent],
       open:                Boolean,
-      otherProps:          (String, js.Any)*): Props = {
+      otherProps:          (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       classes             = classes,
       className           = className,
@@ -81,8 +82,9 @@ object Dialog {
       onExit              = onExit,
       onExiting           = onExiting,
       onExited            = onExited,
-      onRequestClose      = onRequestClose,
-      open                = open)
+      onClose             = onClose,
+      open                = open
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -113,8 +115,9 @@ object Dialog {
       onExit:              Handler1[html.Element]            = js.undefined,
       onExiting:           Handler1[html.Element]            = js.undefined,
       onExited:            Handler1[html.Element]            = js.undefined,
-      onRequestClose:      ReactHandler1[ReactEvent]         = js.undefined,
-      open:                Boolean                           = false)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      onClose:             ReactHandler1[ReactEvent]         = js.undefined,
+      open:                Boolean                           = false
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,
       className,
@@ -132,9 +135,10 @@ object Dialog {
       onExit,
       onExiting,
       onExited,
-      onRequestClose,
+      onClose,
       open,
-      otherProps: _*)
+      otherProps: _*
+    )
     component(p)(children: _*)
   }
 }

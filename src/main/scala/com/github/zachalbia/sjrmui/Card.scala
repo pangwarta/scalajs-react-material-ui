@@ -28,7 +28,8 @@ object Card {
       className: js.UndefOr[String]    = js.undefined,
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
-      square:    Boolean               = false)(children: VdomNode*) = {
+      square:    Boolean               = false
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.classes = classes
     p.className = className

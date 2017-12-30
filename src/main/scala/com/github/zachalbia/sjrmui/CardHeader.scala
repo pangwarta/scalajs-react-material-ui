@@ -37,7 +37,8 @@ object CardHeader {
       avatar:    js.UndefOr[ReactElement] = js.undefined,
       classes:   Map[ClassKey, String]    = Map.empty,
       subheader: js.UndefOr[ReactElement] = js.undefined,
-      title:     js.UndefOr[ReactElement] = js.undefined)(children: VdomNode*) = {
+      title:     js.UndefOr[ReactElement] = js.undefined
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.action = action
     p.avatar = avatar

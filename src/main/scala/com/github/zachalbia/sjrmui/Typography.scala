@@ -69,7 +69,8 @@ object Typography {
       noWrap:       Boolean,
       paragraph:    Boolean,
       `type`:       String,
-      otherProps:   (String, js.Any)*): Props = {
+      otherProps:   (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       align        = align,
       classes      = classes,
@@ -78,7 +79,8 @@ object Typography {
       gutterBottom = gutterBottom,
       noWrap       = noWrap,
       paragraph    = paragraph,
-      `type`       = `type`)
+      `type`       = `type`
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -121,7 +123,8 @@ object Typography {
       gutterBottom: Boolean               = false,
       noWrap:       Boolean               = false,
       paragraph:    Boolean               = false,
-      `type`:       Type                  = Type.body1)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      `type`:       Type                  = Type.body1
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       align,
       classes,
@@ -131,7 +134,8 @@ object Typography {
       noWrap,
       paragraph,
       `type`,
-      otherProps: _*)
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

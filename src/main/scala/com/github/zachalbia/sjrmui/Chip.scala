@@ -27,26 +27,28 @@ object Chip {
   }
 
   private def props(
-      avatar:          js.UndefOr[ReactElement],
-      className:       js.UndefOr[String],
-      classes:         js.Dictionary[String],
-      deleteIcon:      js.UndefOr[ReactElement],
-      label:           js.UndefOr[ReactElement],
-      onClick:         OnJSEv1[ReactMouseEvent],
-      onKeyDown:       OnJSEv1[ReactKeyboardEvent],
-      onRequestDelete: OnJSEv1[ReactEvent],
-      tabIndex:        js.UndefOr[Int | String],
-      otherProps:      (String, js.Any)*): Props = {
+      avatar:     js.UndefOr[ReactElement],
+      className:  js.UndefOr[String],
+      classes:    js.Dictionary[String],
+      deleteIcon: js.UndefOr[ReactElement],
+      label:      js.UndefOr[ReactElement],
+      onClick:    OnJSEv1[ReactMouseEvent],
+      onKeyDown:  OnJSEv1[ReactKeyboardEvent],
+      onDelete:   OnJSEv1[ReactEvent],
+      tabIndex:   js.UndefOr[Int | String],
+      otherProps: (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
-      avatar          = avatar,
-      className       = className,
-      classes         = classes,
-      deleteIcon      = deleteIcon,
-      label           = label,
-      onClick         = onClick,
-      onKeyDown       = onKeyDown,
-      onRequestDelete = onRequestDelete,
-      tabIndex        = tabIndex)
+      avatar     = avatar,
+      className  = className,
+      classes    = classes,
+      deleteIcon = deleteIcon,
+      label      = label,
+      onClick    = onClick,
+      onKeyDown  = onKeyDown,
+      onDelete   = onDelete,
+      tabIndex   = tabIndex
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -63,15 +65,16 @@ object Chip {
   private val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
-      avatar:          js.UndefOr[Avatar.Type]           = js.undefined,
-      className:       js.UndefOr[String]                = js.undefined,
-      classes:         Map[String, String]               = Map.empty,
-      deleteIcon:      js.UndefOr[ReactElement]          = js.undefined,
-      label:           js.UndefOr[ReactElement]          = js.undefined,
-      onClick:         ReactHandler1[ReactMouseEvent]    = js.undefined,
-      onKeyDown:       ReactHandler1[ReactKeyboardEvent] = js.undefined,
-      onRequestDelete: ReactHandler1[ReactEvent]         = js.undefined,
-      tabIndex:        js.UndefOr[Int | String]          = js.undefined)(otherProps: (String, js.Any)*) = {
+      avatar:     js.UndefOr[Avatar.Type]           = js.undefined,
+      className:  js.UndefOr[String]                = js.undefined,
+      classes:    Map[String, String]               = Map.empty,
+      deleteIcon: js.UndefOr[ReactElement]          = js.undefined,
+      label:      js.UndefOr[ReactElement]          = js.undefined,
+      onClick:    ReactHandler1[ReactMouseEvent]    = js.undefined,
+      onKeyDown:  ReactHandler1[ReactKeyboardEvent] = js.undefined,
+      onDelete:   ReactHandler1[ReactEvent]         = js.undefined,
+      tabIndex:   js.UndefOr[Int | String]          = js.undefined
+  )(otherProps: (String, js.Any)*) = {
     val p = props(
       avatar,
       className,
@@ -80,9 +83,10 @@ object Chip {
       label,
       onClick,
       onKeyDown,
-      onRequestDelete,
+      onDelete,
       tabIndex,
-      otherProps: _*)
+      otherProps: _*
+    )
     component(p)
   }
 }

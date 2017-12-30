@@ -34,12 +34,14 @@ object Badge {
       classes:      js.Dictionary[String],
       className:    js.UndefOr[String],
       color:        String,
-      otherProps:   (String, js.Any)*): Props = {
+      otherProps:   (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       badgeContent = badgeContent,
       classes      = classes,
       className    = className,
-      color        = color)
+      color        = color
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -56,13 +58,15 @@ object Badge {
       badgeContent: js.UndefOr[String | ReactElement] = js.undefined,
       classes:      Map[ClassKey, String]             = Map.empty,
       className:    js.UndefOr[String]                = js.undefined,
-      color:        Color                             = Color.default)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      color:        Color                             = Color.default
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       badgeContent,
       classes,
       className,
       color,
-      otherProps: _*)
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

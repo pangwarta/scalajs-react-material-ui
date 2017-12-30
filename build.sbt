@@ -7,8 +7,11 @@ lazy val commonSettings = Seq(
     .setPreference(AlignArguments, true)
     .setPreference(AlignParameters, true)
     .setPreference(AlignSingleLineCaseStatements, true)
+    .setPreference(AllowParamGroupsOnNewlines, true)
+    .setPreference(DanglingCloseParenthesis, Force)
     .setPreference(DoubleIndentConstructorArguments, true)
     .setPreference(DoubleIndentMethodDeclaration, true)
+    .setPreference(IndentLocalDefs, true)
     .setPreference(NewlineAtEndOfFile, true),
   skip in packageJSDependencies := false,
   webpackBundlingMode := BundlingMode.LibraryOnly(),

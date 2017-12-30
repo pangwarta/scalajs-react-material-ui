@@ -29,13 +29,15 @@ object Paper {
       component:  String | ReactElement,
       elevation:  Int,
       square:     Boolean,
-      otherProps: (String, js.Any)*): Props = {
+      otherProps: (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       classes   = classes,
       className = className,
       component = component,
       elevation = elevation,
-      square    = square)
+      square    = square
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -76,14 +78,16 @@ object Paper {
       className: js.UndefOr[String]    = js.undefined,
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
-      square:    Boolean               = false)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      square:    Boolean               = false
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,
       className,
       component,
       elevation,
       square,
-      otherProps: _*)
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

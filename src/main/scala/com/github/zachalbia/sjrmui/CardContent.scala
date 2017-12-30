@@ -20,7 +20,8 @@ object CardContent {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      className: js.UndefOr[String] = js.undefined)(children: VdomNode*) = {
+      className: js.UndefOr[String] = js.undefined
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.className = className
     component(p)(children: _*)

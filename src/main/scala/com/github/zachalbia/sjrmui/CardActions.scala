@@ -28,7 +28,8 @@ object CardActions {
   def apply(
       classes:              Map[ClassKey, String] = Map.empty,
       className:            js.UndefOr[String]    = js.undefined,
-      disableActionSpacing: Boolean               = false)(children: VdomNode*) = {
+      disableActionSpacing: Boolean               = false
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.classes = classes
     p.className = className

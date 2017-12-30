@@ -23,11 +23,13 @@ object DialogTitle {
       classes:           js.Dictionary[String],
       className:         js.UndefOr[String],
       disableTypography: Boolean,
-      otherProps:        (String, js.Any)*): Props = {
+      otherProps:        (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       classes           = classes,
       className         = className,
-      disableTypography = disableTypography)
+      disableTypography = disableTypography
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -40,12 +42,14 @@ object DialogTitle {
   def apply(
       classes:           Map[String, String] = Map.empty,
       className:         js.UndefOr[String]  = js.undefined,
-      disableTypography: Boolean             = false)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      disableTypography: Boolean             = false
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,
       className,
       disableTypography,
-      otherProps: _*)
+      otherProps: _*
+    )
     component(p)(children: _*)
   }
 }

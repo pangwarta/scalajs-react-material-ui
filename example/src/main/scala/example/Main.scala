@@ -19,39 +19,56 @@ object Main {
         AppBar(
           color    = AppBar.primary,
           position = AppBar.fixed,
-          square   = true)(
+          square   = true
+        )(
           Typography(
             color  = Typography.Color.secondary,
-            `type` = Type.headline)()("Foo")),
+            `type` = Type.headline
+          )()("Foo")
+        ),
         <.div(
           ExampleStyles.margin,
           Grid(container = true)()(
             Grid(item = true, md = 6)()(
               Avatar(
                 classes = Map(Avatar.root -> ExampleStyles.avatar),
-                src     = catPicUrl)()(),
+                src     = catPicUrl
+              )()(),
               Badge(
                 badgeContent = <.span(^.fontStyle.italic, "Meow!").rawElement,
                 color        = Badge.Color.primary,
-                classes      = Map(Badge.root -> ExampleStyles.avatar, Badge.badge -> ExampleStyles.badge))()(
-                  <.img(^.src := catPicUrl, ExampleStyles.avatar)),
+                classes      = Map(Badge.root -> ExampleStyles.avatar, Badge.badge -> ExampleStyles.badge)
+              )()(
+                  <.img(^.src := catPicUrl, ExampleStyles.avatar)
+                ),
               Typography(`type` = Type.body1)()(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis quis urna ac lacinia. Curabitur euismod erat eu ligula porttitor vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut sed est sit amet ligula placerat faucibus ac id felis. Aliquam ut condimentum nunc. Nam nec accumsan felis, a dapibus mi. Vestibulum urna felis, commodo nec nunc fermentum, convallis fermentum ex. Quisque lobortis orci id dui posuere vehicula. Vivamus semper ipsum in dictum consectetur."),
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis quis urna ac lacinia. Curabitur euismod erat eu ligula porttitor vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut sed est sit amet ligula placerat faucibus ac id felis. Aliquam ut condimentum nunc. Nam nec accumsan felis, a dapibus mi. Vestibulum urna felis, commodo nec nunc fermentum, convallis fermentum ex. Quisque lobortis orci id dui posuere vehicula. Vivamus semper ipsum in dictum consectetur."
+              ),
               Paper(
                 classes = Map(
                   Paper.root -> Seq(ExampleStyles.paper, ExampleStyles.paperExample),
-                  Paper.shadow2 -> ExampleStyles.paperShadow2))("foo" -> "bar")(
+                  Paper.shadow2 -> ExampleStyles.paperShadow2
+                )
+              )("foo" -> "bar")(
                   Typography(component = "p", `type` = Type.body1)()(
-                    "The quick brown fox jumps over the lazy dog."),
-                  Button(color  = Button.primary, raised = true)()("Do it"),
+                    "The quick brown fox jumps over the lazy dog."
+                  ),
+                  AlertDialog(),
                   Checkbox(value = "Check me")(),
-                  Chip(avatar = Avatar()()("ZA"))()),
+                  Chip(avatar = Avatar()()("ZA"))()
+                ),
               Card(className = Seq(ExampleStyles.paper, ExampleStyles.card))(
                 CardHeader(
                   avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)()("ZA").rawElement,
-                  title  = <.span("Merry Christmas").rawElement)(),
-                CardActions()())))),
-        SimpleBottomNav())
+                  title  = <.span("Merry Christmas").rawElement
+                )(),
+                CardActions()()
+              )
+            )
+          )
+        ),
+        SimpleBottomNav()
+      )
     app.renderIntoDOM(dom.document.getElementById("root"))
     ExampleStyles.addToDocument()
   }

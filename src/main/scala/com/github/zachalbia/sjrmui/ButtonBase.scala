@@ -64,7 +64,8 @@ object ButtonBase {
       onTouchStart:             OnJSEv1[ReactTouchEvent],
       role:                     js.UndefOr[String],
       tabIndex:                 js.UndefOr[Int | String],
-      otherProps:               (String, js.Any)*): Props = {
+      otherProps:               (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       centerRipple             = centerRipple,
       classes                  = classes,
@@ -87,7 +88,8 @@ object ButtonBase {
       onTouchMove              = onTouchMove,
       onTouchStart             = onTouchStart,
       role                     = role,
-      tabIndex                 = tabIndex)
+      tabIndex                 = tabIndex
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -120,7 +122,8 @@ object ButtonBase {
       onTouchMove:              ReactHandler1[ReactTouchEvent]    = js.undefined,
       onTouchStart:             ReactHandler1[ReactTouchEvent]    = js.undefined,
       role:                     js.UndefOr[String]                = js.undefined,
-      tabIndex:                 js.UndefOr[Int | String]          = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      tabIndex:                 js.UndefOr[Int | String]          = js.undefined
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,
       classes,
@@ -144,7 +147,8 @@ object ButtonBase {
       onTouchStart,
       role,
       tabIndex,
-      otherProps: _*)
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

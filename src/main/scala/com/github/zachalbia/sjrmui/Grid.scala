@@ -79,39 +79,40 @@ object Grid {
 
   private def props(
       alignContent: js.UndefOr[String],
-      alignItems: js.UndefOr[String],
-      classes: js.Dictionary[String],
-      component: String | ReactElement,
-      container: Boolean,
-      direction: js.UndefOr[String],
-      hidden: js.UndefOr[Hidden.Props],
-      item: Boolean,
-      justify: js.UndefOr[String],
-      lg: js.UndefOr[Boolean | Int],
-      md: js.UndefOr[Boolean | Int],
-      sm: js.UndefOr[Boolean | Int],
-      spacing: js.UndefOr[Int],
-      wrap: js.UndefOr[String],
-      xl: js.UndefOr[Boolean | Int],
-      xs: js.UndefOr[Boolean | Int],
-      otherProps: (String, js.Any)*): Props = {
+      alignItems:   js.UndefOr[String],
+      classes:      js.Dictionary[String],
+      component:    String | ReactElement,
+      container:    Boolean,
+      direction:    js.UndefOr[String],
+      hidden:       js.UndefOr[Hidden.Props],
+      item:         Boolean,
+      justify:      js.UndefOr[String],
+      lg:           js.UndefOr[Boolean | Int],
+      md:           js.UndefOr[Boolean | Int],
+      sm:           js.UndefOr[Boolean | Int],
+      spacing:      js.UndefOr[Int],
+      wrap:         js.UndefOr[String],
+      xl:           js.UndefOr[Boolean | Int],
+      xs:           js.UndefOr[Boolean | Int],
+      otherProps:   (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       alignContent = alignContent,
-      alignItems = alignItems,
-      classes = classes,
-      component = component,
-      container = container,
-      direction = direction,
-      hidden = hidden,
-      item = item,
-      justify = justify,
-      lg = lg,
-      md = md,
-      sm = sm,
-      spacing = spacing,
-      wrap = wrap,
-      xl = xl,
-      xs = xs,
+      alignItems   = alignItems,
+      classes      = classes,
+      component    = component,
+      container    = container,
+      direction    = direction,
+      hidden       = hidden,
+      item         = item,
+      justify      = justify,
+      lg           = lg,
+      md           = md,
+      sm           = sm,
+      spacing      = spacing,
+      wrap         = wrap,
+      xl           = xl,
+      xs           = xs
     )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
@@ -174,7 +175,8 @@ object Grid {
       spacing:      js.UndefOr[Int]           = js.undefined,
       wrap:         js.UndefOr[Wrap]          = js.undefined,
       xl:           js.UndefOr[Boolean | Int] = js.undefined,
-      xs:           js.UndefOr[Boolean | Int] = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      xs:           js.UndefOr[Boolean | Int] = js.undefined
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       alignContent,
       alignItems,

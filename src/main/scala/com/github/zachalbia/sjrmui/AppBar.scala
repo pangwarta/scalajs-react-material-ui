@@ -49,7 +49,8 @@ object AppBar {
       elevation: Int                   = 2,
       square:    Boolean               = false,
       color:     Color                 = primary,
-      position:  Position              = fixed)(children: VdomNode*) = {
+      position:  Position              = fixed
+  )(children: VdomNode*) = {
     val p = (new js.Object).asInstanceOf[Props]
     p.classes = classes
     p.className = className

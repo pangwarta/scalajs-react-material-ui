@@ -40,7 +40,8 @@ object Avatar {
       sizes:             js.UndefOr[String],
       src:               js.UndefOr[String],
       srcSet:            js.UndefOr[String],
-      otherProps:        (String, js.Any)*): Props = {
+      otherProps:        (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(
       alt               = alt,
       childrenClassName = childrenClassName,
@@ -50,7 +51,8 @@ object Avatar {
       imgProps          = imgProps,
       sizes             = sizes,
       src               = src,
-      srcSet            = srcSet)
+      srcSet            = srcSet
+    )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -71,7 +73,8 @@ object Avatar {
       imgProps:          Map[String, String]   = Map.empty,
       sizes:             js.UndefOr[String]    = js.undefined,
       src:               js.UndefOr[String]    = js.undefined,
-      srcSet:            js.UndefOr[String]    = js.undefined)(otherProps: (String, js.Any)*)(children: VdomNode*): Avatar.Type = {
+      srcSet:            js.UndefOr[String]    = js.undefined
+  )(otherProps: (String, js.Any)*)(children: VdomNode*): Avatar.Type = {
     val p = props(
       alt,
       childrenClassName,
@@ -82,7 +85,8 @@ object Avatar {
       sizes,
       src,
       srcSet,
-      otherProps: _*)
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

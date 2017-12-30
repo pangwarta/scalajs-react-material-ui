@@ -97,24 +97,44 @@ object Dialog {
   }
 
   def apply(
-             classes:             Map[String, String]    = Map.empty,
-             className:           js.UndefOr[String]     = js.undefined,
-             fullScreen:          Boolean                = false,
-             ignoreBackdropClick: Boolean                = false,
-             ignoreEscapeKeyUp:   Boolean                = false,
-             transitionDuration:  Transition.Duration    = defaultTransitionDuration,
-             maxWidth:            MaxWidth               = MaxWidth.sm,
-             fullWidth:           Boolean                = false,
-             onBackdropClick:     ReactHandler1[ReactEvent] = js.undefined,
-             onEnter: Handler1[html.Element] = js.undefined,
-             onEntering: Handler1[html.Element] = js.undefined,
-             onEntered: Handler1[html.Element] = js.undefined,
-             onEscapeKeyUp: ReactHandler1[ReactKeyboardEvent] = js.undefined,
-             onExit: Handler1[html.Element] = js.undefined,
-             onExiting: Handler1[html.Element] = js.undefined,
-             onRequestClose: ReactHandler1[ReactEvent] = js.undefined,
-             open: Boolean = false,
-           )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
-
+      classes:             Map[String, String]               = Map.empty,
+      className:           js.UndefOr[String]                = js.undefined,
+      fullScreen:          Boolean                           = false,
+      ignoreBackdropClick: Boolean                           = false,
+      ignoreEscapeKeyUp:   Boolean                           = false,
+      transitionDuration:  Transition.Duration               = defaultTransitionDuration,
+      maxWidth:            MaxWidth                          = MaxWidth.sm,
+      fullWidth:           Boolean                           = false,
+      onBackdropClick:     ReactHandler1[ReactEvent]         = js.undefined,
+      onEnter:             Handler1[html.Element]            = js.undefined,
+      onEntering:          Handler1[html.Element]            = js.undefined,
+      onEntered:           Handler1[html.Element]            = js.undefined,
+      onEscapeKeyUp:       ReactHandler1[ReactKeyboardEvent] = js.undefined,
+      onExit:              Handler1[html.Element]            = js.undefined,
+      onExiting:           Handler1[html.Element]            = js.undefined,
+      onExited:            Handler1[html.Element]            = js.undefined,
+      onRequestClose:      ReactHandler1[ReactEvent]         = js.undefined,
+      open:                Boolean                           = false)(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      classes,
+      className,
+      fullScreen,
+      ignoreBackdropClick,
+      ignoreEscapeKeyUp,
+      transitionDuration,
+      maxWidth,
+      fullWidth,
+      onBackdropClick,
+      onEnter,
+      onEntering,
+      onEntered,
+      onEscapeKeyUp,
+      onExit,
+      onExiting,
+      onExited,
+      onRequestClose,
+      open,
+      otherProps: _*)
+    component(p)(children: _*)
   }
 }

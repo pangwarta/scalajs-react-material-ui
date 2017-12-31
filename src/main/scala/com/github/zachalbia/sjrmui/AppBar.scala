@@ -31,6 +31,29 @@ object AppBar {
     var position: String = js.native
   }
 
+  private def props(
+      classes:    js.Dictionary[String],
+      className:  js.UndefOr[String],
+      component:  String | ReactElement,
+      elevation:  Int,
+      square:     Boolean,
+      color:      String,
+      position:   String,
+      otherProps: (String, js.Any)*
+  ): Props = {
+    val p = js.Dynamic.literal(
+      classes   = classes,
+      className = className,
+      component = component,
+      elevation = elevation,
+      square    = square,
+      color     = color,
+      position  = position
+    )
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object positionFixed extends ClassKey("positionFixed")
@@ -50,15 +73,17 @@ object AppBar {
       square:    Boolean               = false,
       color:     Color                 = primary,
       position:  Position              = fixed
-  )(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.classes = classes
-    p.className = className
-    p.component = component
-    p.elevation = elevation
-    p.square = square
-    p.color = color
-    p.position = position
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      classes,
+      className,
+      component,
+      elevation,
+      square,
+      color,
+      position,
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

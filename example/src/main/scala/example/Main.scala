@@ -20,7 +20,7 @@ object Main {
           color    = AppBar.primary,
           position = AppBar.fixed,
           square   = true
-        )(
+        )()(
           Typography(
             color  = Typography.Color.secondary,
             `type` = Type.headline
@@ -29,7 +29,7 @@ object Main {
         <.div(
           ExampleStyles.margin,
           Grid(container = true)()(
-            Grid(item = true, md = 6)()(
+            Grid(item = true, md = 6, sm = 12, xs = 12)()(
               Avatar(
                 classes = Map(Avatar.root -> ExampleStyles.avatar),
                 src     = catPicUrl

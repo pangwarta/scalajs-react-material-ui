@@ -21,6 +21,25 @@ object BottomNavigation {
     var value: A = js.native
   }
 
+  private def props[A](
+      classes:    js.Dictionary[String],
+      className:  js.UndefOr[String],
+      onChange:   OnJSEv2[ReactEvent, A],
+      showLabels: Boolean,
+      value:      A,
+      otherProps: (String, js.Any)*
+  ): Props[A] = {
+    val p = js.Dynamic.literal(
+      classes    = classes,
+      className  = className,
+      onChange   = onChange,
+      showLabels = showLabels,
+      value      = value.asInstanceOf[js.Any]
+    )
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props[A]]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
 
@@ -32,13 +51,15 @@ object BottomNavigation {
       onChange:   ReactHandler2[ReactEvent, A] = js.undefined,
       showLabels: Boolean                      = false,
       value:      A                            = 0
-  )(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props[A]]
-    p.classes = classes
-    p.className = className
-    p.showLabels = showLabels
-    p.onChange = onChange
-    p.value = value
-    this.component[A](p)(children: _*)
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      classes,
+      className,
+      onChange,
+      showLabels,
+      value,
+      otherProps: _*
+    )
+    component[A](p)(children: _*)
   }
 }

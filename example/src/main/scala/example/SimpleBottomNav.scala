@@ -15,8 +15,9 @@ object SimpleBottomNav {
         value      = s,
         onChange   = (_: ReactEvent, value: Int) => changeValue(value)
       )()(
-        BottomNavigationButton(value = 0, icon = "eject", label = "Foo")()(),
-        BottomNavigationButton(value = 1, icon = "face", label = "Bar")()()
+        BottomNavigationButton(value = 0, icon = "star", label = "Foo")()(),
+        BottomNavigationButton(value = 1, icon = "star_border", label = "Bar")()(),
+        BottomNavigationButton(value = 2, icon = "star_half", label = "Baz")()()
       )
 
     def changeValue(value: Int): Callback =

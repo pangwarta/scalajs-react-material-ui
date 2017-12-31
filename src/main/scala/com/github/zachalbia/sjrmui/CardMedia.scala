@@ -21,6 +21,7 @@ object CardMedia {
     var component: String | ReactElement = js.native
     var image: js.UndefOr[String] = js.native
     var src: js.UndefOr[String] = js.native
+    var style: js.Dictionary[String] = js.native
   }
 
   private def props(
@@ -29,6 +30,7 @@ object CardMedia {
       component:  String | ReactElement,
       image:      js.UndefOr[String],
       src:        js.UndefOr[String],
+      style:      js.Dictionary[String],
       otherProps: (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(
@@ -36,7 +38,8 @@ object CardMedia {
       className = className,
       component = component,
       image     = image,
-      src       = src
+      src       = src,
+      style     = style
     )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
@@ -53,7 +56,8 @@ object CardMedia {
       className: js.UndefOr[String]    = js.undefined,
       component: String | ReactElement,
       image:     js.UndefOr[String]    = js.undefined,
-      src:       js.UndefOr[String]    = js.undefined
+      src:       js.UndefOr[String]    = js.undefined,
+      style:     Map[String, String]   = Map.empty
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,
@@ -61,6 +65,7 @@ object CardMedia {
       component,
       image,
       src,
+      style,
       otherProps: _*
     )
     this.component(p)(children: _*)

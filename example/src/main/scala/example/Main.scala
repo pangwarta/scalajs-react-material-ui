@@ -57,12 +57,12 @@ object Main {
                   Checkbox(value = "Check me")(),
                   Chip(avatar = Avatar()()("ZA"))()
                 ),
-              Card(className = Seq(ExampleStyles.paper, ExampleStyles.card))(
+              Card(className = Seq(ExampleStyles.paper, ExampleStyles.card))()(
                 CardHeader(
                   avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)()("ZA").rawElement,
                   title  = <.span("Merry Christmas").rawElement
                 )(),
-                CardActions()()
+                CardActions()()()
               )
             )
           )

@@ -20,6 +20,27 @@ object Card {
     var raised: Boolean = js.native
   }
 
+  private def props(
+      raised:     Boolean,
+      classes:    Map[ClassKey, String],
+      className:  js.UndefOr[String],
+      component:  String | ReactElement,
+      elevation:  Int,
+      square:     Boolean,
+      otherProps: (String, js.Any)*
+  ): Props = {
+    val p = js.Dynamic.literal(
+      raised    = raised,
+      classes   = classes,
+      className = className,
+      component = component,
+      elevation = elevation,
+      square    = square
+    )
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
@@ -29,14 +50,16 @@ object Card {
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
       square:    Boolean               = false
-  )(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.classes = classes
-    p.className = className
-    p.component = component
-    p.elevation = elevation
-    p.square = square
-    p.raised = raised
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      raised,
+      classes,
+      className,
+      component,
+      elevation,
+      square,
+      otherProps: _*
+    )
     this.component(p)(children: _*)
   }
 }

@@ -61,7 +61,7 @@ object Main {
                 CardHeader(
                   avatar = Avatar(className = ExampleStyles.cardAvatar.className.value)()("ZA").rawElement,
                   title  = <.span("Merry Christmas").rawElement
-                )(),
+                )()(),
                 CardActions()()()
               )
             )

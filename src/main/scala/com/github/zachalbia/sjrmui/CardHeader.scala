@@ -22,6 +22,25 @@ object CardHeader {
     var title: js.UndefOr[ReactElement] = js.native
   }
 
+  private def props(
+      action:     js.UndefOr[ReactElement],
+      avatar:     js.UndefOr[ReactElement],
+      classes:    js.Dictionary[String],
+      subheader:  js.UndefOr[ReactElement],
+      title:      js.UndefOr[ReactElement],
+      otherProps: (String, js.Any)*
+  ): Props = {
+    val p = js.Dynamic.literal(
+      action    = action,
+      avatar    = avatar,
+      classes   = classes,
+      subheader = subheader,
+      title     = title
+    )
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
   object avatar extends ClassKey("avatar")
@@ -38,13 +57,15 @@ object CardHeader {
       classes:   Map[ClassKey, String]    = Map.empty,
       subheader: js.UndefOr[ReactElement] = js.undefined,
       title:     js.UndefOr[ReactElement] = js.undefined
-  )(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.action = action
-    p.avatar = avatar
-    p.classes = classes
-    p.subheader = subheader
-    p.title = title
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      action,
+      avatar,
+      classes,
+      subheader,
+      title,
+      otherProps: _*
+    )
     component(p)(children: _*)
   }
 }

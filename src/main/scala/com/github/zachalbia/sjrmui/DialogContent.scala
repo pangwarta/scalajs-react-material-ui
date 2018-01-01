@@ -18,6 +18,20 @@ object DialogContent {
     var className: js.UndefOr[String] = js.native
   }
 
+  private def props(
+      classes:    js.Dictionary[String],
+      className:  js.UndefOr[String],
+      otherProps: (String, js.Any)*
+  ): Props = {
+    val p = js.Dynamic.literal(
+      classes    = classes,
+      className  = className,
+      otherProps = otherProps
+    )
+    addOtherProps(p, otherProps: _*)
+    p.asInstanceOf[Props]
+  }
+
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
 
@@ -26,10 +40,12 @@ object DialogContent {
   def apply(
       classes:   Map[String, String] = Map.empty,
       className: js.UndefOr[String]  = js.undefined
-  )(children: VdomNode*) = {
-    val p = (new js.Object).asInstanceOf[Props]
-    p.classes = classes
-    p.className = className
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+    val p = props(
+      classes,
+      className,
+      otherProps: _*
+    )
     component(p)(children: _*)
   }
 }

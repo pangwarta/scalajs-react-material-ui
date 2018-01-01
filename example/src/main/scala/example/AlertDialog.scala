@@ -21,7 +21,7 @@ object AlertDialog {
         )(
             DialogTitle()("id" -> "alert-dialog-title")("Use Google's location service?"),
             DialogContent()()(
-              DialogContentText()("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.")
+              DialogContentText()()("Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.")
             ),
             DialogActions()()(
               Button(color   = Button.primary, onClick = (_: ReactMouseEvent) => handleClose())()("Agree"),

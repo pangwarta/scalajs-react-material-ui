@@ -1,6 +1,7 @@
 package com.pangwarta
 
 import cats.Show
+import com.pangwarta.sjrmui.internal.Transition
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.component.Js.UnmountedWithRawType
 import japgolly.scalajs.react.raw.{ ReactElement, SyntheticEvent }
@@ -21,6 +22,13 @@ package object sjrmui {
 
   private[sjrmui] def addOtherProps(p: js.Dynamic, otherProps: (String, js.Any)*): Unit =
     otherProps.foreach { case (key, value) => p.updateDynamic(key)(value) }
+
+  private[sjrmui] val defaultTransitionDuration: Transition = {
+    val d = (new js.Object).asInstanceOf[Transition]
+    d.enter = 0.0
+    d.exit = 0.0
+    d
+  }
 
   private[sjrmui] implicit def stringTypeToStr[T <: StringType](t: T): String =
     t.get

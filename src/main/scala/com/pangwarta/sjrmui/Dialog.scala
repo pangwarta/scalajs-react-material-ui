@@ -91,13 +91,6 @@ object Dialog {
 
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
-  val defaultTransitionDuration: Transition = {
-    val d = (new js.Object).asInstanceOf[Transition]
-    d.enter = 0.0
-    d.exit = 0.0
-    d
-  }
-
   def apply(
       classes:             Map[String, String]               = Map.empty,
       className:           js.UndefOr[String]                = js.undefined,

@@ -1,4 +1,4 @@
-package com.github.zachalbia.sjrmui
+package com.pangwarta.sjrmui
 
 import scala.scalajs.js
 

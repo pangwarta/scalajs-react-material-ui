@@ -1,13 +1,13 @@
 package example
 
-import com.github.zachalbia.sjrmui.Typography.Type
-import com.github.zachalbia.sjrmui._
+import com.pangwarta.sjrmui._
+import com.pangwarta.sjrmui.Typography.Type
 import example.CssSettings._
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom
 import ExampleStyles._
-import scalacss.ScalaCssReact._
 
+import scalacss.ScalaCssReact._
 import scala.language.implicitConversions
 
 object Main {

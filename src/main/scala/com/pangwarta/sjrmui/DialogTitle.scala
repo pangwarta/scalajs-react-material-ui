@@ -1,14 +1,14 @@
-package com.github.zachalbia.sjrmui
+package com.pangwarta.sjrmui
 
-import japgolly.scalajs.react.vdom.VdomNode
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-object DialogContentText {
+object DialogTitle {
 
-  @JSImport("material-ui", "DialogContentText")
+  @JSImport("material-ui", "DialogTitle")
   @js.native
   private object RawComponent extends js.Object
 
@@ -16,17 +16,19 @@ object DialogContentText {
   private[sjrmui] trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
+    var disableTypography: Boolean = js.native
   }
 
   private def props(
-      classes:    js.Dictionary[String],
-      className:  js.UndefOr[String],
-      otherProps: (String, js.Any)*
+      classes:           js.Dictionary[String],
+      className:         js.UndefOr[String],
+      disableTypography: Boolean,
+      otherProps:        (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(
-      classes    = classes,
-      className  = className,
-      otherProps = otherProps
+      classes           = classes,
+      className         = className,
+      disableTypography = disableTypography
     )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
@@ -38,12 +40,14 @@ object DialogContentText {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:   Map[String, String] = Map.empty,
-      className: js.UndefOr[String]  = js.undefined
+      classes:           Map[String, String] = Map.empty,
+      className:         js.UndefOr[String]  = js.undefined,
+      disableTypography: Boolean             = false
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,
       className,
+      disableTypography,
       otherProps: _*
     )
     component(p)(children: _*)

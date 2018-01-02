@@ -1,6 +1,6 @@
-package com.github.zachalbia.sjrmui
+package com.pangwarta.sjrmui
 
-import com.github.zachalbia.sjrmui.internal.Transition
+import com.pangwarta.sjrmui.internal.Transition
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.VdomNode
 import org.scalajs.dom.html

@@ -1,6 +1,6 @@
-package com.github.zachalbia.sjrmui.internal
+package com.pangwarta.sjrmui.internal
 
-import com.github.zachalbia.sjrmui.internal.Transition.Callback
+import com.pangwarta.sjrmui.internal.Transition.Callback
 import org.scalajs.dom.html
 
 import scala.scalajs.js

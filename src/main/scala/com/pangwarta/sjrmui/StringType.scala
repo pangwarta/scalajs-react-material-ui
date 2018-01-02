@@ -1,4 +1,4 @@
-package com.github.zachalbia.sjrmui
+package com.pangwarta.sjrmui
 
 trait StringType {
   def get: String

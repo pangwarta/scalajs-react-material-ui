@@ -1,6 +1,6 @@
 package example
 
-import com.github.zachalbia.sjrmui.Colors
+import com.pangwarta.sjrmui.Colors
 
 import scala.language.implicitConversions
 import scala.scalajs.js

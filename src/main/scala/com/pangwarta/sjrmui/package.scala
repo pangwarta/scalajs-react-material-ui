@@ -1,8 +1,8 @@
-package com.github.zachalbia
+package com.pangwarta
 
 import cats.Show
 import japgolly.scalajs.react.Callback
-import japgolly.scalajs.react.component.Js.{ RawMounted, UnmountedWithRawType }
+import japgolly.scalajs.react.component.Js.UnmountedWithRawType
 import japgolly.scalajs.react.raw.{ ReactElement, SyntheticEvent }
 
 import scala.language.implicitConversions

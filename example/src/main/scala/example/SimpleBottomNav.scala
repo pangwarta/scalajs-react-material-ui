@@ -1,6 +1,7 @@
 package example
 
-import com.github.zachalbia.sjrmui.{ BottomNavigation, BottomNavigationButton }
+import com.pangwarta.sjrmui.BottomNavigation
+import com.pangwarta.sjrmui.{ BottomNavigation, BottomNavigationButton }
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.component.Scala.BackendScope
 import japgolly.scalajs.react.vdom.html_<^._

@@ -1,14 +1,14 @@
-package com.github.zachalbia.sjrmui
+package com.pangwarta.sjrmui
 
-import japgolly.scalajs.react.vdom.VdomNode
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-object DialogContent {
+object DialogActions {
 
-  @JSImport("material-ui", "DialogContent")
+  @JSImport("material-ui", "DialogActions")
   @js.native
   private object RawComponent extends js.Object
 
@@ -34,6 +34,8 @@ object DialogContent {
 
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
+  object action extends ClassKey("action")
+  object button extends ClassKey("button")
 
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 

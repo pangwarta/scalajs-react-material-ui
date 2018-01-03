@@ -29,6 +29,7 @@ object Drawer {
     var `type`: js.UndefOr[String] = js.native
   }
 
+  // TODO add more props when Modal is done
   private def props(
       anchor:             js.UndefOr[String],
       classes:            js.Dictionary[String],

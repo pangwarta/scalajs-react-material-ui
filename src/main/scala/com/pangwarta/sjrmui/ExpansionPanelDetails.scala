@@ -24,9 +24,8 @@ object ExpansionPanelDetails {
       otherProps: (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(
-      classes    = classes,
-      className  = className,
-      otherProps = otherProps
+      classes   = classes,
+      className = className
     )
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]

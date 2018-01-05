@@ -52,6 +52,7 @@ object Typography {
   private[sjrmui] trait Props extends js.Object {
     var align: String = js.native
     var classes: js.Dictionary[String] = js.native
+    var className: js.UndefOr[String] = js.native
     var color: String = js.native
     var component: String | ReactElement = js.native
     var gutterBottom: Boolean = js.native
@@ -63,6 +64,7 @@ object Typography {
   private def props(
       align:        String,
       classes:      js.Dictionary[String],
+      className:    js.UndefOr[String],
       color:        String,
       component:    String | ReactElement,
       gutterBottom: Boolean,
@@ -74,6 +76,7 @@ object Typography {
     val p = js.Dynamic.literal(
       align        = align,
       classes      = classes,
+      className    = className,
       color        = color,
       component    = component,
       gutterBottom = gutterBottom,
@@ -118,6 +121,7 @@ object Typography {
   def apply(
       align:        Alignment             = Alignment.inherit,
       classes:      Map[ClassKey, String] = Map.empty,
+      className:    js.UndefOr[String]    = js.undefined,
       color:        Color                 = Color.default,
       component:    String | ReactElement = "div",
       gutterBottom: Boolean               = false,
@@ -128,6 +132,7 @@ object Typography {
     val p = props(
       align,
       classes,
+      className,
       color,
       component,
       gutterBottom,

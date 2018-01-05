@@ -1,6 +1,5 @@
 package example
 
-import com.pangwarta.sjrmui.BottomNavigation
 import com.pangwarta.sjrmui.{ BottomNavigation, BottomNavigationButton }
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.component.Scala.BackendScope

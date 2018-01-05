@@ -56,6 +56,6 @@ object Main {
           )
         )
       ),
-      SimpleBottomNav()
+      Hidden(smUp = true)()(SimpleBottomNav())
     )
 }

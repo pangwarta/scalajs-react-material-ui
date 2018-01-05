@@ -22,9 +22,10 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file("."))
   .settings(
     npmDependencies in Compile ++=
-      "material-ui" -> "next"   ::
-      "react"       -> "16.1.1" ::
-      "react-dom"   -> "16.1.1" ::
+      "material-ui"       -> "next"          ::
+      "material-ui-icons" -> "1.0.0-beta.17" ::
+      "react"             -> "16.1.1"        ::
+      "react-dom"         -> "16.1.1"        ::
       Nil,
     libraryDependencies ++=
       "com.github.japgolly.scalacss"      %%% "core"        % "0.5.3"     ::

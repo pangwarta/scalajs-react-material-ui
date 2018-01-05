@@ -49,8 +49,22 @@ object ExampleStyles extends StyleSheet.Inline {
       "0px 3px 1px -2px rgba(255, 0, 0, 0.12)"
   )
 
+  object SimpleExpansionPanel {
+    val root = style(
+      width(100.%%)
+    )
+
+    val heading = style(
+      fontSize(1.rem),
+      fontWeight.normal
+    )
+  }
+
   implicit def styleAToClassName(styleA: StyleA): String =
     styleA.className.value
+
+  implicit def styleAToUndefOrClassName(styleA: StyleA): js.UndefOr[String] =
+    js.UndefOr.any2undefOrA(styleA.className.value)
 
   implicit def stylesToClassName(styleAs: Seq[StyleA]): String =
     styleAs.map(styleAToClassName).mkString(" ")

@@ -21,7 +21,8 @@ object Main {
             Grid(item = true, md = 6, sm = 12, xs = 12)()(
               TopSection(),
               PaperExample,
-              CardExample
+              CardExample,
+              SimpleExpansionPanel()
             )
           )
         ),

@@ -25,7 +25,6 @@ object ExpansionPanelSummary {
       centerRipple:             Boolean,
       classes:                  js.Dictionary[String],
       className:                js.UndefOr[String],
-      component:                String | ReactElement,
       disableRipple:            Boolean,
       disabled:                 Boolean,
       focusRipple:              Boolean,
@@ -45,7 +44,7 @@ object ExpansionPanelSummary {
       role:                     js.UndefOr[String],
       tabIndex:                 js.UndefOr[Int | String],
       expanded:                 js.UndefOr[Boolean],
-      expandIcon:               js.UndefOr[ReactNode],
+      expandIcon:               js.UndefOr[ReactElement],
       onChange:                 OnJSEv1[ReactEvent],
       otherProps:               (String, js.Any)*
   ): Props = {
@@ -53,7 +52,6 @@ object ExpansionPanelSummary {
       centerRipple             = centerRipple,
       classes                  = classes,
       className                = className,
-      component                = component,
       disableRipple            = disableRipple,
       disabled                 = disabled,
       focusRipple              = focusRipple,
@@ -96,7 +94,6 @@ object ExpansionPanelSummary {
       centerRipple:             Boolean                           = false,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
-      component:                String | ReactElement,
       disableRipple:            Boolean                           = false,
       disabled:                 Boolean                           = false,
       focusRipple:              Boolean                           = false,
@@ -116,14 +113,13 @@ object ExpansionPanelSummary {
       role:                     js.UndefOr[String]                = js.undefined,
       tabIndex:                 js.UndefOr[Int | String]          = js.undefined,
       expanded:                 js.UndefOr[Boolean]               = js.undefined,
-      expandIcon:               js.UndefOr[ReactNode]             = js.undefined,
+      expandIcon:               js.UndefOr[ReactElement]          = js.undefined,
       onChange:                 ReactHandler1[ReactEvent]         = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,
       classes,
       className,
-      component,
       disableRipple,
       disabled,
       focusRipple,

@@ -27,7 +27,7 @@ object Checkbox {
     var indeterminate: Boolean = js.native
     var indeterminateIcon: ReactNode | String = js.native
     var inputProps: js.Dictionary[String] = js.native
-    // TODO: var inputRef: ? = js.native
+    var inputRef: js.UndefOr[js.Function] = js.native
     var name: js.UndefOr[String] = js.native
     var onChange: OnJSEv2[ReactEvent, Boolean] = js.native
     var tabIndex: js.UndefOr[Int | String] = js.native
@@ -46,6 +46,7 @@ object Checkbox {
       indeterminate:     Boolean,
       indeterminateIcon: ReactNode | String,
       inputProps:        js.Dictionary[String],
+      inputRef:          js.UndefOr[js.Function],
       name:              js.UndefOr[String],
       onChange:          OnJSEv2[ReactEvent, Boolean],
       tabIndex:          js.UndefOr[Int | String],
@@ -64,6 +65,7 @@ object Checkbox {
       indeterminate     = indeterminate,
       indeterminateIcon = indeterminateIcon,
       inputProps        = inputProps,
+      inputRef          = inputRef,
       name              = name,
       onChange          = onChange,
       tabIndex          = tabIndex,
@@ -92,6 +94,7 @@ object Checkbox {
       indeterminate:     Boolean                            = false,
       indeterminateIcon: ReactNode | String                 = IndeterminateCheckBoxIcon().vdomElement.rawNode,
       inputProps:        Map[String, String]                = Map.empty,
+      inputRef:          js.UndefOr[js.Function]            = js.undefined,
       name:              js.UndefOr[String]                 = js.undefined,
       onChange:          ReactHandler2[ReactEvent, Boolean] = js.undefined,
       tabIndex:          js.UndefOr[Int | String]           = js.undefined,
@@ -109,6 +112,7 @@ object Checkbox {
       indeterminate,
       indeterminateIcon,
       inputProps,
+      inputRef,
       name,
       onChange,
       tabIndex,

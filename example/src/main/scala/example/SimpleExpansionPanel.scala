@@ -1,20 +1,14 @@
 package example
 
+import com.pangwarta.sjrmui.icons.ExpandMoreIcon
 import com.pangwarta.sjrmui.{ ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography }
+import example.ExampleStyles._
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
-import ExampleStyles._
 
-import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
 import scalacss.ScalaCssReact._
 
 object SimpleExpansionPanel {
-
-  @JSImport("material-ui-icons", "ExpandMore")
-  @js.native
-  private object ExpandMoreRawComponent extends js.Object
-  private val ExpandMoreIcon = JsComponent[Null, Children.None, Null](ExpandMoreRawComponent)
 
   private val component = ScalaComponent.builder[Unit]("SimpleExpansionPanel")
     .renderStatic(

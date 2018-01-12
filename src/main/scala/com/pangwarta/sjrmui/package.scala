@@ -19,6 +19,7 @@ package object sjrmui {
   type Handler2[A, B] = js.UndefOr[(A, B) => Callback]
   type ReactHandler1[E <: SyntheticEvent[_]] = Handler1[E]
   type ReactHandler2[E <: SyntheticEvent[_], A] = Handler2[E, A]
+  type CssProperties = js.Any
 
   private[sjrmui] def addOtherProps(p: js.Dynamic, otherProps: (String, js.Any)*): Unit =
     otherProps.foreach { case (key, value) => p.updateDynamic(key)(value) }

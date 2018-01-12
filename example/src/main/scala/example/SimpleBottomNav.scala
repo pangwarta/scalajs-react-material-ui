@@ -1,6 +1,6 @@
 package example
 
-import com.pangwarta.sjrmui.{ BottomNavigation, BottomNavigationButton }
+import com.pangwarta.sjrmui.{ BottomNavigation, BottomNavigationAction }
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.component.Scala.BackendScope
 import japgolly.scalajs.react.vdom.html_<^._
@@ -15,9 +15,9 @@ object SimpleBottomNav {
         value      = s,
         onChange   = (_: ReactEvent, value: Int) => changeValue(value)
       )()(
-        BottomNavigationButton(value = 0, icon = "star", label = "Foo")()(),
-        BottomNavigationButton(value = 1, icon = "star_border", label = "Bar")()(),
-        BottomNavigationButton(value = 2, icon = "star_half", label = "Baz")()()
+        BottomNavigationAction(value = 0, icon = "star", label = "Foo")()(),
+        BottomNavigationAction(value = 1, icon = "star_border", label = "Bar")()(),
+        BottomNavigationAction(value = 2, icon = "star_half", label = "Baz")()()
       )
 
     def changeValue(value: Int): Callback =

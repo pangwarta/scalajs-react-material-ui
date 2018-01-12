@@ -1,6 +1,7 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.icons.IndeterminateCheckBoxIcon
+import com.pangwarta.sjrmui.BottomNavigationAction.icon
+import com.pangwarta.sjrmui.icons.MuiSvgIcons._
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw.{ ReactElement, ReactNode }
 
@@ -92,7 +93,7 @@ object Checkbox {
       disableRipple:     js.UndefOr[Boolean]                = js.undefined,
       icon:              js.UndefOr[ReactElement]           = js.undefined,
       indeterminate:     Boolean                            = false,
-      indeterminateIcon: ReactNode | String                 = IndeterminateCheckBoxIcon().vdomElement.rawNode,
+      indeterminateIcon: ReactNode | String                 = IndeterminateCheckBoxIcon()().vdomElement.rawNode,
       inputProps:        Map[String, String]                = Map.empty,
       inputRef:          js.UndefOr[js.Function]            = js.undefined,
       name:              js.UndefOr[String]                 = js.undefined,

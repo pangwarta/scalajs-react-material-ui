@@ -43,13 +43,13 @@ object AppBar {
   ): Props = {
     val p = js.Dynamic.literal(
       classes   = classes,
-      className = className,
       component = component,
       elevation = elevation,
       square    = square,
       color     = color,
       position  = position
     )
+    className.foreach(v => p.updateDynamic("className")(v))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

@@ -17,12 +17,8 @@ object Drawer {
   @js.native
   private[sjrmui] trait Props extends Modal.Props {
     var anchor: js.UndefOr[String] = js.native
-    var classes: js.Dictionary[String] = js.native
-    var className: js.UndefOr[String] = js.native
     var elevation: js.UndefOr[Int] = js.native
     var ModalProps: js.UndefOr[Modal.Props] = js.native
-    var onClose: OnJSEv1[ReactEvent] = js.native
-    var open: js.UndefOr[Boolean] = js.native
     var SlideProps: js.UndefOr[Slide.Props] = js.native
     var theme: js.UndefOr[Theme] = js.native
     var transitionDuration: js.UndefOr[Transition.Duration] = js.native

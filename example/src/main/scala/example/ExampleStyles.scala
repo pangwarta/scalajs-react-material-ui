@@ -29,8 +29,8 @@ object ExampleStyles extends StyleSheet.Inline {
 
   val margin = style(
     marginTop(80.px),
-    marginLeft(16.px),
-    marginRight(16.px)
+    marginLeft(24.px),
+    marginRight(24.px)
   )
 
   val paper = style(
@@ -57,6 +57,25 @@ object ExampleStyles extends StyleSheet.Inline {
     val heading = style(
       fontSize(1.rem),
       fontWeight.normal
+    )
+  }
+
+  val modalStyle: StyleA = {
+      def rand() = Math.floor(Math.random() * 20) - 10
+
+    val topPosn = 50 + rand()
+    val leftPosn = 50 + rand()
+
+    style(
+      position.absolute,
+      width((8 * 50).px),
+      top(topPosn.%%),
+      left(leftPosn.%%),
+      transform := s"translate(-$topPosn%, -$leftPosn%)",
+      border(1.px, solid, c"#e5e5e5"),
+      backgroundColor(c"#fff"),
+      boxShadow := "0 5px 15px rgba(0, 0, 0, .5)",
+      padding((8 * 4).px)
     )
   }
 

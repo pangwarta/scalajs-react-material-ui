@@ -15,12 +15,12 @@ object Portal {
 
   @js.native
   private[sjrmui] trait Props extends js.Object {
-    var container: js.UndefOr[js.Object | js.Function] = js.native
-    var onRendered: js.UndefOr[js.Function] = js.native
+    var container: js.UndefOr[js.Any | js.Function] = js.native
+    var onRendered: js.UndefOr[js.Function0[Unit]] = js.native
   }
 
   private def props(
-      container:  js.UndefOr[js.Object | js.Function],
+      container:  js.UndefOr[js.Any | js.Function],
       onRendered: js.UndefOr[js.Function],
       otherProps: (String, js.Any)*
   ): Props = {
@@ -35,8 +35,8 @@ object Portal {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      container:  js.UndefOr[js.Object | js.Function] = js.undefined,
-      onRendered: js.UndefOr[js.Function]             = js.undefined
+      container:  js.UndefOr[js.Any | js.Function] = js.undefined,
+      onRendered: js.UndefOr[js.Function0[Unit]]   = js.undefined
   )(children: VdomNode*) = {
     val p = props(container, onRendered)
     component(p)(children: _*)

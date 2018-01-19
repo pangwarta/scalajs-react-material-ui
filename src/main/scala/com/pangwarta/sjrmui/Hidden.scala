@@ -10,6 +10,7 @@ import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 import scala.scalajs.js.JSConverters._
 
+// TODO: Warning: Material-UI: unsupported properties received {} by `<Hidden />`
 object Hidden {
 
   @JSImport("material-ui", "Hidden")

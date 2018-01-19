@@ -1,13 +1,11 @@
 package com.pangwarta.sjrmui
 
 import com.pangwarta.sjrmui.internal.Transition
-import japgolly.scalajs.react._
-import japgolly.scalajs.react.raw.ReactElement
-import japgolly.scalajs.react.vdom.VdomNode
+import japgolly.scalajs.react.{ CtorType, _ }
+import japgolly.scalajs.react.component.Js.{ Component, RawMounted, UnmountedWithRawType }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
-import scala.scalajs.js.|
 
 object Backdrop {
 
@@ -16,7 +14,7 @@ object Backdrop {
   private object RawComponent extends js.Object
 
   @js.native
-  private[sjrmui] trait Props extends js.Object {
+  trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
     var invisible: js.UndefOr[Boolean] = js.native
     var open: Boolean = js.native
@@ -44,7 +42,7 @@ object Backdrop {
   object root extends ClassKey("root")
   object invisible extends ClassKey("invisible")
 
-  private val component = JsComponent[Props, Children.None, Null](RawComponent)
+  val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
       classes:            Map[String, String]             = Map.empty,

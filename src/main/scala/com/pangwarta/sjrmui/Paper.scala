@@ -19,25 +19,23 @@ object Paper {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
     var component: js.UndefOr[String | ReactElement] = js.native
-    var elevation: Int = js.native
-    var square: Boolean = js.native
+    var elevation: js.UndefOr[Int] = js.native
+    var square: js.UndefOr[Boolean] = js.native
   }
 
   private def props(
       classes:    js.Dictionary[String],
       className:  js.UndefOr[String],
       component:  js.UndefOr[String | ReactElement],
-      elevation:  Int,
-      square:     Boolean,
+      elevation:  js.UndefOr[Int],
+      square:     js.UndefOr[Boolean],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      classes   = classes,
-      component = component,
-      elevation = elevation,
-      square    = square
-    )
+    val p = js.Dynamic.literal(classes = classes)
     className.foreach(v => p.updateDynamic("className")(v))
+    component.foreach(v => p.updateDynamic("component")(v))
+    elevation.foreach(v => p.updateDynamic("elevation")(v))
+    square.foreach(v => p.updateDynamic("square")(v))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -77,8 +75,8 @@ object Paper {
       classes:   Map[ClassKey, String]             = Map.empty,
       className: js.UndefOr[String]                = js.undefined,
       component: js.UndefOr[String | ReactElement] = "div",
-      elevation: Int                               = 2,
-      square:    Boolean                           = false
+      elevation: js.UndefOr[Int]                   = 2,
+      square:    js.UndefOr[Boolean]               = false
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

@@ -18,7 +18,7 @@ object Paper {
   private[sjrmui] trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
-    var component: String | ReactElement = js.native
+    var component: js.UndefOr[String | ReactElement] = js.native
     var elevation: Int = js.native
     var square: Boolean = js.native
   }
@@ -26,7 +26,7 @@ object Paper {
   private def props(
       classes:    js.Dictionary[String],
       className:  js.UndefOr[String],
-      component:  String | ReactElement,
+      component:  js.UndefOr[String | ReactElement],
       elevation:  Int,
       square:     Boolean,
       otherProps: (String, js.Any)*
@@ -74,11 +74,11 @@ object Paper {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:   Map[ClassKey, String] = Map.empty,
-      className: js.UndefOr[String]    = js.undefined,
-      component: String | ReactElement = "div",
-      elevation: Int                   = 2,
-      square:    Boolean               = false
+      classes:   Map[ClassKey, String]             = Map.empty,
+      className: js.UndefOr[String]                = js.undefined,
+      component: js.UndefOr[String | ReactElement] = "div",
+      elevation: Int                               = 2,
+      square:    Boolean                           = false
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

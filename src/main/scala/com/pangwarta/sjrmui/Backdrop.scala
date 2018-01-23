@@ -29,11 +29,11 @@ object Backdrop {
       otherProps:         (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(
-      classes            = classes,
-      invisible          = invisible,
-      open               = open,
-      transitionDuration = transitionDuration
+      classes = classes,
+      open    = open
     )
+    invisible.foreach(v => p.updateDynamic("invisible")(v))
+    transitionDuration.foreach(v => p.updateDynamic("transitionDuration")(v))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

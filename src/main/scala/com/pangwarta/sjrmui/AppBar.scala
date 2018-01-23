@@ -34,22 +34,20 @@ object AppBar {
   private def props(
       classes:    js.Dictionary[String],
       className:  js.UndefOr[String],
-      component:  String | ReactElement,
-      elevation:  Int,
-      square:     Boolean,
-      color:      String,
-      position:   String,
+      component:  js.UndefOr[String | ReactElement],
+      elevation:  js.UndefOr[Int],
+      square:     js.UndefOr[Boolean],
+      color:      js.UndefOr[String],
+      position:   js.UndefOr[String],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      classes   = classes,
-      component = component,
-      elevation = elevation,
-      square    = square,
-      color     = color,
-      position  = position
-    )
+    val p = js.Dynamic.literal(classes = classes)
     className.foreach(v => p.updateDynamic("className")(v))
+    component.foreach(v => p.updateDynamic("component")(v))
+    elevation.foreach(v => p.updateDynamic("elevation")(v))
+    square.foreach(v => p.updateDynamic("square")(v))
+    color.foreach(v => p.updateDynamic("color")(v))
+    position.foreach(v => p.updateDynamic("position")(v))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -71,8 +69,8 @@ object AppBar {
       component: String | ReactElement = "div",
       elevation: Int                   = 2,
       square:    Boolean               = false,
-      color:     Color                 = primary,
-      position:  Position              = fixed
+      color:     js.UndefOr[Color]     = primary,
+      position:  js.UndefOr[Position]  = fixed
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

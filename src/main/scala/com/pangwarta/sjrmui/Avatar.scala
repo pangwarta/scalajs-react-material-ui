@@ -23,7 +23,7 @@ object Avatar {
     var childrenClassName: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
-    var component: String | ReactElement = js.native
+    var component: js.UndefOr[String | ReactElement] = js.native
     var imgProps: js.Dictionary[String] = js.native
     var sizes: js.UndefOr[String] = js.native
     var src: js.UndefOr[String] = js.native
@@ -35,7 +35,7 @@ object Avatar {
       childrenClassName: js.UndefOr[String],
       classes:           js.Dictionary[String],
       className:         js.UndefOr[String],
-      component:         String | ReactElement,
+      component:         js.UndefOr[String | ReactElement],
       imgProps:          js.Dictionary[String],
       sizes:             js.UndefOr[String],
       src:               js.UndefOr[String],
@@ -43,16 +43,16 @@ object Avatar {
       otherProps:        (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(
-      alt               = alt,
-      childrenClassName = childrenClassName,
-      classes           = classes,
-      className         = className,
-      component         = component,
-      imgProps          = imgProps,
-      sizes             = sizes,
-      src               = src,
-      srcSet            = srcSet
+      classes  = classes,
+      imgProps = imgProps
     )
+    alt.foreach(v => p.updateDynamic("alt")(v))
+    childrenClassName.foreach(v => p.updateDynamic("childrenClassName")(v))
+    className.foreach(v => p.updateDynamic("className")(v))
+    component.foreach(v => p.updateDynamic("component")(v))
+    sizes.foreach(v => p.updateDynamic("sizes")(v))
+    src.foreach(v => p.updateDynamic("src")(v))
+    srcSet.foreach(v => p.updateDynamic("srcSet")(v))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -65,15 +65,15 @@ object Avatar {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      alt:               js.UndefOr[String]    = js.undefined,
-      childrenClassName: js.UndefOr[String]    = js.undefined,
-      classes:           Map[ClassKey, String] = Map.empty,
-      className:         js.UndefOr[String]    = js.undefined,
-      component:         String | ReactElement = "div",
-      imgProps:          Map[String, String]   = Map.empty,
-      sizes:             js.UndefOr[String]    = js.undefined,
-      src:               js.UndefOr[String]    = js.undefined,
-      srcSet:            js.UndefOr[String]    = js.undefined
+      alt:               js.UndefOr[String]                = js.undefined,
+      childrenClassName: js.UndefOr[String]                = js.undefined,
+      classes:           Map[ClassKey, String]             = Map.empty,
+      className:         js.UndefOr[String]                = js.undefined,
+      component:         js.UndefOr[String | ReactElement] = "div",
+      imgProps:          Map[String, String]               = Map.empty,
+      sizes:             js.UndefOr[String]                = js.undefined,
+      src:               js.UndefOr[String]                = js.undefined,
+      srcSet:            js.UndefOr[String]                = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*): Avatar.Type = {
     val p = props(
       alt,

@@ -42,13 +42,13 @@ object ButtonBase {
   }
 
   private def props(
-      centerRipple:             Boolean,
+      centerRipple:             js.UndefOr[Boolean],
       classes:                  js.Dictionary[String],
       className:                js.UndefOr[String],
-      component:                String | ReactElement,
-      disableRipple:            Boolean,
-      disabled:                 Boolean,
-      focusRipple:              Boolean,
+      component:                js.UndefOr[String | ReactElement],
+      disableRipple:            js.UndefOr[Boolean],
+      disabled:                 js.UndefOr[Boolean],
+      focusRipple:              js.UndefOr[Boolean],
       keyboardFocusedClassName: js.UndefOr[String],
       onBlur:                   OnJSEv1[ReactEvent],
       onClick:                  OnJSEv1[ReactMouseEvent],
@@ -66,30 +66,28 @@ object ButtonBase {
       tabIndex:                 js.UndefOr[Int | String],
       otherProps:               (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      centerRipple             = centerRipple,
-      classes                  = classes,
-      className                = className,
-      component                = component,
-      disableRipple            = disableRipple,
-      disabled                 = disabled,
-      focusRipple              = focusRipple,
-      keyboardFocusedClassName = keyboardFocusedClassName,
-      onBlur                   = onBlur,
-      onClick                  = onClick,
-      onFocus                  = onFocus,
-      onKeyboardFocus          = onKeyboardFocus,
-      onKeyDown                = onKeyDown,
-      onKeyUp                  = onKeyUp,
-      onMouseDown              = onMouseDown,
-      onMouseLeave             = onMouseLeave,
-      onMouseUp                = onMouseUp,
-      onTouchEnd               = onTouchEnd,
-      onTouchMove              = onTouchMove,
-      onTouchStart             = onTouchStart,
-      role                     = role,
-      tabIndex                 = tabIndex
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    centerRipple.foreach(v => p.updateDynamic("centerRipple")(v))
+    className.foreach(v => p.updateDynamic("className")(v))
+    component.foreach(v => p.updateDynamic("component")(v))
+    disableRipple.foreach(v => p.updateDynamic("disableRipple")(v))
+    disabled.foreach(v => p.updateDynamic("disabled")(v))
+    focusRipple.foreach(v => p.updateDynamic("focusRipple")(v))
+    keyboardFocusedClassName.foreach(v => p.updateDynamic("keyboardFocusedClassName")(v))
+    onBlur.foreach(v => p.updateDynamic("onBlur")(v))
+    onClick.foreach(v => p.updateDynamic("onClick")(v))
+    onFocus.foreach(v => p.updateDynamic("onFocus")(v))
+    onKeyboardFocus.foreach(v => p.updateDynamic("onKeyboardFocus")(v))
+    onKeyDown.foreach(v => p.updateDynamic("onKeyDown")(v))
+    onKeyUp.foreach(v => p.updateDynamic("onKeyUp")(v))
+    onMouseDown.foreach(v => p.updateDynamic("onMouseDown")(v))
+    onMouseLeave.foreach(v => p.updateDynamic("onMouseLeave")(v))
+    onMouseUp.foreach(v => p.updateDynamic("onMouseUp")(v))
+    onTouchEnd.foreach(v => p.updateDynamic("onTouchEnd")(v))
+    onTouchMove.foreach(v => p.updateDynamic("onTouchMove")(v))
+    onTouchStart.foreach(v => p.updateDynamic("onTouchStart")(v))
+    role.foreach(v => p.updateDynamic("role")(v))
+    tabIndex.foreach(v => p.updateDynamic("tabIndex")(v))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -101,13 +99,13 @@ object ButtonBase {
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      centerRipple:             Boolean                           = false,
+      centerRipple:             js.UndefOr[Boolean]               = false,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
-      component:                String | ReactElement,
-      disableRipple:            Boolean                           = false,
-      disabled:                 Boolean,
-      focusRipple:              Boolean                           = false,
+      component:                js.UndefOr[String | ReactElement],
+      disableRipple:            js.UndefOr[Boolean]               = false,
+      disabled:                 js.UndefOr[Boolean]               = js.undefined,
+      focusRipple:              js.UndefOr[Boolean]               = false,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
       onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
       onClick:                  ReactHandler1[ReactMouseEvent]    = js.undefined,

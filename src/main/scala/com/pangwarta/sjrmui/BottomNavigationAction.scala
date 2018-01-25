@@ -23,11 +23,11 @@ object BottomNavigationAction {
   }
 
   private def props[A](
-      centerRipple:             Boolean,
+      centerRipple:             js.UndefOr[Boolean],
       classes:                  js.Dictionary[String],
       className:                js.UndefOr[String],
-      disableRipple:            Boolean,
-      focusRipple:              Boolean,
+      disableRipple:            js.UndefOr[Boolean],
+      focusRipple:              js.UndefOr[Boolean],
       keyboardFocusedClassName: js.UndefOr[String],
       onBlur:                   OnJSEv1[ReactEvent],
       onClick:                  OnJSEv1[ReactMouseEvent],
@@ -44,35 +44,35 @@ object BottomNavigationAction {
       role:                     js.UndefOr[String],
       icon:                     js.UndefOr[String | ReactElement],
       label:                    js.UndefOr[String | ReactElement],
+      onChange:                 OnJSEv2[ReactEvent, A],
       showLabel:                js.UndefOr[Boolean],
       value:                    js.UndefOr[A],
       otherProps:               (String, js.Any)*
   ): Props[A] = {
-    val p = js.Dynamic.literal(
-      centerRipple             = centerRipple,
-      classes                  = classes,
-      className                = className,
-      disableRipple            = disableRipple,
-      focusRipple              = focusRipple,
-      keyboardFocusedClassName = keyboardFocusedClassName,
-      onBlur                   = onBlur,
-      onClick                  = onClick,
-      onFocus                  = onFocus,
-      onKeyboardFocus          = onKeyboardFocus,
-      onKeyDown                = onKeyDown,
-      onKeyUp                  = onKeyUp,
-      onMouseDown              = onMouseDown,
-      onMouseLeave             = onMouseLeave,
-      onMouseUp                = onMouseUp,
-      onTouchEnd               = onTouchEnd,
-      onTouchMove              = onTouchMove,
-      onTouchStart             = onTouchStart,
-      role                     = role,
-      icon                     = icon,
-      label                    = label,
-      showLabel                = showLabel,
-      value                    = value
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    centerRipple.foreach(v => p.updateDynamic("centerRipple")(v))
+    className.foreach(v => p.updateDynamic("className")(v))
+    disableRipple.foreach(v => p.updateDynamic("disableRipple")(v))
+    focusRipple.foreach(v => p.updateDynamic("focusRipple")(v))
+    keyboardFocusedClassName.foreach(v => p.updateDynamic("keyboardFocusedClassName")(v))
+    onBlur.foreach(v => p.updateDynamic("onBlur")(v))
+    onClick.foreach(v => p.updateDynamic("onClick")(v))
+    onFocus.foreach(v => p.updateDynamic("onFocus")(v))
+    onKeyboardFocus.foreach(v => p.updateDynamic("onKeyboardFocus")(v))
+    onKeyDown.foreach(v => p.updateDynamic("onKeyDown")(v))
+    onKeyUp.foreach(v => p.updateDynamic("onKeyUp")(v))
+    onMouseDown.foreach(v => p.updateDynamic("onMouseDown")(v))
+    onMouseLeave.foreach(v => p.updateDynamic("onMouseLeave")(v))
+    onMouseUp.foreach(v => p.updateDynamic("onMouseUp")(v))
+    onTouchEnd.foreach(v => p.updateDynamic("onTouchEnd")(v))
+    onTouchMove.foreach(v => p.updateDynamic("onTouchMove")(v))
+    onTouchStart.foreach(v => p.updateDynamic("onTouchStart")(v))
+    role.foreach(v => p.updateDynamic("role")(v))
+    icon.foreach(v => p.updateDynamic("icon")(v))
+    label.foreach(v => p.updateDynamic("label")(v))
+    onChange.foreach(v => p.updateDynamic("onChange")(v))
+    showLabel.foreach(v => p.updateDynamic("showLabel")(v))
+    value.foreach(v => p.updateDynamic("value")(v.asInstanceOf[js.Any]))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props[A]]
   }
@@ -90,7 +90,7 @@ object BottomNavigationAction {
   private def component[A] = JsComponent[Props[A], Children.Varargs, Null](RawComponent)
 
   def apply[A](
-      centerRipple:             Boolean                           = false,
+      centerRipple:             js.UndefOr[Boolean]               = false,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
       icon:                     js.UndefOr[String | ReactElement] = js.undefined,
@@ -100,8 +100,8 @@ object BottomNavigationAction {
       selected:                 js.UndefOr[Boolean]               = js.undefined,
       showLabel:                js.UndefOr[Boolean]               = js.undefined,
       value:                    js.UndefOr[A]                     = js.undefined,
-      disableRipple:            Boolean                           = false,
-      focusRipple:              Boolean                           = false,
+      disableRipple:            js.UndefOr[Boolean]               = false,
+      focusRipple:              js.UndefOr[Boolean]               = false,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
       onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
       onFocus:                  ReactHandler1[ReactFocusEvent]    = js.undefined,
@@ -138,6 +138,7 @@ object BottomNavigationAction {
       role,
       icon,
       label,
+      onChange,
       showLabel,
       value,
       otherProps: _*

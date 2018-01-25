@@ -17,25 +17,23 @@ object BottomNavigation {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
     var onChange: OnJSEv2[ReactEvent, A] = js.native
-    var showLabels: Boolean = js.native
-    var value: A = js.native
+    var showLabels: js.UndefOr[Boolean] = js.native
+    var value: js.UndefOr[A] = js.native
   }
 
   private def props[A](
       classes:    js.Dictionary[String],
       className:  js.UndefOr[String],
       onChange:   OnJSEv2[ReactEvent, A],
-      showLabels: Boolean,
-      value:      A,
+      showLabels: js.UndefOr[Boolean],
+      value:      js.UndefOr[A],
       otherProps: (String, js.Any)*
   ): Props[A] = {
-    val p = js.Dynamic.literal(
-      classes    = classes,
-      className  = className,
-      onChange   = onChange,
-      showLabels = showLabels,
-      value      = value.asInstanceOf[js.Any]
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    className.foreach(v => p.updateDynamic("className")(v))
+    onChange.foreach(v => p.updateDynamic("onChange")(v))
+    showLabels.foreach(v => p.updateDynamic("showLabels")(v))
+    value.foreach(v => p.updateDynamic("value")(v.asInstanceOf[js.Any]))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props[A]]
   }
@@ -49,8 +47,8 @@ object BottomNavigation {
       classes:    Map[ClassKey, String]        = Map.empty,
       className:  js.UndefOr[String]           = js.undefined,
       onChange:   ReactHandler2[ReactEvent, A] = js.undefined,
-      showLabels: Boolean                      = false,
-      value:      A                            = 0
+      showLabels: js.UndefOr[Boolean]          = false,
+      value:      js.UndefOr[A]                = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

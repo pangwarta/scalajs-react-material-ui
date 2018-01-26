@@ -21,22 +21,20 @@ object Card {
   }
 
   private def props(
-      raised:     Boolean,
+      raised:     js.UndefOr[Boolean],
       classes:    Map[ClassKey, String],
       className:  js.UndefOr[String],
-      component:  String | ReactElement,
-      elevation:  Int,
-      square:     Boolean,
+      component:  js.UndefOr[String | ReactElement],
+      elevation:  js.UndefOr[Int],
+      square:     js.UndefOr[Boolean],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      raised    = raised,
-      classes   = classes,
-      className = className,
-      component = component,
-      elevation = elevation,
-      square    = square
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    raised.foreach(p.updateDynamic("raised")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    elevation.foreach(p.updateDynamic("elevation")(_))
+    square.foreach(p.updateDynamic("square")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

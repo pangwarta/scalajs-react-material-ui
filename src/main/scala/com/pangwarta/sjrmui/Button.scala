@@ -1,5 +1,6 @@
 package com.pangwarta.sjrmui
 
+import com.pangwarta.sjrmui.ButtonBase.ClassKey
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode
@@ -24,23 +25,24 @@ object Button {
 
   @js.native
   private[sjrmui] trait Props extends ButtonBase.Props {
-    var color: String = js.native
-    var dense: Boolean = js.native
-    var disableFocusRipple: Boolean = js.native
-    var fab: Boolean = js.native
+    var color: js.UndefOr[String] = js.native
+    var dense: js.UndefOr[Boolean] = js.native
+    var disableFocusRipple: js.UndefOr[Boolean] = js.native
+    var fab: js.UndefOr[Boolean] = js.native
+    var fullWidth: js.UndefOr[Boolean] = js.native
     var href: js.UndefOr[String] = js.native
-    var mini: Boolean = js.native
-    var raised: Boolean = js.native
+    var mini: js.UndefOr[Boolean] = js.native
+    var raised: js.UndefOr[Boolean] = js.native
   }
 
   private def props(
-      centerRipple:             Boolean,
+      centerRipple:             js.UndefOr[Boolean],
       classes:                  js.Dictionary[String],
       className:                js.UndefOr[String],
-      component:                String | ReactElement,
-      disableRipple:            Boolean,
-      disabled:                 Boolean,
-      focusRipple:              Boolean,
+      component:                js.UndefOr[String | ReactElement],
+      disableRipple:            js.UndefOr[Boolean],
+      disabled:                 js.UndefOr[Boolean],
+      focusRipple:              js.UndefOr[Boolean],
       keyboardFocusedClassName: js.UndefOr[String],
       onBlur:                   OnJSEv1[ReactEvent],
       onClick:                  OnJSEv1[ReactMouseEvent],
@@ -56,46 +58,46 @@ object Button {
       onTouchStart:             OnJSEv1[ReactTouchEvent],
       role:                     js.UndefOr[String],
       tabIndex:                 js.UndefOr[Int | String],
-      color:                    String,
-      dense:                    Boolean,
-      disableFocusRipple:       Boolean,
-      fab:                      Boolean,
+      color:                    js.UndefOr[String],
+      dense:                    js.UndefOr[Boolean],
+      disableFocusRipple:       js.UndefOr[Boolean],
+      fab:                      js.UndefOr[Boolean],
+      fullWidth:                js.UndefOr[Boolean],
       href:                     js.UndefOr[String],
-      mini:                     Boolean,
-      raised:                   Boolean,
+      mini:                     js.UndefOr[Boolean],
+      raised:                   js.UndefOr[Boolean],
       otherProps:               (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      centerRipple             = centerRipple,
-      classes                  = classes,
-      className                = className,
-      component                = component,
-      disableRipple            = disableRipple,
-      disabled                 = disabled,
-      focusRipple              = focusRipple,
-      keyboardFocusedClassName = keyboardFocusedClassName,
-      onBlur                   = onBlur,
-      onClick                  = onClick,
-      onFocus                  = onFocus,
-      onKeyboardFocus          = onKeyboardFocus,
-      onKeyDown                = onKeyDown,
-      onKeyUp                  = onKeyUp,
-      onMouseDown              = onMouseDown,
-      onMouseLeave             = onMouseLeave,
-      onMouseUp                = onMouseUp,
-      onTouchEnd               = onTouchEnd,
-      onTouchMove              = onTouchMove,
-      onTouchStart             = onTouchStart,
-      role                     = role,
-      tabIndex                 = tabIndex,
-      color                    = color,
-      dense                    = dense,
-      disableFocusRipple       = disableFocusRipple,
-      fab                      = fab,
-      href                     = href,
-      mini                     = mini,
-      raised                   = raised
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    centerRipple.foreach(p.updateDynamic("centerRipple")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    disableRipple.foreach(p.updateDynamic("disableRipple")(_))
+    disabled.foreach(p.updateDynamic("disabled")(_))
+    focusRipple.foreach(p.updateDynamic("focusRipple")(_))
+    keyboardFocusedClassName.foreach(p.updateDynamic("keyboardFocusedClassName")(_))
+    onBlur.foreach(p.updateDynamic("onBlur")(_))
+    onClick.foreach(p.updateDynamic("onClick")(_))
+    onFocus.foreach(p.updateDynamic("onFocus")(_))
+    onKeyboardFocus.foreach(p.updateDynamic("onKeyboardFocus")(_))
+    onKeyDown.foreach(p.updateDynamic("onKeyDown")(_))
+    onKeyUp.foreach(p.updateDynamic("onKeyUp")(_))
+    onMouseDown.foreach(p.updateDynamic("onMouseDown")(_))
+    onMouseLeave.foreach(p.updateDynamic("onMouseLeave")(_))
+    onMouseUp.foreach(p.updateDynamic("onMouseUp")(_))
+    onTouchEnd.foreach(p.updateDynamic("onTouchEnd")(_))
+    onTouchMove.foreach(p.updateDynamic("onTouchMove")(_))
+    onTouchStart.foreach(p.updateDynamic("onTouchStart")(_))
+    role.foreach(p.updateDynamic("role")(_))
+    tabIndex.foreach(p.updateDynamic("tabIndex")(_))
+    color.foreach(p.updateDynamic("color")(_))
+    dense.foreach(p.updateDynamic("dense")(_))
+    disableFocusRipple.foreach(p.updateDynamic("disableFocusRipple")(_))
+    fab.foreach(p.updateDynamic("fab")(_))
+    fullWidth.foreach(p.updateDynamic("fullWidth")(_))
+    href.foreach(p.updateDynamic("href")(_))
+    mini.foreach(p.updateDynamic("mini")(_))
+    raised.foreach(p.updateDynamic("raised")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -120,20 +122,13 @@ object Button {
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      color:                    Color                             = default,
-      dense:                    Boolean                           = false,
-      disableFocusRipple:       Boolean                           = false,
-      fab:                      Boolean                           = false,
-      href:                     js.UndefOr[String]                = js.undefined,
-      mini:                     Boolean                           = false,
-      raised:                   Boolean                           = false,
-      centerRipple:             Boolean                           = false,
+      centerRipple:             js.UndefOr[Boolean]               = false,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
-      component:                String | ReactElement             = "button",
-      disableRipple:            Boolean                           = false,
-      disabled:                 Boolean                           = false,
-      focusRipple:              Boolean                           = false,
+      component:                js.UndefOr[String | ReactElement] = js.undefined,
+      disableRipple:            js.UndefOr[Boolean]               = false,
+      disabled:                 js.UndefOr[Boolean]               = js.undefined,
+      focusRipple:              js.UndefOr[Boolean]               = false,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
       onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
       onClick:                  ReactHandler1[ReactMouseEvent]    = js.undefined,
@@ -148,7 +143,15 @@ object Button {
       onTouchMove:              ReactHandler1[ReactTouchEvent]    = js.undefined,
       onTouchStart:             ReactHandler1[ReactTouchEvent]    = js.undefined,
       role:                     js.UndefOr[String]                = js.undefined,
-      tabIndex:                 js.UndefOr[Int | String]          = js.undefined
+      tabIndex:                 js.UndefOr[Int | String]          = js.undefined,
+      color:                    js.UndefOr[Color]                 = default,
+      dense:                    js.UndefOr[Boolean]               = false,
+      disableFocusRipple:       js.UndefOr[Boolean]               = false,
+      fab:                      js.UndefOr[Boolean]               = false,
+      fullWidth:                js.UndefOr[Boolean]               = false,
+      href:                     js.UndefOr[String]                = js.undefined,
+      mini:                     js.UndefOr[Boolean]               = false,
+      raised:                   js.UndefOr[Boolean]               = false
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,
@@ -177,6 +180,7 @@ object Button {
       dense,
       disableFocusRipple,
       fab,
+      fullWidth,
       href,
       mini,
       raised,

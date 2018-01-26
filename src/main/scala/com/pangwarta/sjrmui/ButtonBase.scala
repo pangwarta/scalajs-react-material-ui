@@ -102,7 +102,7 @@ object ButtonBase {
       centerRipple:             js.UndefOr[Boolean]               = false,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
-      component:                js.UndefOr[String | ReactElement],
+      component:                js.UndefOr[String | ReactElement] = js.undefined,
       disableRipple:            js.UndefOr[Boolean]               = false,
       disabled:                 js.UndefOr[Boolean]               = js.undefined,
       focusRipple:              js.UndefOr[Boolean]               = false,

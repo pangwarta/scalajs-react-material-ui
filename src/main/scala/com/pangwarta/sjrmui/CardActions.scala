@@ -16,20 +16,18 @@ object CardActions {
   private[sjrmui] trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
-    var disableActionSpacing: Boolean = js.native
+    var disableActionSpacing: js.UndefOr[Boolean] = js.native
   }
 
   private def props(
       classes:              js.Dictionary[String],
       className:            js.UndefOr[String],
-      disableActionSpacing: Boolean,
+      disableActionSpacing: js.UndefOr[Boolean],
       otherProps:           (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      classes              = classes,
-      className            = className,
-      disableActionSpacing = disableActionSpacing
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    className.foreach(p.updateDynamic("className")(_))
+    disableActionSpacing.foreach(p.updateDynamic("disableActionSpacing")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

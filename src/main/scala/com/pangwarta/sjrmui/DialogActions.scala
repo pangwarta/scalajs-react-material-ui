@@ -23,11 +23,8 @@ object DialogActions {
       className:  js.UndefOr[String],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      classes    = classes,
-      className  = className,
-      otherProps = otherProps
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    className.foreach(p.updateDynamic("className")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

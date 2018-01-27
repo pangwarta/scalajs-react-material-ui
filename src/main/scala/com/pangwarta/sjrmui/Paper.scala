@@ -32,10 +32,10 @@ object Paper {
       otherProps: (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(classes = classes)
-    className.foreach(v => p.updateDynamic("className")(v))
-    component.foreach(v => p.updateDynamic("component")(v))
-    elevation.foreach(v => p.updateDynamic("elevation")(v))
-    square.foreach(v => p.updateDynamic("square")(v))
+    className.foreach(p.updateDynamic("className")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    elevation.foreach(p.updateDynamic("elevation")(_))
+    square.foreach(p.updateDynamic("square")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

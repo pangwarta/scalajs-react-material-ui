@@ -18,7 +18,8 @@ object CardContent {
   }
 
   private def props(className: js.UndefOr[String], otherProps: (String, js.Any)*): Props = {
-    val p = js.Dynamic.literal(className = className)
+    val p = js.Dynamic.literal()
+    className.foreach(p.updateDynamic("className")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

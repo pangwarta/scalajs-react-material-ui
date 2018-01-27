@@ -30,13 +30,11 @@ object CardHeader {
       title:      js.UndefOr[ReactElement],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      action    = action,
-      avatar    = avatar,
-      classes   = classes,
-      subheader = subheader,
-      title     = title
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    action.foreach(p.updateDynamic("action")(_))
+    avatar.foreach(p.updateDynamic("avatar")(_))
+    subheader.foreach(p.updateDynamic("subheader")(_))
+    title.foreach(p.updateDynamic("title")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

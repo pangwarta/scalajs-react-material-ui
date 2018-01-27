@@ -64,13 +64,13 @@ object AppBar {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:   Map[ClassKey, String] = Map.empty,
-      className: js.UndefOr[String]    = js.undefined,
-      component: String | ReactElement = "div",
-      elevation: Int                   = 2,
-      square:    Boolean               = false,
-      color:     js.UndefOr[Color]     = primary,
-      position:  js.UndefOr[Position]  = fixed
+      classes:   Map[ClassKey, String]             = Map.empty,
+      className: js.UndefOr[String]                = js.undefined,
+      component: js.UndefOr[String | ReactElement] = js.undefined,
+      elevation: js.UndefOr[Int]                   = js.undefined,
+      square:    js.UndefOr[Boolean]               = js.undefined,
+      color:     js.UndefOr[Color]                 = js.undefined,
+      position:  js.UndefOr[Position]              = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

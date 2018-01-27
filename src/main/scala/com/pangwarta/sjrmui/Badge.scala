@@ -56,7 +56,7 @@ object Badge {
       badgeContent: js.UndefOr[String | ReactElement] = js.undefined,
       classes:      Map[ClassKey, String]             = Map.empty,
       className:    js.UndefOr[String]                = js.undefined,
-      color:        js.UndefOr[Color]                 = Color.default
+      color:        js.UndefOr[Color]                 = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       badgeContent,

@@ -32,8 +32,8 @@ object Backdrop {
       classes = classes,
       open    = open
     )
-    invisible.foreach(v => p.updateDynamic("invisible")(v))
-    transitionDuration.foreach(v => p.updateDynamic("transitionDuration")(v))
+    invisible.foreach(p.updateDynamic("invisible")(_))
+    transitionDuration.foreach(p.updateDynamic("transitionDuration")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -46,7 +46,7 @@ object Backdrop {
 
   def apply(
       classes:            Map[String, String]             = Map.empty,
-      invisible:          js.UndefOr[Boolean]             = false,
+      invisible:          js.UndefOr[Boolean]             = js.undefined,
       open:               Boolean,
       transitionDuration: js.UndefOr[Transition.Duration] = js.undefined
   )(otherProps: (String, js.Any)*) = {

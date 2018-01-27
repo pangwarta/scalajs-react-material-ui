@@ -122,13 +122,13 @@ object Button {
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      centerRipple:             js.UndefOr[Boolean]               = false,
+      centerRipple:             js.UndefOr[Boolean]               = js.undefined,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
       component:                js.UndefOr[String | ReactElement] = js.undefined,
-      disableRipple:            js.UndefOr[Boolean]               = false,
+      disableRipple:            js.UndefOr[Boolean]               = js.undefined,
       disabled:                 js.UndefOr[Boolean]               = js.undefined,
-      focusRipple:              js.UndefOr[Boolean]               = false,
+      focusRipple:              js.UndefOr[Boolean]               = js.undefined,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
       onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
       onClick:                  ReactHandler1[ReactMouseEvent]    = js.undefined,
@@ -144,14 +144,14 @@ object Button {
       onTouchStart:             ReactHandler1[ReactTouchEvent]    = js.undefined,
       role:                     js.UndefOr[String]                = js.undefined,
       tabIndex:                 js.UndefOr[Int | String]          = js.undefined,
-      color:                    js.UndefOr[Color]                 = default,
-      dense:                    js.UndefOr[Boolean]               = false,
-      disableFocusRipple:       js.UndefOr[Boolean]               = false,
-      fab:                      js.UndefOr[Boolean]               = false,
-      fullWidth:                js.UndefOr[Boolean]               = false,
+      color:                    js.UndefOr[Color]                 = js.undefined,
+      dense:                    js.UndefOr[Boolean]               = js.undefined,
+      disableFocusRipple:       js.UndefOr[Boolean]               = js.undefined,
+      fab:                      js.UndefOr[Boolean]               = js.undefined,
+      fullWidth:                js.UndefOr[Boolean]               = js.undefined,
       href:                     js.UndefOr[String]                = js.undefined,
-      mini:                     js.UndefOr[Boolean]               = false,
-      raised:                   js.UndefOr[Boolean]               = false
+      mini:                     js.UndefOr[Boolean]               = js.undefined,
+      raised:                   js.UndefOr[Boolean]               = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,

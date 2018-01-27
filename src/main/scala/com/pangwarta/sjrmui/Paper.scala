@@ -74,9 +74,9 @@ object Paper {
   def apply(
       classes:   Map[ClassKey, String]             = Map.empty,
       className: js.UndefOr[String]                = js.undefined,
-      component: js.UndefOr[String | ReactElement] = "div",
-      elevation: js.UndefOr[Int]                   = 2,
-      square:    js.UndefOr[Boolean]               = false
+      component: js.UndefOr[String | ReactElement] = js.undefined,
+      elevation: js.UndefOr[Int]                   = js.undefined,
+      square:    js.UndefOr[Boolean]               = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

@@ -47,7 +47,7 @@ object BottomNavigation {
       classes:    Map[ClassKey, String]        = Map.empty,
       className:  js.UndefOr[String]           = js.undefined,
       onChange:   ReactHandler2[ReactEvent, A] = js.undefined,
-      showLabels: js.UndefOr[Boolean]          = false,
+      showLabels: js.UndefOr[Boolean]          = js.undefined,
       value:      js.UndefOr[A]                = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(

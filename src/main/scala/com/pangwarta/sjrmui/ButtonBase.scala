@@ -67,27 +67,27 @@ object ButtonBase {
       otherProps:               (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(classes = classes)
-    centerRipple.foreach(v => p.updateDynamic("centerRipple")(v))
-    className.foreach(v => p.updateDynamic("className")(v))
-    component.foreach(v => p.updateDynamic("component")(v))
-    disableRipple.foreach(v => p.updateDynamic("disableRipple")(v))
-    disabled.foreach(v => p.updateDynamic("disabled")(v))
-    focusRipple.foreach(v => p.updateDynamic("focusRipple")(v))
-    keyboardFocusedClassName.foreach(v => p.updateDynamic("keyboardFocusedClassName")(v))
-    onBlur.foreach(v => p.updateDynamic("onBlur")(v))
-    onClick.foreach(v => p.updateDynamic("onClick")(v))
-    onFocus.foreach(v => p.updateDynamic("onFocus")(v))
-    onKeyboardFocus.foreach(v => p.updateDynamic("onKeyboardFocus")(v))
-    onKeyDown.foreach(v => p.updateDynamic("onKeyDown")(v))
-    onKeyUp.foreach(v => p.updateDynamic("onKeyUp")(v))
-    onMouseDown.foreach(v => p.updateDynamic("onMouseDown")(v))
-    onMouseLeave.foreach(v => p.updateDynamic("onMouseLeave")(v))
-    onMouseUp.foreach(v => p.updateDynamic("onMouseUp")(v))
-    onTouchEnd.foreach(v => p.updateDynamic("onTouchEnd")(v))
-    onTouchMove.foreach(v => p.updateDynamic("onTouchMove")(v))
-    onTouchStart.foreach(v => p.updateDynamic("onTouchStart")(v))
-    role.foreach(v => p.updateDynamic("role")(v))
-    tabIndex.foreach(v => p.updateDynamic("tabIndex")(v))
+    centerRipple.foreach(p.updateDynamic("centerRipple")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    disableRipple.foreach(p.updateDynamic("disableRipple")(_))
+    disabled.foreach(p.updateDynamic("disabled")(_))
+    focusRipple.foreach(p.updateDynamic("focusRipple")(_))
+    keyboardFocusedClassName.foreach(p.updateDynamic("keyboardFocusedClassName")(_))
+    onBlur.foreach(p.updateDynamic("onBlur")(_))
+    onClick.foreach(p.updateDynamic("onClick")(_))
+    onFocus.foreach(p.updateDynamic("onFocus")(_))
+    onKeyboardFocus.foreach(p.updateDynamic("onKeyboardFocus")(_))
+    onKeyDown.foreach(p.updateDynamic("onKeyDown")(_))
+    onKeyUp.foreach(p.updateDynamic("onKeyUp")(_))
+    onMouseDown.foreach(p.updateDynamic("onMouseDown")(_))
+    onMouseLeave.foreach(p.updateDynamic("onMouseLeave")(_))
+    onMouseUp.foreach(p.updateDynamic("onMouseUp")(_))
+    onTouchEnd.foreach(p.updateDynamic("onTouchEnd")(_))
+    onTouchMove.foreach(p.updateDynamic("onTouchMove")(_))
+    onTouchStart.foreach(p.updateDynamic("onTouchStart")(_))
+    role.foreach(p.updateDynamic("role")(_))
+    tabIndex.foreach(p.updateDynamic("tabIndex")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -99,13 +99,13 @@ object ButtonBase {
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      centerRipple:             js.UndefOr[Boolean]               = false,
+      centerRipple:             js.UndefOr[Boolean]               = js.undefined,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
       component:                js.UndefOr[String | ReactElement] = js.undefined,
-      disableRipple:            js.UndefOr[Boolean]               = false,
+      disableRipple:            js.UndefOr[Boolean]               = js.undefined,
       disabled:                 js.UndefOr[Boolean]               = js.undefined,
-      focusRipple:              js.UndefOr[Boolean]               = false,
+      focusRipple:              js.UndefOr[Boolean]               = js.undefined,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
       onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
       onClick:                  ReactHandler1[ReactMouseEvent]    = js.undefined,

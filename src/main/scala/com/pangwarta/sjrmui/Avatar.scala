@@ -69,7 +69,7 @@ object Avatar {
       childrenClassName: js.UndefOr[String]                = js.undefined,
       classes:           Map[ClassKey, String]             = Map.empty,
       className:         js.UndefOr[String]                = js.undefined,
-      component:         js.UndefOr[String | ReactElement] = "div",
+      component:         js.UndefOr[String | ReactElement] = js.undefined,
       imgProps:          Map[String, String]               = Map.empty,
       sizes:             js.UndefOr[String]                = js.undefined,
       src:               js.UndefOr[String]                = js.undefined,

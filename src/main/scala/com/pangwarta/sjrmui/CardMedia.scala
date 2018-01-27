@@ -27,20 +27,20 @@ object CardMedia {
   private def props(
       classes:    js.Dictionary[String],
       className:  js.UndefOr[String],
-      component:  String | ReactElement,
+      component:  js.UndefOr[String | ReactElement],
       image:      js.UndefOr[String],
       src:        js.UndefOr[String],
       style:      js.Dictionary[String],
       otherProps: (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(
-      classes   = classes,
-      className = className,
-      component = component,
-      image     = image,
-      src       = src,
-      style     = style
+      classes = classes,
+      style   = style
     )
+    className.foreach(p.updateDynamic("className")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    image.foreach(p.updateDynamic("image")(_))
+    src.foreach(p.updateDynamic("src")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -52,12 +52,12 @@ object CardMedia {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:   Map[ClassKey, String] = Map.empty,
-      className: js.UndefOr[String]    = js.undefined,
-      component: String | ReactElement,
-      image:     js.UndefOr[String]    = js.undefined,
-      src:       js.UndefOr[String]    = js.undefined,
-      style:     Map[String, String]   = Map.empty
+      classes:   Map[ClassKey, String]             = Map.empty,
+      className: js.UndefOr[String]                = js.undefined,
+      component: js.UndefOr[String | ReactElement] = js.undefined,
+      image:     js.UndefOr[String]                = js.undefined,
+      src:       js.UndefOr[String]                = js.undefined,
+      style:     Map[String, String]               = Map.empty
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

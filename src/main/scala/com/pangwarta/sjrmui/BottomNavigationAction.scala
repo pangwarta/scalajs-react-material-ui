@@ -90,7 +90,7 @@ object BottomNavigationAction {
   private def component[A] = JsComponent[Props[A], Children.Varargs, Null](RawComponent)
 
   def apply[A](
-      centerRipple:             js.UndefOr[Boolean]               = false,
+      centerRipple:             js.UndefOr[Boolean]               = js.undefined,
       classes:                  Map[ClassKey, String]             = Map.empty,
       className:                js.UndefOr[String]                = js.undefined,
       icon:                     js.UndefOr[String | ReactElement] = js.undefined,
@@ -100,8 +100,8 @@ object BottomNavigationAction {
       selected:                 js.UndefOr[Boolean]               = js.undefined,
       showLabel:                js.UndefOr[Boolean]               = js.undefined,
       value:                    js.UndefOr[A]                     = js.undefined,
-      disableRipple:            js.UndefOr[Boolean]               = false,
-      focusRipple:              js.UndefOr[Boolean]               = false,
+      disableRipple:            js.UndefOr[Boolean]               = js.undefined,
+      focusRipple:              js.UndefOr[Boolean]               = js.undefined,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
       onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
       onFocus:                  ReactHandler1[ReactFocusEvent]    = js.undefined,

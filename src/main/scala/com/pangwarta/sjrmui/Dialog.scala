@@ -36,7 +36,7 @@ object Dialog {
     var onEnter: OptJsFun1[html.Element] = js.native
     var onEntering: OptJsFun1[html.Element] = js.native
     var onEntered: OptJsFun1[html.Element] = js.native
-    var onEscapeKeyUp: OnJSEv1[ReactKeyboardEvent] = js.native
+    var onEscapeKeyDown: OnJSEv1[ReactKeyboardEvent] = js.native
     var onExit: OptJsFun1[html.Element] = js.native
     var onExiting: OptJsFun1[html.Element] = js.native
     var onExited: OptJsFun1[html.Element] = js.native
@@ -59,7 +59,7 @@ object Dialog {
       onEnter:              OptJsFun1[html.Element],
       onEntering:           OptJsFun1[html.Element],
       onEntered:            OptJsFun1[html.Element],
-      onEscapeKeyUp:        OnJSEv1[ReactKeyboardEvent],
+      onEscapeKeyDown:      OnJSEv1[ReactKeyboardEvent],
       onExit:               OptJsFun1[html.Element],
       onExiting:            OptJsFun1[html.Element],
       onExited:             OptJsFun1[html.Element],
@@ -81,7 +81,7 @@ object Dialog {
     onEnter.foreach(p.updateDynamic("onEnter")(_))
     onEntering.foreach(p.updateDynamic("onEntering")(_))
     onEntered.foreach(p.updateDynamic("onEntered")(_))
-    onEscapeKeyUp.foreach(p.updateDynamic("onEscapeKeyUp")(_))
+    onEscapeKeyDown.foreach(p.updateDynamic("onEscapeKeyDown")(_))
     onExit.foreach(p.updateDynamic("onExit")(_))
     onExiting.foreach(p.updateDynamic("onExiting")(_))
     onExited.foreach(p.updateDynamic("onExited")(_))
@@ -104,7 +104,7 @@ object Dialog {
       onEnter:              Handler1[html.Element]            = js.undefined,
       onEntering:           Handler1[html.Element]            = js.undefined,
       onEntered:            Handler1[html.Element]            = js.undefined,
-      onEscapeKeyUp:        ReactHandler1[ReactKeyboardEvent] = js.undefined,
+      onEscapeKeyDown:      ReactHandler1[ReactKeyboardEvent] = js.undefined,
       onExit:               Handler1[html.Element]            = js.undefined,
       onExiting:            Handler1[html.Element]            = js.undefined,
       onExited:             Handler1[html.Element]            = js.undefined,
@@ -123,7 +123,7 @@ object Dialog {
       onEnter,
       onEntering,
       onEntered,
-      onEscapeKeyUp,
+      onEscapeKeyDown,
       onExit,
       onExiting,
       onExited,

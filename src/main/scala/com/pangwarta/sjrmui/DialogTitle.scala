@@ -16,20 +16,18 @@ object DialogTitle {
   private[sjrmui] trait Props extends js.Object {
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
-    var disableTypography: Boolean = js.native
+    var disableTypography: js.UndefOr[Boolean] = js.native
   }
 
   private def props(
       classes:           js.Dictionary[String],
       className:         js.UndefOr[String],
-      disableTypography: Boolean,
+      disableTypography: js.UndefOr[Boolean],
       otherProps:        (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      classes           = classes,
-      className         = className,
-      disableTypography = disableTypography
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    className.foreach(p.updateDynamic("className")(_))
+    disableTypography.foreach(p.updateDynamic("disableTypography")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

@@ -38,17 +38,15 @@ object Chip {
       tabIndex:   js.UndefOr[Int | String],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      avatar     = avatar,
-      className  = className,
-      classes    = classes,
-      deleteIcon = deleteIcon,
-      label      = label,
-      onClick    = onClick,
-      onKeyDown  = onKeyDown,
-      onDelete   = onDelete,
-      tabIndex   = tabIndex
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    avatar.foreach(p.updateDynamic("avatar")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    deleteIcon.foreach(p.updateDynamic("deleteIcon")(_))
+    label.foreach(p.updateDynamic("label")(_))
+    onClick.foreach(p.updateDynamic("onClick")(_))
+    onKeyDown.foreach(p.updateDynamic("onKeyDown")(_))
+    onDelete.foreach(p.updateDynamic("onDelete")(_))
+    tabIndex.foreach(p.updateDynamic("tabIndex")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

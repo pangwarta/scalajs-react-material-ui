@@ -1,6 +1,7 @@
 package com.pangwarta.sjrmui
 
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactNode
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
@@ -14,7 +15,7 @@ object Modal {
 
   @js.native
   private[sjrmui] trait Props extends Portal.Props {
-    // TODO: var BackdropComponent: js.UndefOr[???] = js.native
+    var BackdropComponent: js.UndefOr[ReactNode] = js.native
     var BackdropProps: js.UndefOr[Backdrop.Props] = js.native
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
@@ -29,11 +30,11 @@ object Modal {
     var onBackdropClick: OnJSEv1[ReactEventFromHtml] = js.native
     var onClose: OnJSEv2[ReactEventFromHtml, String] = js.native
     var onEscapeKeyDown: OnJSEv1[ReactMouseEventFromHtml] = js.native
-    var open: Boolean = js.native
+    var open: js.UndefOr[Boolean] = js.native
   }
 
   private def props(
-      // TODO: BackdropComponent:    js.UndefOr[Backdrop.ComponentType],
+      BackdropComponent:    js.UndefOr[ReactNode],
       BackdropProps:        js.UndefOr[Backdrop.Props],
       classes:              js.Dictionary[String],
       className:            js.UndefOr[String],
@@ -79,24 +80,25 @@ object Modal {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      // TODO: BackdropComponent:    js.UndefOr[Backdrop.Type] = Backdrop.component,
+      BackdropComponent:    js.UndefOr[ReactNode]                     = js.undefined,
       BackdropProps:        js.UndefOr[Backdrop.Props]                = js.undefined,
       classes:              Map[String, String]                       = Map.empty,
       className:            js.UndefOr[String]                        = js.undefined,
-      disableAutoFocus:     js.UndefOr[Boolean]                       = false,
-      disableBackdropClick: js.UndefOr[Boolean]                       = false,
-      disableEnforceFocus:  js.UndefOr[Boolean]                       = false,
-      disableEscapeKeyDown: js.UndefOr[Boolean]                       = false,
-      disableRestoreFocus:  js.UndefOr[Boolean]                       = false,
-      hideBackdrop:         js.UndefOr[Boolean]                       = false,
-      keepMounted:          js.UndefOr[Boolean]                       = false,
-      manager:              js.UndefOr[ModalManager]                  = new ModalManager(),
+      disableAutoFocus:     js.UndefOr[Boolean]                       = js.undefined,
+      disableBackdropClick: js.UndefOr[Boolean]                       = js.undefined,
+      disableEnforceFocus:  js.UndefOr[Boolean]                       = js.undefined,
+      disableEscapeKeyDown: js.UndefOr[Boolean]                       = js.undefined,
+      disableRestoreFocus:  js.UndefOr[Boolean]                       = js.undefined,
+      hideBackdrop:         js.UndefOr[Boolean]                       = js.undefined,
+      keepMounted:          js.UndefOr[Boolean]                       = js.undefined,
+      manager:              js.UndefOr[ModalManager]                  = js.undefined,
       onBackdropClick:      ReactHandler1[ReactEventFromHtml]         = js.undefined,
       onClose:              ReactHandler2[ReactEventFromHtml, String] = js.undefined,
       onEscapeKeyDown:      ReactHandler1[ReactMouseEventFromHtml]    = js.undefined,
       open:                 Boolean
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
+      BackdropComponent,
       BackdropProps,
       classes,
       className,

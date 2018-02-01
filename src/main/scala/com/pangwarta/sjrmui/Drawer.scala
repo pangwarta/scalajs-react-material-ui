@@ -1,12 +1,14 @@
 package com.pangwarta.sjrmui
 
 import com.pangwarta.sjrmui.internal.Transition
-import com.pangwarta.sjrmui.styles.Theme
 import com.pangwarta.sjrmui.transitions.Slide
 import japgolly.scalajs.react._
+import japgolly.scalajs.react.raw.ReactNode
+import japgolly.scalajs.react.vdom.VdomElement
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 object Drawer {
 
@@ -20,39 +22,61 @@ object Drawer {
     var elevation: js.UndefOr[Int] = js.native
     var ModalProps: js.UndefOr[Modal.Props] = js.native
     var SlideProps: js.UndefOr[Slide.Props] = js.native
-    var theme: js.UndefOr[Theme] = js.native
     var transitionDuration: js.UndefOr[Transition.Duration] = js.native
     var `type`: js.UndefOr[String] = js.native
   }
 
-  // TODO add more props when Modal is done
   private def props(
-      anchor:             js.UndefOr[String],
-      classes:            js.Dictionary[String],
-      className:          js.UndefOr[String],
-      elevation:          js.UndefOr[Int],
-      ModalProps:         js.UndefOr[Modal.Props],
-      onClose:            OnJSEv1[ReactEvent],
-      open:               js.UndefOr[Boolean],
-      SlideProps:         js.UndefOr[Slide.Props],
-      theme:              js.UndefOr[Theme],
-      transitionDuration: js.UndefOr[Transition.Duration],
-      `type`:             js.UndefOr[String],
-      otherProps:         (String, js.Any)*
+      container:            js.UndefOr[js.Any | js.Function],
+      onRendered:           js.UndefOr[js.Function0[Unit]],
+      BackdropComponent:    js.UndefOr[ReactNode],
+      BackdropProps:        js.UndefOr[Backdrop.Props],
+      classes:              js.Dictionary[String],
+      className:            js.UndefOr[String],
+      disableAutoFocus:     js.UndefOr[Boolean],
+      disableBackdropClick: js.UndefOr[Boolean],
+      disableEnforceFocus:  js.UndefOr[Boolean],
+      disableEscapeKeyDown: js.UndefOr[Boolean],
+      disableRestoreFocus:  js.UndefOr[Boolean],
+      hideBackdrop:         js.UndefOr[Boolean],
+      keepMounted:          js.UndefOr[Boolean],
+      manager:              js.UndefOr[ModalManager],
+      onBackdropClick:      OnJSEv1[ReactEventFromHtml],
+      onClose:              OnJSEv2[ReactEventFromHtml, String],
+      onEscapeKeyDown:      OnJSEv1[ReactMouseEventFromHtml],
+      open:                 js.UndefOr[Boolean],
+      anchor:               js.UndefOr[String],
+      elevation:            js.UndefOr[Int],
+      ModalProps:           js.UndefOr[Modal.Props],
+      SlideProps:           js.UndefOr[Slide.Props],
+      transitionDuration:   js.UndefOr[Transition.Duration],
+      `type`:               js.UndefOr[String],
+      otherProps:           (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      anchor             = anchor,
-      classes            = classes,
-      className          = className,
-      elevation          = elevation,
-      ModalProps         = ModalProps,
-      onClose            = onClose,
-      open               = open,
-      SlideProps         = SlideProps,
-      theme              = theme,
-      transitionDuration = transitionDuration,
-      `type`             = `type`
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    container.foreach(p.updateDynamic("container")(_))
+    onRendered.foreach(p.updateDynamic("onRendered")(_))
+    BackdropComponent.foreach(p.updateDynamic("BackdropComponent")(_))
+    BackdropProps.foreach(p.updateDynamic("BackdropProps")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    disableAutoFocus.foreach(p.updateDynamic("disableAutoFocus")(_))
+    disableBackdropClick.foreach(p.updateDynamic("disableBackdropClick")(_))
+    disableEnforceFocus.foreach(p.updateDynamic("disableEnforceFocus")(_))
+    disableEscapeKeyDown.foreach(p.updateDynamic("disableEscapeKeyDown")(_))
+    disableRestoreFocus.foreach(p.updateDynamic("disableRestoreFocus")(_))
+    hideBackdrop.foreach(p.updateDynamic("hideBackdrop")(_))
+    keepMounted.foreach(p.updateDynamic("keepMounted")(_))
+    manager.foreach(p.updateDynamic("manager")(_))
+    onBackdropClick.foreach(p.updateDynamic("onBackdropClick")(_))
+    onClose.foreach(p.updateDynamic("onClose")(_))
+    onEscapeKeyDown.foreach(p.updateDynamic("onEscapeKeyDown")(_))
+    open.foreach(p.updateDynamic("open")(_))
+    anchor.foreach(p.updateDynamic("anchor")(_))
+    elevation.foreach(p.updateDynamic("elevation")(_))
+    ModalProps.foreach(p.updateDynamic("ModalProps")(_))
+    SlideProps.foreach(p.updateDynamic("SlideProps")(_))
+    transitionDuration.foreach(p.updateDynamic("transitionDuration")(_))
+    `type`.foreach(p.updateDynamic("`type`")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -87,5 +111,61 @@ object Drawer {
     object modal extends ClassKey("modal")
   }
 
-  // TODO: def apply when done with Modal
+  private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
+
+  def apply(
+      container:            js.UndefOr[js.Any | js.Function]          = js.undefined,
+      onRendered:           js.UndefOr[js.Function0[Unit]]            = js.undefined,
+      BackdropComponent:    js.UndefOr[ReactNode]                     = js.undefined,
+      BackdropProps:        js.UndefOr[Backdrop.Props]                = js.undefined,
+      classes:              Map[String, String]                       = Map.empty,
+      className:            js.UndefOr[String]                        = js.undefined,
+      disableAutoFocus:     js.UndefOr[Boolean]                       = js.undefined,
+      disableBackdropClick: js.UndefOr[Boolean]                       = js.undefined,
+      disableEnforceFocus:  js.UndefOr[Boolean]                       = js.undefined,
+      disableEscapeKeyDown: js.UndefOr[Boolean]                       = js.undefined,
+      disableRestoreFocus:  js.UndefOr[Boolean]                       = js.undefined,
+      hideBackdrop:         js.UndefOr[Boolean]                       = js.undefined,
+      keepMounted:          js.UndefOr[Boolean]                       = js.undefined,
+      manager:              js.UndefOr[ModalManager]                  = js.undefined,
+      onBackdropClick:      ReactHandler1[ReactEventFromHtml]         = js.undefined,
+      onClose:              ReactHandler2[ReactEventFromHtml, String] = js.undefined,
+      onEscapeKeyDown:      ReactHandler1[ReactMouseEventFromHtml]    = js.undefined,
+      open:                 js.UndefOr[Boolean]                       = js.undefined,
+      anchor:               js.UndefOr[Anchor]                        = js.undefined,
+      elevation:            js.UndefOr[Int]                           = js.undefined,
+      ModalProps:           js.UndefOr[Modal.Props]                   = js.undefined,
+      SlideProps:           js.UndefOr[Slide.Props]                   = js.undefined,
+      transitionDuration:   js.UndefOr[Transition.Duration]           = js.undefined,
+      `type`:               js.UndefOr[String]                        = js.undefined
+  )(otherProps: (String, js.Any)*)(children: VdomElement*) = {
+    val p = props(
+      container,
+      onRendered,
+      BackdropComponent,
+      BackdropProps,
+      classes,
+      className,
+      disableAutoFocus,
+      disableBackdropClick,
+      disableEnforceFocus,
+      disableEscapeKeyDown,
+      disableRestoreFocus,
+      hideBackdrop,
+      keepMounted,
+      manager,
+      onBackdropClick,
+      onClose,
+      onEscapeKeyDown,
+      open,
+      anchor,
+      elevation,
+      ModalProps,
+      SlideProps,
+      transitionDuration,
+      `type`,
+      otherProps: _*
+    )
+    component(p)(children: _*)
+  }
 }

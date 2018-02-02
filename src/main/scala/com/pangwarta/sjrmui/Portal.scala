@@ -24,10 +24,9 @@ object Portal {
       onRendered: js.UndefOr[js.Function],
       otherProps: (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      container  = container,
-      onRendered = onRendered
-    )
+    val p = js.Dynamic.literal()
+    container.foreach(p.updateDynamic("container")(_))
+    onRendered.foreach(p.updateDynamic("onRendered")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

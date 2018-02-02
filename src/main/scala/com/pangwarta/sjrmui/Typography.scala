@@ -50,40 +50,38 @@ object Typography {
 
   @js.native
   private[sjrmui] trait Props extends js.Object {
-    var align: String = js.native
+    var align: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
-    var color: String = js.native
-    var component: String | ReactElement = js.native
-    var gutterBottom: Boolean = js.native
-    var noWrap: Boolean = js.native
-    var paragraph: Boolean = js.native
-    var `type`: String = js.native
+    var color: js.UndefOr[String] = js.native
+    var component: js.UndefOr[String | ReactElement] = js.native
+    var gutterBottom: js.UndefOr[Boolean] = js.native
+    var noWrap: js.UndefOr[Boolean] = js.native
+    var paragraph: js.UndefOr[Boolean] = js.native
+    var `type`: js.UndefOr[String] = js.native
   }
 
   private def props(
-      align:        String,
+      align:        js.UndefOr[String],
       classes:      js.Dictionary[String],
       className:    js.UndefOr[String],
-      color:        String,
-      component:    String | ReactElement,
-      gutterBottom: Boolean,
-      noWrap:       Boolean,
-      paragraph:    Boolean,
-      `type`:       String,
+      color:        js.UndefOr[String],
+      component:    js.UndefOr[String | ReactElement],
+      gutterBottom: js.UndefOr[Boolean],
+      noWrap:       js.UndefOr[Boolean],
+      paragraph:    js.UndefOr[Boolean],
+      `type`:       js.UndefOr[String],
       otherProps:   (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      align        = align,
-      classes      = classes,
-      className    = className,
-      color        = color,
-      component    = component,
-      gutterBottom = gutterBottom,
-      noWrap       = noWrap,
-      paragraph    = paragraph,
-      `type`       = `type`
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    align.foreach(p.updateDynamic("align")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    color.foreach(p.updateDynamic("color")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    gutterBottom.foreach(p.updateDynamic("gutterBottom")(_))
+    noWrap.foreach(p.updateDynamic("noWrap")(_))
+    paragraph.foreach(p.updateDynamic("paragraph")(_))
+    `type`.foreach(p.updateDynamic("type")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -119,15 +117,15 @@ object Typography {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      align:        Alignment             = Alignment.inherit,
-      classes:      Map[ClassKey, String] = Map.empty,
-      className:    js.UndefOr[String]    = js.undefined,
-      color:        Color                 = Color.default,
-      component:    String | ReactElement = "div",
-      gutterBottom: Boolean               = false,
-      noWrap:       Boolean               = false,
-      paragraph:    Boolean               = false,
-      `type`:       Type                  = Type.body1
+      align:        js.UndefOr[Alignment]             = js.undefined,
+      classes:      Map[ClassKey, String]             = Map.empty,
+      className:    js.UndefOr[String]                = js.undefined,
+      color:        js.UndefOr[Color]                 = js.undefined,
+      component:    js.UndefOr[String | ReactElement] = js.undefined,
+      gutterBottom: js.UndefOr[Boolean]               = js.undefined,
+      noWrap:       js.UndefOr[Boolean]               = js.undefined,
+      paragraph:    js.UndefOr[Boolean]               = js.undefined,
+      `type`:       js.UndefOr[Type]                  = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       align,

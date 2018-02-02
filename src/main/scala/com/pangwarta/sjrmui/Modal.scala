@@ -49,26 +49,25 @@ object Modal {
       onBackdropClick:      OnJSEv1[ReactEventFromHtml],
       onClose:              OnJSEv2[ReactEventFromHtml, String],
       onEscapeKeyDown:      OnJSEv1[ReactMouseEventFromHtml],
-      open:                 Boolean,
+      open:                 js.UndefOr[Boolean],
       otherProps:           (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      BackdropProps        = BackdropProps,
-      classes              = classes,
-      className            = className,
-      disableAutoFocus     = disableAutoFocus,
-      disableBackdropClick = disableBackdropClick,
-      disableEnforceFocus  = disableEnforceFocus,
-      disableEscapeKeyDown = disableEscapeKeyDown,
-      disableRestoreFocus  = disableRestoreFocus,
-      hideBackdrop         = hideBackdrop,
-      keepMounted          = keepMounted,
-      manager              = manager,
-      onBackdropClick      = onBackdropClick,
-      onClose              = onClose,
-      onEscapeKeyDown      = onEscapeKeyDown,
-      open                 = open
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    BackdropComponent.foreach(p.updateDynamic("BackdropComponent")(_))
+    BackdropProps.foreach(p.updateDynamic("BackdropProps")(_))
+    className.foreach(p.updateDynamic("className")(_))
+    disableAutoFocus.foreach(p.updateDynamic("disableAutoFocus")(_))
+    disableBackdropClick.foreach(p.updateDynamic("disableBackdropClick")(_))
+    disableEnforceFocus.foreach(p.updateDynamic("disableEnforceFocus")(_))
+    disableEscapeKeyDown.foreach(p.updateDynamic("disableEscapeKeyDown")(_))
+    disableRestoreFocus.foreach(p.updateDynamic("disableRestoreFocus")(_))
+    hideBackdrop.foreach(p.updateDynamic("hideBackdrop")(_))
+    keepMounted.foreach(p.updateDynamic("keepMounted")(_))
+    manager.foreach(p.updateDynamic("manager")(_))
+    onBackdropClick.foreach(p.updateDynamic("onBackdropClick")(_))
+    onClose.foreach(p.updateDynamic("onClose")(_))
+    onEscapeKeyDown.foreach(p.updateDynamic("onEscapeKeyDown")(_))
+    open.foreach(p.updateDynamic("open")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }

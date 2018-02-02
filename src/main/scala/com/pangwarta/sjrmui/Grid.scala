@@ -62,11 +62,11 @@ object Grid {
     var alignContent: js.UndefOr[String] = js.native
     var alignItems: js.UndefOr[String] = js.native
     var classes: js.Dictionary[String] = js.native
-    var component: String | ReactElement = js.native
-    var container: Boolean = js.native
+    var component: js.UndefOr[String | ReactElement] = js.native
+    var container: js.UndefOr[Boolean] = js.native
     var direction: js.UndefOr[String] = js.native
     var hidden: js.UndefOr[Hidden.Props] = js.native
-    var item: Boolean = js.native
+    var item: js.UndefOr[Boolean] = js.native
     var justify: js.UndefOr[String] = js.native
     var lg: js.UndefOr[Boolean | Int] = js.native
     var md: js.UndefOr[Boolean | Int] = js.native
@@ -81,11 +81,11 @@ object Grid {
       alignContent: js.UndefOr[String],
       alignItems:   js.UndefOr[String],
       classes:      js.Dictionary[String],
-      component:    String | ReactElement,
-      container:    Boolean,
+      component:    js.UndefOr[String | ReactElement],
+      container:    js.UndefOr[Boolean],
       direction:    js.UndefOr[String],
       hidden:       js.UndefOr[Hidden.Props],
-      item:         Boolean,
+      item:         js.UndefOr[Boolean],
       justify:      js.UndefOr[String],
       lg:           js.UndefOr[Boolean | Int],
       md:           js.UndefOr[Boolean | Int],
@@ -96,24 +96,22 @@ object Grid {
       xs:           js.UndefOr[Boolean | Int],
       otherProps:   (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      alignContent = alignContent,
-      alignItems   = alignItems,
-      classes      = classes,
-      component    = component,
-      container    = container,
-      direction    = direction,
-      hidden       = hidden,
-      item         = item,
-      justify      = justify,
-      lg           = lg,
-      md           = md,
-      sm           = sm,
-      spacing      = spacing,
-      wrap         = wrap,
-      xl           = xl,
-      xs           = xs
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    alignContent.foreach(p.updateDynamic("alignContent")(_))
+    alignItems.foreach(p.updateDynamic("alignItems")(_))
+    component.foreach(p.updateDynamic("component")(_))
+    container.foreach(p.updateDynamic("container")(_))
+    direction.foreach(p.updateDynamic("direction")(_))
+    hidden.foreach(p.updateDynamic("hidden")(_))
+    item.foreach(p.updateDynamic("item")(_))
+    justify.foreach(p.updateDynamic("justify")(_))
+    lg.foreach(p.updateDynamic("lg")(_))
+    md.foreach(p.updateDynamic("md")(_))
+    sm.foreach(p.updateDynamic("sm")(_))
+    spacing.foreach(p.updateDynamic("spacing")(_))
+    wrap.foreach(p.updateDynamic("wrap")(_))
+    xl.foreach(p.updateDynamic("xl")(_))
+    xs.foreach(p.updateDynamic("xs")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -160,22 +158,22 @@ object Grid {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      alignContent: js.UndefOr[AlignContent]  = js.undefined,
-      alignItems:   js.UndefOr[AlignItems]    = js.undefined,
-      classes:      Map[ClassKey, String]     = Map.empty,
-      component:    String | ReactElement     = "div",
-      container:    Boolean                   = false,
-      direction:    js.UndefOr[Direction]     = js.undefined,
-      hidden:       js.UndefOr[Hidden.Props]  = js.undefined,
-      item:         Boolean                   = false,
-      justify:      js.UndefOr[Justify]       = js.undefined,
-      lg:           js.UndefOr[Boolean | Int] = js.undefined,
-      md:           js.UndefOr[Boolean | Int] = js.undefined,
-      sm:           js.UndefOr[Boolean | Int] = js.undefined,
-      spacing:      js.UndefOr[Int]           = js.undefined,
-      wrap:         js.UndefOr[Wrap]          = js.undefined,
-      xl:           js.UndefOr[Boolean | Int] = js.undefined,
-      xs:           js.UndefOr[Boolean | Int] = js.undefined
+      alignContent: js.UndefOr[AlignContent]          = js.undefined,
+      alignItems:   js.UndefOr[AlignItems]            = js.undefined,
+      classes:      Map[ClassKey, String]             = Map.empty,
+      component:    js.UndefOr[String | ReactElement] = js.undefined,
+      container:    js.UndefOr[Boolean]               = js.undefined,
+      direction:    js.UndefOr[Direction]             = js.undefined,
+      hidden:       js.UndefOr[Hidden.Props]          = js.undefined,
+      item:         js.UndefOr[Boolean]               = js.undefined,
+      justify:      js.UndefOr[Justify]               = js.undefined,
+      lg:           js.UndefOr[Boolean | Int]         = js.undefined,
+      md:           js.UndefOr[Boolean | Int]         = js.undefined,
+      sm:           js.UndefOr[Boolean | Int]         = js.undefined,
+      spacing:      js.UndefOr[Int]                   = js.undefined,
+      wrap:         js.UndefOr[Wrap]                  = js.undefined,
+      xl:           js.UndefOr[Boolean | Int]         = js.undefined,
+      xs:           js.UndefOr[Boolean | Int]         = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       alignContent,

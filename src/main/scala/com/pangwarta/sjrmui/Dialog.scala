@@ -89,10 +89,20 @@ object Dialog {
     p.asInstanceOf[Props]
   }
 
+  sealed abstract case class ClassKey(get: String) extends StringType
+  object root extends ClassKey("root")
+  object hidden extends ClassKey("hidden")
+  object paper extends ClassKey("paper")
+  object paperWidthXs extends ClassKey("paperWidthXs")
+  object paperWidthSm extends ClassKey("paperWidthSm")
+  object paperWidthMd extends ClassKey("paperWidthMd")
+  object fullWidth extends ClassKey("fullWidth")
+  object fullScreen extends ClassKey("fullScreen")
+
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:              Map[String, String]               = Map.empty,
+      classes:              Map[ClassKey, String]             = Map.empty,
       className:            js.UndefOr[String]                = js.undefined,
       disableBackdropClick: js.UndefOr[Boolean]               = js.undefined,
       disableEscapeKeyUp:   js.UndefOr[Boolean]               = js.undefined,

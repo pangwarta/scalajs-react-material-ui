@@ -10,6 +10,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.|
 
+// TODO: Wrap theming?
 object Drawer {
 
   @JSImport("material-ui", "Drawer")
@@ -118,7 +119,7 @@ object Drawer {
       onRendered:           js.UndefOr[js.Function0[Unit]]            = js.undefined,
       BackdropComponent:    js.UndefOr[ReactNode]                     = js.undefined,
       BackdropProps:        js.UndefOr[Backdrop.Props]                = js.undefined,
-      classes:              Map[String, String]                       = Map.empty,
+      classes:              Map[ClassKey, String]                     = Map.empty,
       className:            js.UndefOr[String]                        = js.undefined,
       disableAutoFocus:     js.UndefOr[Boolean]                       = js.undefined,
       disableBackdropClick: js.UndefOr[Boolean]                       = js.undefined,

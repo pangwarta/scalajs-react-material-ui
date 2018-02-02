@@ -65,7 +65,7 @@ object Chip {
   def apply(
       avatar:     js.UndefOr[Avatar.Type]           = js.undefined,
       className:  js.UndefOr[String]                = js.undefined,
-      classes:    Map[String, String]               = Map.empty,
+      classes:    Map[ClassKey, String]             = Map.empty,
       deleteIcon: js.UndefOr[ReactElement]          = js.undefined,
       label:      js.UndefOr[ReactElement]          = js.undefined,
       onClick:    ReactHandler1[ReactMouseEvent]    = js.undefined,

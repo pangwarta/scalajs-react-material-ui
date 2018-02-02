@@ -47,11 +47,11 @@ object Divider {
   private val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
-      absolute:  js.UndefOr[Boolean] = js.undefined,
-      classes:   Map[String, String] = Map.empty,
-      className: js.UndefOr[String]  = js.undefined,
-      inset:     js.UndefOr[Boolean] = js.undefined,
-      light:     js.UndefOr[Boolean] = js.undefined
+      absolute:  js.UndefOr[Boolean]   = js.undefined,
+      classes:   Map[ClassKey, String] = Map.empty,
+      className: js.UndefOr[String]    = js.undefined,
+      inset:     js.UndefOr[Boolean]   = js.undefined,
+      light:     js.UndefOr[Boolean]   = js.undefined
   )(otherProps: (String, js.Any)*) = {
     val p = props(
       absolute,

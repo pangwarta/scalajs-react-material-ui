@@ -56,10 +56,10 @@ object Icon {
   object primary extends Color("primary")
 
   def apply(
-      classes:   Map[String, String] = Map.empty,
-      className: js.UndefOr[String]  = js.undefined,
-      color:     js.UndefOr[Color]   = js.undefined,
-      fontSize:  js.UndefOr[Boolean] = js.undefined
+      classes:   Map[ClassKey, String] = Map.empty,
+      className: js.UndefOr[String]    = js.undefined,
+      color:     js.UndefOr[Color]     = js.undefined,
+      fontSize:  js.UndefOr[Boolean]   = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

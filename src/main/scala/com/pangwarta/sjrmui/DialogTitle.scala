@@ -38,9 +38,9 @@ object DialogTitle {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:           Map[String, String] = Map.empty,
-      className:         js.UndefOr[String]  = js.undefined,
-      disableTypography: Boolean             = false
+      classes:           Map[ClassKey, String] = Map.empty,
+      className:         js.UndefOr[String]    = js.undefined,
+      disableTypography: Boolean               = false
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

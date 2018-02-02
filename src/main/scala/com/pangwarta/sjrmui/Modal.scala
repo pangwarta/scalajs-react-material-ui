@@ -81,7 +81,7 @@ object Modal {
   def apply(
       BackdropComponent:    js.UndefOr[ReactNode]                     = js.undefined,
       BackdropProps:        js.UndefOr[Backdrop.Props]                = js.undefined,
-      classes:              Map[String, String]                       = Map.empty,
+      classes:              Map[ClassKey, String]                     = Map.empty,
       className:            js.UndefOr[String]                        = js.undefined,
       disableAutoFocus:     js.UndefOr[Boolean]                       = js.undefined,
       disableBackdropClick: js.UndefOr[Boolean]                       = js.undefined,

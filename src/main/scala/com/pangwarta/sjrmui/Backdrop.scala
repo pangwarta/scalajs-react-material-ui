@@ -45,7 +45,7 @@ object Backdrop {
   val component = JsComponent[Props, Children.None, Null](RawComponent)
 
   def apply(
-      classes:            Map[String, String]             = Map.empty,
+      classes:            Map[ClassKey, String]           = Map.empty,
       invisible:          js.UndefOr[Boolean]             = js.undefined,
       open:               Boolean,
       transitionDuration: js.UndefOr[Transition.Duration] = js.undefined

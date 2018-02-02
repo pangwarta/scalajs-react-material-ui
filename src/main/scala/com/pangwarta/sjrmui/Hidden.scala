@@ -52,22 +52,21 @@ object Hidden {
       xsUp:           js.UndefOr[Boolean],
       otherProps:     (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      className      = className,
-      implementation = implementation,
-      initialWidth   = initialWidth,
-      lgDown         = lgDown,
-      lgUp           = lgUp,
-      mdDown         = mdDown,
-      mdUp           = mdUp,
-      only           = only,
-      smDown         = smDown,
-      smUp           = smUp,
-      xlDown         = xlDown,
-      xlUp           = xlUp,
-      xsDown         = xsDown,
-      xsUp           = xsUp
-    )
+    val p = js.Dynamic.literal()
+    className.foreach(p.updateDynamic("className")(_))
+    implementation.foreach(p.updateDynamic("implementation")(_))
+    initialWidth.foreach(p.updateDynamic("initialWidth")(_))
+    lgDown.foreach(p.updateDynamic("lgDown")(_))
+    lgUp.foreach(p.updateDynamic("lgUp")(_))
+    mdDown.foreach(p.updateDynamic("mdDown")(_))
+    mdUp.foreach(p.updateDynamic("mdUp")(_))
+    only.foreach(p.updateDynamic("only")(_))
+    smDown.foreach(p.updateDynamic("smDown")(_))
+    smUp.foreach(p.updateDynamic("smUp")(_))
+    xlDown.foreach(p.updateDynamic("xlDown")(_))
+    xlUp.foreach(p.updateDynamic("xlUp")(_))
+    xsDown.foreach(p.updateDynamic("xsDown")(_))
+    xsUp.foreach(p.updateDynamic("xsUp")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -82,19 +81,19 @@ object Hidden {
 
   def apply(
       className:      js.UndefOr[String]                        = js.undefined,
-      implementation: js.UndefOr[Implementation]                = Implementation.js,
+      implementation: js.UndefOr[Implementation]                = js.undefined,
       initialWidth:   js.UndefOr[Double]                        = js.undefined,
-      lgDown:         js.UndefOr[Boolean]                       = false,
-      lgUp:           js.UndefOr[Boolean]                       = false,
-      mdDown:         js.UndefOr[Boolean]                       = false,
-      mdUp:           js.UndefOr[Boolean]                       = false,
+      lgDown:         js.UndefOr[Boolean]                       = js.undefined,
+      lgUp:           js.UndefOr[Boolean]                       = js.undefined,
+      mdDown:         js.UndefOr[Boolean]                       = js.undefined,
+      mdUp:           js.UndefOr[Boolean]                       = js.undefined,
       only:           js.UndefOr[Breakpoint | List[Breakpoint]] = js.undefined,
-      smDown:         js.UndefOr[Boolean]                       = false,
-      smUp:           js.UndefOr[Boolean]                       = false,
-      xlDown:         js.UndefOr[Boolean]                       = false,
-      xlUp:           js.UndefOr[Boolean]                       = false,
-      xsDown:         js.UndefOr[Boolean]                       = false,
-      xsUp:           js.UndefOr[Boolean]                       = false
+      smDown:         js.UndefOr[Boolean]                       = js.undefined,
+      smUp:           js.UndefOr[Boolean]                       = js.undefined,
+      xlDown:         js.UndefOr[Boolean]                       = js.undefined,
+      xlUp:           js.UndefOr[Boolean]                       = js.undefined,
+      xsDown:         js.UndefOr[Boolean]                       = js.undefined,
+      xsUp:           js.UndefOr[Boolean]                       = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*)(implicit ev: ClassTag[Breakpoint]) = {
     val p = props(
       className,

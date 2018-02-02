@@ -34,15 +34,13 @@ object ExpansionPanel {
       onChange:        OnJSEv2[ReactEvent, Boolean],
       otherProps:      (String, js.Any)*
   ): Props = {
-    val p = js.Dynamic.literal(
-      classes         = classes,
-      className       = className,
-      CollapseProps   = CollapseProps,
-      defaultExpanded = defaultExpanded,
-      disabled        = disabled,
-      expanded        = expanded,
-      onChange        = onChange
-    )
+    val p = js.Dynamic.literal(classes = classes)
+    className.foreach(p.updateDynamic("className")(_))
+    CollapseProps.foreach(p.updateDynamic("CollapseProps")(_))
+    defaultExpanded.foreach(p.updateDynamic("defaultExpanded")(_))
+    disabled.foreach(p.updateDynamic("disabled")(_))
+    expanded.foreach(p.updateDynamic("expanded")(_))
+    onChange.foreach(p.updateDynamic("onChange")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -58,8 +56,8 @@ object ExpansionPanel {
       classes:         Map[String, String]          = Map.empty,
       className:       js.UndefOr[String]           = js.undefined,
       CollapseProps:   js.UndefOr[Collapse.Props]   = js.undefined,
-      defaultExpanded: js.UndefOr[Boolean]          = false,
-      disabled:        js.UndefOr[Boolean]          = false,
+      defaultExpanded: js.UndefOr[Boolean]          = js.undefined,
+      disabled:        js.UndefOr[Boolean]          = js.undefined,
       expanded:        js.UndefOr[Boolean]          = js.undefined,
       onChange:        OnJSEv2[ReactEvent, Boolean] = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {

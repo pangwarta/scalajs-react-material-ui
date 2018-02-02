@@ -28,7 +28,8 @@ object Main {
         ),
         AlertDialog(),
         Checkbox(value = "Check me")(),
-        Chip(avatar = Avatar()()("ZA"))()
+        Chip(avatar = Avatar()()("ZA"))(),
+        Icon(color = Icon.accent)()("add_circle")
       )
 
   private val CardExample =

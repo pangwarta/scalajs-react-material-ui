@@ -27,23 +27,22 @@ object MuiSvgIcon {
         key:          js.UndefOr[String],
         ref:          js.UndefOr[String],
         color:        js.UndefOr[String],
-        hoverColor:   js.UndefOr[String], // TODO: fix warning for this prop
+        hoverColor:   js.UndefOr[String],
         onMouseEnter: OnJSEv1[ReactMouseEventFromHtml],
         onMouseLeave: OnJSEv1[ReactMouseEventFromHtml],
         style:        js.UndefOr[CssProperties],
         viewBox:      js.UndefOr[String]
     ): MuiSvgIconProps = {
-      val props = js.Dynamic.literal(
-        key          = key,
-        ref          = ref,
-        color        = color,
-        hoverColor   = hoverColor,
-        onMouseEnter = onMouseEnter,
-        onMouseLeave = onMouseLeave,
-        style        = style,
-        viewBox      = viewBox
-      )
-      props.asInstanceOf[MuiSvgIconProps]
+      val p = js.Dynamic.literal()
+      key.foreach(p.updateDynamic("key")(_))
+      ref.foreach(p.updateDynamic("ref")(_))
+      color.foreach(p.updateDynamic("color")(_))
+      hoverColor.foreach(p.updateDynamic("hoverColor")(_))
+      onMouseEnter.foreach(p.updateDynamic("onMouseEnter")(_))
+      onMouseLeave.foreach(p.updateDynamic("onMouseLeave")(_))
+      style.foreach(p.updateDynamic("style")(_))
+      viewBox.foreach(p.updateDynamic("viewBox")(_))
+      p.asInstanceOf[MuiSvgIconProps]
     }
 
     def apply(

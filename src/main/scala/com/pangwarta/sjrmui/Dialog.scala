@@ -63,7 +63,7 @@ object Dialog {
       onExit:               OptJsFun1[html.Element],
       onExiting:            OptJsFun1[html.Element],
       onExited:             OptJsFun1[html.Element],
-      open:                 Boolean,
+      open:                 js.UndefOr[Boolean],
       otherProps:           (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(

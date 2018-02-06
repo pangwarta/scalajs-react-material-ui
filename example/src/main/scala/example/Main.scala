@@ -31,7 +31,8 @@ object Main {
         Checkbox(value = "Check me")(),
         Chip(avatar = Avatar()()("ZA"))(),
         Icon(color = Icon.accent)()("add_circle"),
-        IconButton()()(DeleteIcon()())
+        IconButton()()(DeleteIcon()()),
+        CircularProgress(color = CircularProgress.Color.primary)()
       )
 
   private val CardExample =

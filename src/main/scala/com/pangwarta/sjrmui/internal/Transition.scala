@@ -1,5 +1,6 @@
 package com.pangwarta.sjrmui.internal
 
+import com.pangwarta.sjrmui._
 import org.scalajs.dom.html
 
 import scala.scalajs.js
@@ -36,13 +37,23 @@ object Transition {
   }
 
   @js.native
+  trait HandlerOpts extends js.Object {
+    var onEnter: OptJsFun1[html.Element] = js.native
+    var onEntering: OptJsFun1[html.Element] = js.native
+    var onEntered: OptJsFun1[html.Element] = js.native
+    var onExit: OptJsFun1[html.Element] = js.native
+    var onExiting: OptJsFun1[html.Element] = js.native
+    var onExited: OptJsFun1[html.Element] = js.native
+  }
+
+  @js.native
   trait Props extends js.Object {
-    var onEnter: js.UndefOr[Callback] = js.native
-    var onEntering: js.UndefOr[Callback] = js.native
-    var onEntered: js.UndefOr[Callback] = js.native
-    var onExit: js.UndefOr[Callback] = js.native
-    var onExiting: js.UndefOr[Callback] = js.native
-    var onExited: js.UndefOr[Callback] = js.native
+    var onEnter: OptJsFun1[html.Element] = js.native
+    var onEntering: OptJsFun1[html.Element] = js.native
+    var onEntered: OptJsFun1[html.Element] = js.native
+    var onExit: OptJsFun1[html.Element] = js.native
+    var onExiting: OptJsFun1[html.Element] = js.native
+    var onExited: OptJsFun1[html.Element] = js.native
     var style: js.UndefOr[js.Object] = js.native
     var className: js.UndefOr[String] = js.native
     var in: Boolean = js.native

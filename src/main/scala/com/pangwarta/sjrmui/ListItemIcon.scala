@@ -6,9 +6,9 @@ import japgolly.scalajs.react.vdom.VdomNode
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-object ListItemAvatar {
+object ListItemIcon {
 
-  @JSImport("material-ui", "ListItemAvatar")
+  @JSImport("material-ui", "ListItemIcon")
   @js.native
   private object RawComponent extends js.Object
 
@@ -31,7 +31,6 @@ object ListItemAvatar {
 
   sealed abstract case class ClassKey(get: String) extends StringType
   object root extends ClassKey("root")
-  object icon extends ClassKey("icon")
 
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 

@@ -1,6 +1,6 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.styles.Breakpoint
+import styles.Breakpoint
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.VdomNode
 

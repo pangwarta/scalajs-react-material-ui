@@ -1,6 +1,6 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.Paper.ClassKey
+import Paper.ClassKey
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw.ReactElement
 import japgolly.scalajs.react.vdom.VdomNode

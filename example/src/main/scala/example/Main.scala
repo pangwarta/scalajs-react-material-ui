@@ -1,12 +1,11 @@
 package example
 
 import com.pangwarta.sjrmui._
-import com.pangwarta.sjrmui.Typography.Type
+import icons.MuiSvgIcons.DeleteIcon
 import example.CssSettings._
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom
 import ExampleStyles._
-import com.pangwarta.sjrmui.icons.MuiSvgIcons.DeleteIcon
 
 import scalacss.ScalaCssReact._
 
@@ -24,7 +23,7 @@ object Main {
         Paper.shadow2 -> ExampleStyles.paperShadow2
       )
     )("foo" -> "bar")(
-        Typography(component = "p", `type` = Type.body1)()(
+        Typography(component = "p", `type` = Typography.Type.body1)()(
           "The quick brown fox jumps over the lazy dog."
         ),
         AlertDialog(),

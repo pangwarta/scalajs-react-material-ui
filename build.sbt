@@ -33,7 +33,7 @@ lazy val root = (project in file("."))
       "com.github.japgolly.scalajs-react" %%% "core"        % "1.1.1"     ::
       "com.github.japgolly.scalajs-react" %%% "extra"       % "1.1.1"     ::
       "org.scala-js"                      %%% "scalajs-dom" % "0.9.2"     ::
-      "org.typelevel"                     %%  "cats-core"   % "1.0.0-RC1" ::
+      "org.typelevel"                     %%  "cats-core"   % "1.0.1"     ::
       Nil,
     name := "scalajs-react-material-ui",
     commonSettings

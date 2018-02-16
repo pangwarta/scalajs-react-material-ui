@@ -1,8 +1,7 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.internal.Transition
-import japgolly.scalajs.react.{ CtorType, _ }
-import japgolly.scalajs.react.component.Js.{ Component, RawMounted, UnmountedWithRawType }
+import internal.Transition
+import japgolly.scalajs.react._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport

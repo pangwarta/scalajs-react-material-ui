@@ -1,6 +1,6 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.transitions.Collapse
+import transitions.Collapse
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.VdomNode
 

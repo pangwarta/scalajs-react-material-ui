@@ -1,7 +1,7 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.internal.Transition
-import com.pangwarta.sjrmui.transitions.Slide
+import internal.Transition
+import transitions.Slide
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw.ReactNode
 import japgolly.scalajs.react.vdom.VdomElement

@@ -1,7 +1,7 @@
 package com.pangwarta.sjrmui
 
-import com.pangwarta.sjrmui.BottomNavigationAction.icon
-import com.pangwarta.sjrmui.icons.MuiSvgIcons._
+import BottomNavigationAction.icon
+import icons.MuiSvgIcons._
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.raw._
 

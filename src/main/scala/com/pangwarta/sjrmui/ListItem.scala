@@ -52,13 +52,15 @@ object ListItem {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   sealed abstract case class ClassKey(get: String) extends StringType
+  object button extends ClassKey("button")
   object container extends ClassKey("container")
-  object keyboardFocused extends ClassKey("keyboardFocused")
   object default extends ClassKey("default")
   object dense extends ClassKey("dense")
+  object disabled extends ClassKey("disabled")
   object divider extends ClassKey("divider")
   object gutters extends ClassKey("gutters")
-  object button extends ClassKey("button")
+  object keyboardFocused extends ClassKey("keyboardFocused")
+  object root extends ClassKey("root")
   object secondaryAction extends ClassKey("secondaryAction")
 
   def apply(

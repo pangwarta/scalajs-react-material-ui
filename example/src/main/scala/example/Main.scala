@@ -29,7 +29,7 @@ object Main {
         AlertDialog(),
         Checkbox(value = "Check me")(),
         Chip(avatar = Avatar()()("ZA"))(),
-        Icon(color = Icon.accent)()("add_circle"),
+        Icon(color = Icon.secondary)()("add_circle"),
         IconButton()()(DeleteIcon()()),
         CircularProgress(color = CircularProgress.Color.primary)()
       )

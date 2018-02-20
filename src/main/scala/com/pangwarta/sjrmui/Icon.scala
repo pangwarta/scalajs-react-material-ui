@@ -48,9 +48,8 @@ object Icon {
 
   abstract sealed case class Color(get: String) extends StringType
   object inherit extends Color("inherit")
-  object accent extends Color("accent")
+  object secondary extends Color("secondary")
   object action extends Color("action")
-  object contrast extends Color("contrast")
   object disabled extends Color("disabled")
   object error extends Color("error")
   object primary extends Color("primary")

@@ -68,23 +68,23 @@ object Radio {
   type ClassKey = SwitchBase.ClassKey
 
   def apply(
-      checked:        js.UndefOr[Boolean | String] = js.undefined,
-      checkedIcon:    js.UndefOr[ReactNode]        = js.undefined,
-      classes:        Map[ClassKey, String]        = Map.empty,
-      className:      js.UndefOr[String]           = js.undefined,
-      color:          js.UndefOr[Color]            = js.undefined,
-      defaultChecked: js.UndefOr[Boolean]          = js.undefined,
-      disabled:       js.UndefOr[Boolean]          = js.undefined,
-      disableRipple:  js.UndefOr[Boolean]          = js.undefined,
-      icon:           js.UndefOr[ReactNode]        = js.undefined,
-      id:             js.UndefOr[String]           = js.undefined,
-      inputProps:     js.UndefOr[js.Object]        = js.undefined,
-      inputRef:       js.UndefOr[RefFn]            = js.undefined,
-      name:           js.UndefOr[String]           = js.undefined,
-      onChange:       OnJSEv2[ReactEvent, Boolean] = js.undefined,
-      tabIndex:       js.UndefOr[Int | String]     = js.undefined,
-      `type`:         js.UndefOr[String]           = js.undefined,
-      value:          js.UndefOr[String]           = js.undefined
+      checked:        js.UndefOr[Boolean | String]       = js.undefined,
+      checkedIcon:    js.UndefOr[ReactNode]              = js.undefined,
+      classes:        Map[ClassKey, String]              = Map.empty,
+      className:      js.UndefOr[String]                 = js.undefined,
+      color:          js.UndefOr[Color]                  = js.undefined,
+      defaultChecked: js.UndefOr[Boolean]                = js.undefined,
+      disabled:       js.UndefOr[Boolean]                = js.undefined,
+      disableRipple:  js.UndefOr[Boolean]                = js.undefined,
+      icon:           js.UndefOr[ReactNode]              = js.undefined,
+      id:             js.UndefOr[String]                 = js.undefined,
+      inputProps:     js.UndefOr[js.Object]              = js.undefined,
+      inputRef:       js.UndefOr[RefFn]                  = js.undefined,
+      name:           js.UndefOr[String]                 = js.undefined,
+      onChange:       ReactHandler2[ReactEvent, Boolean] = js.undefined,
+      tabIndex:       js.UndefOr[Int | String]           = js.undefined,
+      `type`:         js.UndefOr[String]                 = js.undefined,
+      value:          js.UndefOr[String]                 = js.undefined
   )(otherProps: (String, js.Any)*) = {
     val p = props(
       checked,

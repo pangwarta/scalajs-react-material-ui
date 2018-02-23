@@ -20,6 +20,7 @@ object Grow {
     var appear: js.UndefOr[Boolean] = js.native
     var in: js.UndefOr[Boolean] = js.native
     var style: js.UndefOr[js.Object] = js.native
+    var theme: js.UndefOr[js.Object] = js.native
     var timeout: js.UndefOr[Transition.Duration] = js.native
     var transitionClasses: js.UndefOr[Transition.Classes] = js.native
   }
@@ -34,6 +35,7 @@ object Grow {
       onExiting:         OptJsFun1[html.Element],
       onExited:          OptJsFun1[html.Element],
       style:             js.UndefOr[js.Object],
+      theme:             js.UndefOr[js.Object],
       timeout:           js.UndefOr[Transition.Duration],
       transitionClasses: js.UndefOr[Transition.Classes],
       otherProps:        (String, js.Any)*
@@ -48,6 +50,7 @@ object Grow {
     onExiting.foreach(p.updateDynamic("onExiting")(_))
     onExited.foreach(p.updateDynamic("onExited")(_))
     style.foreach(p.updateDynamic("style")(_))
+    theme.foreach(p.updateDynamic("theme")(_))
     timeout.foreach(p.updateDynamic("timeout")(_))
     transitionClasses.foreach(p.updateDynamic("transitionClasses")(_))
     addOtherProps(p, otherProps: _*)
@@ -66,6 +69,7 @@ object Grow {
       onExiting:         Handler1[html.Element]          = js.undefined,
       onExited:          Handler1[html.Element]          = js.undefined,
       style:             js.UndefOr[js.Object]           = js.undefined,
+      theme:             js.UndefOr[js.Object]           = js.undefined,
       timeout:           js.UndefOr[Transition.Duration] = js.undefined,
       transitionClasses: js.UndefOr[Transition.Classes]  = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
@@ -79,6 +83,7 @@ object Grow {
       onExiting,
       onExited,
       style,
+      theme,
       timeout,
       transitionClasses,
       otherProps: _*

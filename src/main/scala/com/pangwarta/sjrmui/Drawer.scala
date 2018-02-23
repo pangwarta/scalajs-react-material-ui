@@ -23,6 +23,7 @@ object Drawer {
     var elevation: js.UndefOr[Int] = js.native
     var ModalProps: js.UndefOr[Modal.Props] = js.native
     var SlideProps: js.UndefOr[Slide.Props] = js.native
+    var theme: js.UndefOr[js.Object] = js.native
     var transitionDuration: js.UndefOr[Transition.Duration] = js.native
     var `type`: js.UndefOr[String] = js.native
   }
@@ -50,6 +51,7 @@ object Drawer {
       elevation:            js.UndefOr[Int],
       ModalProps:           js.UndefOr[Modal.Props],
       SlideProps:           js.UndefOr[Slide.Props],
+      theme:                js.UndefOr[js.Object],
       transitionDuration:   js.UndefOr[Transition.Duration],
       `type`:               js.UndefOr[String],
       otherProps:           (String, js.Any)*
@@ -76,6 +78,7 @@ object Drawer {
     elevation.foreach(p.updateDynamic("elevation")(_))
     ModalProps.foreach(p.updateDynamic("ModalProps")(_))
     SlideProps.foreach(p.updateDynamic("SlideProps")(_))
+    theme.foreach(p.updateDynamic("theme")(_))
     transitionDuration.foreach(p.updateDynamic("transitionDuration")(_))
     `type`.foreach(p.updateDynamic("`type`")(_))
     addOtherProps(p, otherProps: _*)
@@ -137,6 +140,7 @@ object Drawer {
       elevation:            js.UndefOr[Int]                           = js.undefined,
       ModalProps:           js.UndefOr[Modal.Props]                   = js.undefined,
       SlideProps:           js.UndefOr[Slide.Props]                   = js.undefined,
+      theme:                js.UndefOr[js.Object]                     = js.undefined,
       transitionDuration:   js.UndefOr[Transition.Duration]           = js.undefined,
       `type`:               js.UndefOr[String]                        = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomElement*) = {
@@ -163,6 +167,7 @@ object Drawer {
       elevation,
       ModalProps,
       SlideProps,
+      theme,
       transitionDuration,
       `type`,
       otherProps: _*

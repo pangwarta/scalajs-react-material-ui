@@ -56,7 +56,7 @@ object Transition {
     var onExited: OptJsFun1[html.Element] = js.native
     var style: js.UndefOr[js.Object] = js.native
     var className: js.UndefOr[String] = js.native
-    var in: Boolean = js.native
+    var in: js.UndefOr[Boolean] = js.native
     var appear: js.UndefOr[Boolean] = js.native
     var unmountOnExit: js.UndefOr[Boolean] = js.native
   }

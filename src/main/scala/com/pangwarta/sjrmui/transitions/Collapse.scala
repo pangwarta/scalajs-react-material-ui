@@ -32,6 +32,7 @@ object Collapse {
     var onExit: OptJsFun1[html.Element] = js.native
     var onExiting: OptJsFun1[html.Element] = js.native
     var style: js.UndefOr[js.Object] = js.native
+    var theme: js.UndefOr[js.Object] = js.native
     var timeout: js.UndefOr[Transition.Duration | auto.type] = js.native
   }
 
@@ -48,6 +49,7 @@ object Collapse {
       onExit:          OptJsFun1[html.Element],
       onExiting:       OptJsFun1[html.Element],
       style:           js.UndefOr[js.Object],
+      theme:           js.UndefOr[js.Object],
       timeout:         js.UndefOr[Transition.Duration | auto.type],
       otherProps:      (String, js.Any)*
   ): Props = {
@@ -63,6 +65,7 @@ object Collapse {
     onExit.foreach(p.updateDynamic("onExit")(_))
     onExiting.foreach(p.updateDynamic("onExiting")(_))
     style.foreach(p.updateDynamic("style")(_))
+    theme.foreach(p.updateDynamic("theme")(_))
     timeout.foreach(p.updateDynamic("timeout")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
@@ -87,6 +90,7 @@ object Collapse {
       onExit:          Handler1[html.Element]                      = js.undefined,
       onExiting:       Handler1[html.Element]                      = js.undefined,
       style:           js.UndefOr[js.Object]                       = js.undefined,
+      theme:           js.UndefOr[js.Object]                       = js.undefined,
       timeout:         js.UndefOr[Transition.Duration | auto.type] = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
@@ -102,6 +106,7 @@ object Collapse {
       onExit,
       onExiting,
       style,
+      theme,
       timeout,
       otherProps: _*
     )

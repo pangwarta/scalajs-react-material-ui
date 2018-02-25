@@ -20,7 +20,7 @@ object Menu {
     var classes: js.Dictionary[String] = js.native
     var MenuListProps: js.UndefOr[MenuList.Props] = js.native
     var onClose: OnJSEv1[ReactEvent] = js.native
-    var open: Boolean = js.native
+    var open: js.UndefOr[Boolean] = js.native
     var PaperProps: js.UndefOr[Paper.Props] = js.native
     var PopoverClasses: js.UndefOr[Popover.Props] = js.native
     var theme: js.UndefOr[js.Object] = js.native

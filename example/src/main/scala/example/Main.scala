@@ -19,8 +19,8 @@ object Main {
   private val PaperExample =
     Paper(
       classes = Map(
-        Paper.root -> Seq(ExampleStyles.paper, ExampleStyles.paperExample),
-        Paper.shadow2 -> ExampleStyles.paperShadow2
+        Paper.ClassKey.root -> Seq(ExampleStyles.paper, ExampleStyles.paperExample),
+        Paper.ClassKey.shadow2 -> ExampleStyles.paperShadow2
       )
     )("foo" -> "bar")(
         Typography(component = "p", `type` = Typography.Type.body1)()(

@@ -8,8 +8,8 @@ import scala.scalajs.js.|
 
 @js.native
 trait Transition extends js.Object {
-  var enter: Double = js.native
-  var exit: Double = js.native
+  var enter: Int = js.native
+  var exit: Int = js.native
 }
 
 object Transition {

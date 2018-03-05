@@ -54,6 +54,7 @@ object Slide {
     style.foreach(p.updateDynamic("style")(_))
     theme.foreach(p.updateDynamic("theme")(_))
     timeout.foreach(p.updateDynamic("timeout")(_))
+    addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
 

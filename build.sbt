@@ -1,7 +1,7 @@
 import scalariform.formatter.preferences._
 
 lazy val commonSettings = Seq(
-  version := "0.0.0-SNAPSHOT",
+  version := "0.1.0-SNAPSHOT",
   scalaVersion := "2.12.4",
   scalariformPreferences := scalariformPreferences.value
     .setPreference(AlignArguments, true)
@@ -36,7 +36,10 @@ lazy val root = (project in file("."))
       "org.typelevel"                     %%  "cats-core"   % "1.0.1"     ::
       Nil,
     name := "scalajs-react-material-ui",
-    commonSettings
+    commonSettings,
+    organization := "com.pangwarta",
+    licenses += ("Apache 2.0",  url("http://www.apache.org/licenses/LICENSE-2.0")),
+    mappings.in(Compile, packageBin) += baseDirectory.in(ThisBuild).value / "LICENSE" -> "LICENSE"
   ).enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 lazy val example = (project in file("example"))
@@ -47,3 +50,30 @@ lazy val example = (project in file("example"))
     scalaJSUseMainModuleInitializer in Test := false,
     scalacOptions += "-Ypartial-unification"
   ).enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
+
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+
+pomExtra :=
+  <scm>
+    <connection>scm:git:github.com:pangwarta/scalajs-react-material-ui</connection>
+    <developerConnection>scm:git@github.com:pangwarta/scalajs-react-material-ui.git</developerConnection>
+    <url>github.com:pangwarta/scalajs-react-material-ui.git</url>
+  </scm>
+    <developers>
+      <developer>
+        <id>zach-albia</id>
+        <name>Zachary Albia</name>
+      </developer>
+      <developer>
+        <id>KD</id>
+        <name>Kent Dun Lagaras</name>
+      </developer>
+    </developers>
+
+credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")

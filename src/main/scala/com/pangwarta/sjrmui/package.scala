@@ -26,8 +26,8 @@ package object sjrmui {
 
   private[sjrmui] val defaultTransitionDuration: Transition = {
     val d = (new js.Object).asInstanceOf[Transition]
-    d.enter = 0.0
-    d.exit = 0.0
+    d.enter = 0
+    d.exit = 0
     d
   }
 

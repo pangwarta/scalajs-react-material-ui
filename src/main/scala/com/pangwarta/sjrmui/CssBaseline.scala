@@ -6,9 +6,9 @@ import japgolly.scalajs.react.raw.ReactElement
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
-object Reboot {
+object CssBaseline {
 
-  @JSImport("material-ui", "Reboot")
+  @JSImport("material-ui", "CssBaseline")
   @js.native
   private object RawComponent extends js.Object
 

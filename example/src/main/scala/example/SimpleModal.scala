@@ -21,10 +21,10 @@ object SimpleModal {
         )(
             <.div(
               ExampleStyles.modalStyle(),
-              Typography(`type` = Typography.Type.title)("id" -> "modal-title")(
+              Typography(variant = Typography.Variant.title)("id" -> "modal-title")(
                 "Text in a modal"
               ),
-              Typography(`type` = Typography.Type.subheading)("id" -> "simple-modal-description")(
+              Typography(variant = Typography.Variant.subheading)("id" -> "simple-modal-description")(
                 "Duis mollis, est non commodo luctus, nisi erat porttitor ligula."
               )
             )

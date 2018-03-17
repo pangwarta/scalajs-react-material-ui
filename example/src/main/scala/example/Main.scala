@@ -23,7 +23,7 @@ object Main {
         Paper.ClassKey.shadow2 -> ExampleStyles.paperShadow2
       )
     )("foo" -> "bar")(
-        Typography(component = "p", `type` = Typography.Type.body1)()(
+        Typography(component = "p", variant = Typography.Variant.body1)()(
           "The quick brown fox jumps over the lazy dog."
         ),
         AlertDialog(),

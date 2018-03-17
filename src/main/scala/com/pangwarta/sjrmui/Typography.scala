@@ -33,19 +33,19 @@ object Typography {
     object default extends Color("default")
   }
 
-  sealed abstract case class Type(get: String) extends StringType
-  object Type {
-    object display4 extends Type("display4")
-    object display3 extends Type("display3")
-    object display2 extends Type("display2")
-    object display1 extends Type("display1")
-    object headline extends Type("headline")
-    object title extends Type("title")
-    object subheading extends Type("subheading")
-    object body2 extends Type("body2")
-    object body1 extends Type("body1")
-    object caption extends Type("caption")
-    object button extends Type("button")
+  sealed abstract case class Variant(get: String) extends StringType
+  object Variant {
+    object display4 extends Variant("display4")
+    object display3 extends Variant("display3")
+    object display2 extends Variant("display2")
+    object display1 extends Variant("display1")
+    object headline extends Variant("headline")
+    object title extends Variant("title")
+    object subheading extends Variant("subheading")
+    object body2 extends Variant("body2")
+    object body1 extends Variant("body1")
+    object caption extends Variant("caption")
+    object button extends Variant("button")
   }
 
   @js.native
@@ -58,7 +58,7 @@ object Typography {
     var gutterBottom: js.UndefOr[Boolean] = js.native
     var noWrap: js.UndefOr[Boolean] = js.native
     var paragraph: js.UndefOr[Boolean] = js.native
-    var `type`: js.UndefOr[String] = js.native
+    var variant: js.UndefOr[String] = js.native
   }
 
   private def props(
@@ -70,7 +70,7 @@ object Typography {
       gutterBottom: js.UndefOr[Boolean],
       noWrap:       js.UndefOr[Boolean],
       paragraph:    js.UndefOr[Boolean],
-      `type`:       js.UndefOr[String],
+      variant:      js.UndefOr[String],
       otherProps:   (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(classes = classes)
@@ -81,7 +81,7 @@ object Typography {
     gutterBottom.foreach(p.updateDynamic("gutterBottom")(_))
     noWrap.foreach(p.updateDynamic("noWrap")(_))
     paragraph.foreach(p.updateDynamic("paragraph")(_))
-    `type`.foreach(p.updateDynamic("type")(_))
+    variant.foreach(p.updateDynamic("variant")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -125,7 +125,7 @@ object Typography {
       gutterBottom: js.UndefOr[Boolean]               = js.undefined,
       noWrap:       js.UndefOr[Boolean]               = js.undefined,
       paragraph:    js.UndefOr[Boolean]               = js.undefined,
-      `type`:       js.UndefOr[Type]                  = js.undefined
+      variant:      js.UndefOr[Variant]               = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       align,
@@ -136,7 +136,7 @@ object Typography {
       gutterBottom,
       noWrap,
       paragraph,
-      `type`,
+      variant,
       otherProps: _*
     )
     this.component(p)(children: _*)

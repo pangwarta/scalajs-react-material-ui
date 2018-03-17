@@ -1,6 +1,6 @@
 package example
 
-import com.pangwarta.sjrmui.Typography.Type
+import com.pangwarta.sjrmui.Typography.Variant
 import com.pangwarta.sjrmui.{ Avatar, Badge, Typography }
 import example.ExampleStyles._
 import japgolly.scalajs.react._
@@ -26,7 +26,7 @@ object TopSection {
         )()(
             <.img(^.src := catPicUrl, ExampleStyles.avatar)
           ),
-        Typography(`type` = Type.body1)()(
+        Typography(variant = Variant.body1)()(
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis quis urna ac lacinia. Curabitur euismod erat eu ligula porttitor vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut sed est sit amet ligula placerat faucibus ac id felis. Aliquam ut condimentum nunc. Nam nec accumsan felis, a dapibus mi. Vestibulum urna felis, commodo nec nunc fermentum, convallis fermentum ex. Quisque lobortis orci id dui posuere vehicula. Vivamus semper ipsum in dictum consectetur."
         )
       )

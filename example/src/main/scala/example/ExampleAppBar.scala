@@ -1,6 +1,6 @@
 package example
 
-import com.pangwarta.sjrmui.Typography.Type
+import com.pangwarta.sjrmui.Typography.Variant
 import com.pangwarta.sjrmui.{ AppBar, Typography }
 import japgolly.scalajs.react.ScalaComponent
 import japgolly.scalajs.react.vdom.html_<^._
@@ -15,8 +15,8 @@ object ExampleAppBar {
         square   = true
       )()(
         Typography(
-          color  = Typography.Color.secondary,
-          `type` = Type.headline
+          color   = Typography.Color.secondary,
+          variant = Variant.headline
         )()("Foo")
       ).vdomElement
     ).build

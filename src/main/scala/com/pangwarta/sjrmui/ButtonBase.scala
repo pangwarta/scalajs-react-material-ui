@@ -1,12 +1,12 @@
 package com.pangwarta.sjrmui
 
 import japgolly.scalajs.react._
-import japgolly.scalajs.react.raw.ReactElement
+import japgolly.scalajs.react.raw.{ ReactElement, RefFn }
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.language.higherKinds
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{ JSImport, JSName }
 import scala.scalajs.js.|
 
 object ButtonBase {
@@ -17,12 +17,13 @@ object ButtonBase {
 
   @js.native
   private[sjrmui] trait Props extends js.Object {
+    var buttonRef: RefFn = js.native
     var centerRipple: Boolean = js.native
     var classes: js.Dictionary[String] = js.native
     var className: js.UndefOr[String] = js.native
     var component: String | ReactElement = js.native
-    var disableRipple: Boolean = js.native
     var disabled: Boolean = js.native
+    var disableRipple: Boolean = js.native
     var focusRipple: Boolean = js.native
     var keyboardFocusedClassName: js.UndefOr[String] = js.native
     var onBlur: OnJSEv1[ReactEvent] = js.native
@@ -39,6 +40,9 @@ object ButtonBase {
     var onTouchStart: OnJSEv1[ReactTouchEvent] = js.native
     var role: js.UndefOr[String] = js.native
     var tabIndex: js.UndefOr[Int | String] = js.native
+    var TouchRippleProps: js.UndefOr[TouchRipple.Props] = js.native
+    @JSName("type")
+    var typ: js.UndefOr[String] = js.native
   }
 
   private def props(

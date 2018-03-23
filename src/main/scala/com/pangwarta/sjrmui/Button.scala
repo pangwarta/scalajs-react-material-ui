@@ -7,7 +7,7 @@ import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.language.higherKinds
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{ JSImport, JSName }
 import scala.scalajs.js.|
 
 object Button {
@@ -17,22 +17,38 @@ object Button {
   private object RawComponent extends js.Object
 
   abstract case class Color(get: String) extends StringType
-  object default extends Color("default")
-  object inherit extends Color("inherit")
-  object primary extends Color("primary")
-  object accent extends Color("accent")
-  object contrast extends Color("contrast")
+  object Color {
+    object default extends Color("default")
+    object inherit extends Color("inherit")
+    object primary extends Color("primary")
+    object accent extends Color("accent")
+    object contrast extends Color("contrast")
+  }
+
+  abstract case class Size(get: String) extends StringType
+  object Size {
+    object small extends Size("small")
+    object medium extends Size("medium")
+    object large extends Size("large")
+  }
+
+  abstract case class Variant(get: String) extends StringType
+  object Variant {
+    object flat extends Variant("flat")
+    object raised extends Variant("raised")
+    object fab extends Variant("fab")
+  }
 
   @js.native
   private[sjrmui] trait Props extends ButtonBase.Props {
     var color: js.UndefOr[String] = js.native
     var dense: js.UndefOr[Boolean] = js.native
     var disableFocusRipple: js.UndefOr[Boolean] = js.native
-    var fab: js.UndefOr[Boolean] = js.native
     var fullWidth: js.UndefOr[Boolean] = js.native
     var href: js.UndefOr[String] = js.native
     var mini: js.UndefOr[Boolean] = js.native
-    var raised: js.UndefOr[Boolean] = js.native
+    var size: js.UndefOr[String] = js.native
+    var variant: js.UndefOr[String] = js.native
   }
 
   private def props(
@@ -61,11 +77,11 @@ object Button {
       color:                    js.UndefOr[String],
       dense:                    js.UndefOr[Boolean],
       disableFocusRipple:       js.UndefOr[Boolean],
-      fab:                      js.UndefOr[Boolean],
       fullWidth:                js.UndefOr[Boolean],
       href:                     js.UndefOr[String],
       mini:                     js.UndefOr[Boolean],
-      raised:                   js.UndefOr[Boolean],
+      size:                     js.UndefOr[String],
+      variant:                  js.UndefOr[String],
       otherProps:               (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(classes = classes)
@@ -93,11 +109,11 @@ object Button {
     color.foreach(p.updateDynamic("color")(_))
     dense.foreach(p.updateDynamic("dense")(_))
     disableFocusRipple.foreach(p.updateDynamic("disableFocusRipple")(_))
-    fab.foreach(p.updateDynamic("fab")(_))
     fullWidth.foreach(p.updateDynamic("fullWidth")(_))
     href.foreach(p.updateDynamic("href")(_))
     mini.foreach(p.updateDynamic("mini")(_))
-    raised.foreach(p.updateDynamic("raised")(_))
+    size.foreach(p.updateDynamic("size")(_))
+    variant.foreach(p.updateDynamic("variant")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
   }
@@ -130,28 +146,28 @@ object Button {
       disabled:                 js.UndefOr[Boolean]               = js.undefined,
       focusRipple:              js.UndefOr[Boolean]               = js.undefined,
       keyboardFocusedClassName: js.UndefOr[String]                = js.undefined,
-      onBlur:                   ReactHandler1[ReactEvent]         = js.undefined,
-      onClick:                  ReactHandler1[ReactMouseEvent]    = js.undefined,
-      onFocus:                  ReactHandler1[ReactFocusEvent]    = js.undefined,
-      onKeyboardFocus:          ReactHandler1[ReactFocusEvent]    = js.undefined,
-      onKeyDown:                ReactHandler1[ReactKeyboardEvent] = js.undefined,
-      onKeyUp:                  ReactHandler1[ReactKeyboardEvent] = js.undefined,
-      onMouseDown:              ReactHandler1[ReactMouseEvent]    = js.undefined,
-      onMouseLeave:             ReactHandler1[ReactMouseEvent]    = js.undefined,
-      onMouseUp:                ReactHandler1[ReactMouseEvent]    = js.undefined,
-      onTouchEnd:               ReactHandler1[ReactTouchEvent]    = js.undefined,
-      onTouchMove:              ReactHandler1[ReactTouchEvent]    = js.undefined,
-      onTouchStart:             ReactHandler1[ReactTouchEvent]    = js.undefined,
+      onBlur:                   OnJSEv1[ReactEvent]               = js.undefined,
+      onClick:                  OnJSEv1[ReactMouseEvent]          = js.undefined,
+      onFocus:                  OnJSEv1[ReactFocusEvent]          = js.undefined,
+      onKeyboardFocus:          OnJSEv1[ReactFocusEvent]          = js.undefined,
+      onKeyDown:                OnJSEv1[ReactKeyboardEvent]       = js.undefined,
+      onKeyUp:                  OnJSEv1[ReactKeyboardEvent]       = js.undefined,
+      onMouseDown:              OnJSEv1[ReactMouseEvent]          = js.undefined,
+      onMouseLeave:             OnJSEv1[ReactMouseEvent]          = js.undefined,
+      onMouseUp:                OnJSEv1[ReactMouseEvent]          = js.undefined,
+      onTouchEnd:               OnJSEv1[ReactTouchEvent]          = js.undefined,
+      onTouchMove:              OnJSEv1[ReactTouchEvent]          = js.undefined,
+      onTouchStart:             OnJSEv1[ReactTouchEvent]          = js.undefined,
       role:                     js.UndefOr[String]                = js.undefined,
       tabIndex:                 js.UndefOr[Int | String]          = js.undefined,
       color:                    js.UndefOr[Color]                 = js.undefined,
       dense:                    js.UndefOr[Boolean]               = js.undefined,
       disableFocusRipple:       js.UndefOr[Boolean]               = js.undefined,
-      fab:                      js.UndefOr[Boolean]               = js.undefined,
       fullWidth:                js.UndefOr[Boolean]               = js.undefined,
       href:                     js.UndefOr[String]                = js.undefined,
       mini:                     js.UndefOr[Boolean]               = js.undefined,
-      raised:                   js.UndefOr[Boolean]               = js.undefined
+      size:                     js.UndefOr[Size]                  = js.undefined,
+      variant:                  js.UndefOr[Variant]               = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       centerRipple,
@@ -179,11 +195,11 @@ object Button {
       color,
       dense,
       disableFocusRipple,
-      fab,
       fullWidth,
       href,
       mini,
-      raised,
+      size,
+      variant,
       otherProps: _*
     )
     this.component(p)(children: _*)

@@ -5,7 +5,7 @@ import japgolly.scalajs.react.raw.{ ReactNode, RefFn }
 import japgolly.scalajs.react.vdom.VdomNode
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.annotation.{ JSImport, JSName }
 import scala.scalajs.js.|
 
 object TextField {
@@ -43,7 +43,8 @@ object TextField {
     var rowsMax: js.UndefOr[String | Int] = js.native
     var select: js.UndefOr[Boolean] = js.native
     var SelectProps: js.UndefOr[Select.Props] = js.native
-    var `type`: js.UndefOr[String] = js.native
+    @JSName("type")
+    var typ: js.UndefOr[String] = js.native
     var value: js.UndefOr[js.Array[String | Double] | String | Double] = js.native
   }
 
@@ -80,7 +81,7 @@ object TextField {
       rowsMax:             js.UndefOr[String | Int],
       select:              js.UndefOr[Boolean],
       SelectProps:         js.UndefOr[Select.Props],
-      `type`:              js.UndefOr[String],
+      typ:                 js.UndefOr[String],
       value:               js.UndefOr[js.Array[String | Double] | String | Double],
       otherProps:          (String, js.Any)*
   ): Props = {
@@ -112,7 +113,7 @@ object TextField {
     rowsMax.foreach(p.updateDynamic("rowsMax")(_))
     select.foreach(p.updateDynamic("select")(_))
     SelectProps.foreach(p.updateDynamic("SelectProps")(_))
-    `type`.foreach(p.updateDynamic("`type`")(_))
+    typ.foreach(p.updateDynamic("type")(_))
     value.foreach(p.updateDynamic("value")(_))
     addOtherProps(p, otherProps: _*)
     p.asInstanceOf[Props]
@@ -148,7 +149,7 @@ object TextField {
       rowsMax:             js.UndefOr[String | Int]                                = js.undefined,
       select:              js.UndefOr[Boolean]                                     = js.undefined,
       SelectProps:         js.UndefOr[Select.Props]                                = js.undefined,
-      `type`:              js.UndefOr[String]                                      = js.undefined,
+      typ:                 js.UndefOr[String]                                      = js.undefined,
       value:               js.UndefOr[js.Array[String | Double] | String | Double] = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
@@ -179,7 +180,7 @@ object TextField {
       rowsMax,
       select,
       SelectProps,
-      `type`,
+      typ,
       value,
       otherProps: _*
     )

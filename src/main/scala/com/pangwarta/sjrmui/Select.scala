@@ -17,7 +17,7 @@ object Select {
   type Value = js.Array[String | Double] | String | Double
 
   @js.native
-  private[sjrmui] trait Props extends js.Object {
+  trait Props extends js.Object {
     var autoWidth: js.UndefOr[Boolean] = js.native
     var classes: js.Dictionary[String] = js.native
     var displayEmpty: js.UndefOr[Boolean] = js.native

@@ -142,7 +142,7 @@ object TextField {
       margin:              js.UndefOr[String]                                      = js.undefined,
       multiline:           js.UndefOr[Boolean]                                     = js.undefined,
       name:                js.UndefOr[String]                                      = js.undefined,
-      onChange:            OnJSEv1[ReactEvent]                                     = js.undefined,
+      onChange:            ReactHandler1[ReactEvent]                               = js.undefined,
       placeholder:         js.UndefOr[String]                                      = js.undefined,
       required:            js.UndefOr[Boolean]                                     = js.undefined,
       rows:                js.UndefOr[String | Int]                                = js.undefined,

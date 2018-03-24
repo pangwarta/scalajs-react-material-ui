@@ -16,7 +16,7 @@ object Input {
   private object RawComponent extends js.Object
 
   @js.native
-  private[sjrmui] trait Props extends js.Object {
+  trait Props extends js.Object {
     var autoComplete: js.UndefOr[String] = js.native
     var autoFocus: js.UndefOr[Boolean] = js.native
     var classes: js.Dictionary[String] = js.native

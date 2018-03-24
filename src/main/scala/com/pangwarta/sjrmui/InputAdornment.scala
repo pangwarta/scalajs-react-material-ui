@@ -23,6 +23,12 @@ object InputAdornment {
     var position: js.UndefOr[String] = js.native
   }
 
+  sealed abstract case class Position(get: String) extends StringType
+  object Position {
+    object start extends Position("start")
+    object end extends Position("end")
+  }
+
   private def props(
       classes:           js.Dictionary[String],
       className:         js.UndefOr[String],
@@ -49,7 +55,7 @@ object InputAdornment {
       className:         js.UndefOr[String]                = js.undefined,
       component:         js.UndefOr[String | ReactElement] = js.undefined,
       disableTypography: js.UndefOr[Boolean]               = js.undefined,
-      position:          js.UndefOr[String]                = js.undefined
+      position:          js.UndefOr[Position]              = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       classes,

@@ -28,18 +28,18 @@ object StepLabel {
   }
 
   private def props(
-                     active: js.UndefOr[Boolean],
-                     alternativeLabel: js.UndefOr[Boolean],
-                     classes: js.Dictionary[String],
-                     className: js.UndefOr[String],
-                     completed: js.UndefOr[Boolean],
-                     disabled: js.UndefOr[Boolean],
-                     icon: js.UndefOr[StepButton.Icon],
-                     last: js.UndefOr[Boolean],
-                     optional: js.UndefOr[ReactNode],
-                     orientation: js.UndefOr[String],
-                     otherProps: (String, js.Any)*
-                   ): Props = {
+      active:           js.UndefOr[Boolean],
+      alternativeLabel: js.UndefOr[Boolean],
+      classes:          js.Dictionary[String],
+      className:        js.UndefOr[String],
+      completed:        js.UndefOr[Boolean],
+      disabled:         js.UndefOr[Boolean],
+      icon:             js.UndefOr[StepButton.Icon],
+      last:             js.UndefOr[Boolean],
+      optional:         js.UndefOr[ReactNode],
+      orientation:      js.UndefOr[String],
+      otherProps:       (String, js.Any)*
+  ): Props = {
     val p = js.Dynamic.literal(classes = classes)
     active.foreach(p.updateDynamic("active")(_))
     alternativeLabel.foreach(p.updateDynamic("alternativeLabel")(_))
@@ -73,17 +73,17 @@ object StepLabel {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-             active: js.UndefOr[Boolean] = js.undefined,
-             alternativeLabel: js.UndefOr[Boolean] = js.undefined,
-             classes: Map[ClassKey, String] = Map.empty,
-             className: js.UndefOr[String] = js.undefined,
-             completed: js.UndefOr[Boolean] = js.undefined,
-             disabled: js.UndefOr[Boolean] = js.undefined,
-             icon: js.UndefOr[StepButton.Icon] = js.undefined,
-             last: js.UndefOr[Boolean] = js.undefined,
-             optional: js.UndefOr[ReactNode] = js.undefined,
-             orientation: js.UndefOr[Step.Orientation] = js.undefined,
-           )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
+      active:           js.UndefOr[Boolean]          = js.undefined,
+      alternativeLabel: js.UndefOr[Boolean]          = js.undefined,
+      classes:          Map[ClassKey, String]        = Map.empty,
+      className:        js.UndefOr[String]           = js.undefined,
+      completed:        js.UndefOr[Boolean]          = js.undefined,
+      disabled:         js.UndefOr[Boolean]          = js.undefined,
+      icon:             js.UndefOr[StepButton.Icon]  = js.undefined,
+      last:             js.UndefOr[Boolean]          = js.undefined,
+      optional:         js.UndefOr[ReactNode]        = js.undefined,
+      orientation:      js.UndefOr[Step.Orientation] = js.undefined
+  )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       active,
       alternativeLabel,

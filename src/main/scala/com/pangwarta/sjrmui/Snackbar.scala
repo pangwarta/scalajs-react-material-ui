@@ -127,22 +127,22 @@ object Snackbar {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      action:                    js.UndefOr[ReactElement]          = js.undefined,
-      anchorOrigin:              js.UndefOr[Origin]                = js.undefined,
-      autoHideDuration:          js.UndefOr[Int]                   = js.undefined,
-      classes:                   Map[ClassKey, String]             = Map.empty,
-      className:                 js.UndefOr[String]                = js.undefined,
-      disableWindowBlurListener: js.UndefOr[Boolean]               = js.undefined,
-      key:                       js.UndefOr[js.Any]                = js.undefined,
-      message:                   js.UndefOr[ReactElement]          = js.undefined,
-      onClose:                   OnJSEv2[ReactEvent, String]       = js.undefined,
-      onMouseEnter:              OnJSEv1[ReactMouseEventFromHtml]  = js.undefined,
-      onMouseLeave:              OnJSEv1[ReactMouseEventFromHtml]  = js.undefined,
-      open:                      js.UndefOr[Boolean]               = js.undefined,
-      resumeHideDuration:        js.UndefOr[Int]                   = js.undefined,
-      SnackBarContentProps:      js.UndefOr[SnackbarContent.Props] = js.undefined,
-      transition:                js.UndefOr[String | ReactElement] = js.undefined,
-      transitionDuration:        js.UndefOr[Transition.Duration]   = js.undefined
+      action:                    js.UndefOr[ReactElement]               = js.undefined,
+      anchorOrigin:              js.UndefOr[Origin]                     = js.undefined,
+      autoHideDuration:          js.UndefOr[Int]                        = js.undefined,
+      classes:                   Map[ClassKey, String]                  = Map.empty,
+      className:                 js.UndefOr[String]                     = js.undefined,
+      disableWindowBlurListener: js.UndefOr[Boolean]                    = js.undefined,
+      key:                       js.UndefOr[js.Any]                     = js.undefined,
+      message:                   js.UndefOr[ReactElement]               = js.undefined,
+      onClose:                   ReactHandler2[ReactEvent, String]      = js.undefined,
+      onMouseEnter:              ReactHandler1[ReactMouseEventFromHtml] = js.undefined,
+      onMouseLeave:              ReactHandler1[ReactMouseEventFromHtml] = js.undefined,
+      open:                      js.UndefOr[Boolean]                    = js.undefined,
+      resumeHideDuration:        js.UndefOr[Int]                        = js.undefined,
+      SnackBarContentProps:      js.UndefOr[SnackbarContent.Props]      = js.undefined,
+      transition:                js.UndefOr[String | ReactElement]      = js.undefined,
+      transitionDuration:        js.UndefOr[Transition.Duration]        = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       action,

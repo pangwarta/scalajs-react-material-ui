@@ -73,19 +73,23 @@ object IconButton {
   }
 
   sealed abstract case class Color(get: String) extends StringType
-  object default extends Color("default")
-  object inherit extends Color("inherit")
-  object primary extends Color("primary")
-  object secondary extends Color("secondary")
+  object Color {
+    object default extends Color("default")
+    object inherit extends Color("inherit")
+    object primary extends Color("primary")
+    object secondary extends Color("secondary")
+  }
 
   sealed abstract case class ClassKey(get: String) extends StringType
-  object root extends ClassKey("root")
-  object disabled extends ClassKey("disabled")
-  object colorPrimary extends ClassKey("colorPrimary")
-  object colorSecondary extends ClassKey("colorSecondary")
-  object colorInherit extends ClassKey("colorInherit")
-  object label extends ClassKey("label")
-  object icon extends ClassKey("icon")
+  object ClassKey {
+    object root extends ClassKey("root")
+    object disabled extends ClassKey("disabled")
+    object colorPrimary extends ClassKey("colorPrimary")
+    object colorSecondary extends ClassKey("colorSecondary")
+    object colorInherit extends ClassKey("colorInherit")
+    object label extends ClassKey("label")
+    object icon extends ClassKey("icon")
+  }
 
   private def component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 

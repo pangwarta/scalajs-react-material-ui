@@ -107,7 +107,7 @@ object Menu {
       getContentAnchorEl: js.UndefOr[js.Function1[html.Element, html.Element]] = js.undefined,
       marginThreshold:    js.UndefOr[Double]                                   = js.undefined,
       MenuListProps:      js.UndefOr[MenuList.Props]                           = js.undefined,
-      onClose:            OnJSEv1[ReactEvent]                                  = js.undefined,
+      onClose:            ReactHandler1[ReactEvent]                            = js.undefined,
       onEnter:            Handler1[html.Element]                               = js.undefined,
       onEntered:          Handler1[html.Element]                               = js.undefined,
       onEntering:         Handler1[html.Element]                               = js.undefined,

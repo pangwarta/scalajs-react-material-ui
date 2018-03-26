@@ -15,25 +15,32 @@ object MenuItem {
   private object RawComponent extends js.Object
 
   @js.native
-  private[sjrmui] trait Props extends js.Object {
-    var classes: js.Dictionary[String] = js.native
-    var className: js.UndefOr[String] = js.native
-    var component: js.UndefOr[String | ReactElement] = js.native
+  private[sjrmui] trait Props extends ListItem.Props {
     var role: js.UndefOr[String] = js.native
     var selected: js.UndefOr[Boolean] = js.native
   }
 
   private def props(
-      classes:    js.Dictionary[String],
-      className:  js.UndefOr[String],
-      component:  js.UndefOr[String | ReactElement],
-      role:       js.UndefOr[String],
-      selected:   js.UndefOr[Boolean],
-      otherProps: (String, js.Any)*
+      button:         js.UndefOr[Boolean],
+      classes:        js.Dictionary[String],
+      className:      js.UndefOr[String],
+      component:      js.UndefOr[String | ReactElement],
+      dense:          js.UndefOr[Boolean],
+      disabled:       js.UndefOr[Boolean],
+      disableGutters: js.UndefOr[Boolean],
+      divider:        js.UndefOr[Boolean],
+      role:           js.UndefOr[String],
+      selected:       js.UndefOr[Boolean],
+      otherProps:     (String, js.Any)*
   ): Props = {
     val p = js.Dynamic.literal(classes = classes)
+    button.foreach(p.updateDynamic("button")(_))
     className.foreach(p.updateDynamic("className")(_))
     component.foreach(p.updateDynamic("component")(_))
+    dense.foreach(p.updateDynamic("dense")(_))
+    disabled.foreach(p.updateDynamic("disabled")(_))
+    disableGutters.foreach(p.updateDynamic("disableGutters")(_))
+    divider.foreach(p.updateDynamic("divider")(_))
     role.foreach(p.updateDynamic("role")(_))
     selected.foreach(p.updateDynamic("selected")(_))
     addOtherProps(p, otherProps: _*)
@@ -55,16 +62,26 @@ object MenuItem {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      classes:   Map[ClassKey, String]             = Map.empty,
-      className: js.UndefOr[String]                = js.undefined,
-      component: js.UndefOr[String | ReactElement] = js.undefined,
-      role:      js.UndefOr[String]                = js.undefined,
-      selected:  js.UndefOr[Boolean]               = js.undefined
+      button:         js.UndefOr[Boolean]               = js.undefined,
+      classes:        Map[ClassKey, String]             = Map.empty,
+      className:      js.UndefOr[String]                = js.undefined,
+      component:      js.UndefOr[String | ReactElement] = js.undefined,
+      dense:          js.UndefOr[Boolean]               = js.undefined,
+      disabled:       js.UndefOr[Boolean]               = js.undefined,
+      disableGutters: js.UndefOr[Boolean]               = js.undefined,
+      divider:        js.UndefOr[Boolean]               = js.undefined,
+      role:           js.UndefOr[String]                = js.undefined,
+      selected:       js.UndefOr[Boolean]               = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
+      button,
       classes,
       className,
       component,
+      dense,
+      disabled,
+      disableGutters,
+      divider,
       role,
       selected,
       otherProps: _*

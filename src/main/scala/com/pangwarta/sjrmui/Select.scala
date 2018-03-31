@@ -78,20 +78,20 @@ object Select {
   private val component = JsComponent[Props, Children.Varargs, Null](RawComponent)
 
   def apply(
-      autoWidth:    js.UndefOr[Boolean]                        = js.undefined,
-      classes:      Map[ClassKey, String]                      = Map.empty,
-      displayEmpty: js.UndefOr[Boolean]                        = js.undefined,
-      input:        js.UndefOr[ReactNode]                      = js.undefined,
-      inputProps:   js.UndefOr[js.Object]                      = js.undefined,
-      MenuProps:    js.UndefOr[Menu.Props]                     = js.undefined,
-      multiple:     js.UndefOr[Boolean]                        = js.undefined,
-      native:       js.UndefOr[Boolean]                        = js.undefined,
-      onChange:     OnJSEv2[ReactEventFromHtml, ReactElement]  = js.undefined,
-      onClose:      OnJSEv1[ReactEventFromHtml]                = js.undefined,
-      onOpen:       OnJSEv1[ReactEventFromHtml]                = js.undefined,
-      open:         js.UndefOr[Boolean]                        = js.undefined,
-      renderValue:  js.UndefOr[js.Function1[Value, ReactNode]] = js.undefined,
-      value:        js.UndefOr[Value]                          = js.undefined
+      autoWidth:    js.UndefOr[Boolean]                             = js.undefined,
+      classes:      Map[ClassKey, String]                           = Map.empty,
+      displayEmpty: js.UndefOr[Boolean]                             = js.undefined,
+      input:        js.UndefOr[ReactNode]                           = js.undefined,
+      inputProps:   js.UndefOr[js.Object]                           = js.undefined,
+      MenuProps:    js.UndefOr[Menu.Props]                          = js.undefined,
+      multiple:     js.UndefOr[Boolean]                             = js.undefined,
+      native:       js.UndefOr[Boolean]                             = js.undefined,
+      onChange:     ReactHandler2[ReactEventFromHtml, ReactElement] = js.undefined,
+      onClose:      ReactHandler1[ReactEventFromHtml]               = js.undefined,
+      onOpen:       ReactHandler1[ReactEventFromHtml]               = js.undefined,
+      open:         js.UndefOr[Boolean]                             = js.undefined,
+      renderValue:  js.UndefOr[js.Function1[Value, ReactNode]]      = js.undefined,
+      value:        js.UndefOr[Value]                               = js.undefined
   )(otherProps: (String, js.Any)*)(children: VdomNode*) = {
     val p = props(
       autoWidth,

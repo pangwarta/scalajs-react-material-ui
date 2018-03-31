@@ -19,9 +19,16 @@ These wrappers are very much pre-alpha, haven't been heavily tested yet, and are
 
 ## Contributing
 
-Add missing wrappers. Test them by using them in the example project. Improve the example project. Add automated tests. Fix bugs.
+* Add missing wrappers.
+* Test them by using them in the example project.
+* Improve the example project.
+* Add automated tests.
+* Copying Material UI props comments as Scaladoc comments to all the `def apply` methods.
+* Fix bugs. 
 
 ## Roadmap
+
+We'd like to include typed theming. So far the theming is pretty much  We've had some trouble trying to 
 
 Eventually, we would like this library to contribute to [scalajs-react components](https://github.com/chandu0101/scalajs-react-components) or forks thereof, which still wraps the old version of the Material UI library. With this in mind, as Material UI 1.0.0 releases, we are looking to use Scala macros to clean up the wrappers and eventually share the same code style with the rest of scalajs-react components.
 

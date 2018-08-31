@@ -1,21 +1,12 @@
 package com.pangwarta.sjrmui
 
-import japgolly.scalajs.react._
-import japgolly.scalajs.react.raw.ReactElement
+import japgolly.scalajs.react.raw.React.{Element => ReactElement}
+import japgolly.scalajs.react.{Children, JsComponent}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 object CssBaseline {
-
-  @JSImport("material-ui", "CssBaseline")
-  @js.native
-  private object RawComponent extends js.Object
-
-  @js.native
-  private[sjrmui] trait Props extends js.Object {
-    var children: js.UndefOr[ReactElement] = js.native
-  }
 
   private val component = JsComponent[Props, Children.None, Null](RawComponent)
 
@@ -23,4 +14,13 @@ object CssBaseline {
     val p = js.Dynamic.literal(children = children).asInstanceOf[Props]
     this.component(p)
   }
+
+  @js.native
+  private[sjrmui] trait Props extends js.Object {
+    var children: js.UndefOr[ReactElement] = js.native
+  }
+
+  @JSImport("@material-ui/core", "CssBaseline")
+  @js.native
+  private object RawComponent extends js.Object
 }
